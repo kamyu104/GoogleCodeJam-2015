@@ -1,3 +1,5 @@
+# Problem Description: https://code.google.com/codejam/contest/6224486/dashboard#s=p1
+
 def solve():
     d = int(input())
     p = map(int, raw_input().split())
