@@ -1,3 +1,5 @@
+# Problem Description: https://code.google.com/codejam/contest/6224486/dashboard#s=p0
+
 def solve():
     num, level = raw_input().split()
     num = int(num)
