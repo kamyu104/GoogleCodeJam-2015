@@ -1,3 +1,5 @@
+# Problem Description: https://code.google.com/codejam/contest/6224486/dashboard#s=p2
+
 def mul(a, b, sign):
     if a == 'i':
         if b == 'i':
