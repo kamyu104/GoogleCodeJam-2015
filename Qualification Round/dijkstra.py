@@ -28,7 +28,7 @@ def solve():
     s = raw_input()
 
     # every four copies of anything mutilply to 1, so we can reduce mod 4
-    # at most we need 4 copies in each of the first two splits (i, rep % 4, k).
+    # at most we need 4 copies in each of the first two splits (4 for i, rep % 4 for j, 4 for k).
     if rep >= 8:
         rep = 4 + rep % 4 + 4
 
