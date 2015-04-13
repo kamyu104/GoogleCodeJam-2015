@@ -1,3 +1,5 @@
+# Problem Description: https://code.google.com/codejam/contest/6224486/dashboard#s=p3
+
 def solve():
     [x, r, c]  = map(int, raw_input().split())
   
