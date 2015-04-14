@@ -4,11 +4,13 @@ def solve():
     d = int(input())
     p = map(int, raw_input().split())
     ans = max(p)
+    
+    # try to split each plate into target count of pancakes, and count waiting time
     for cnt in xrange(2, max(p)):
-        t = 0
+        wait = 0
         for x in p:
-            t += (x-1)//cnt
-        ans = min(ans, cnt+t)
+            wait += (x-1)//cnt
+        ans = min(ans, cnt+wait)
     return ans
 
 T = input()
