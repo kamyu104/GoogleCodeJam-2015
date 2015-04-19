@@ -17,6 +17,7 @@ for cas in xrange(1,1+input()):
 			R = M
 
 	# now f(L) <= n <= f(R)
+	assert f(L) < n <= f(R)
 	dist = [0]*b
 	for i in xrange(b):
 		ct = (L + m[i] - 1) / m[i]
