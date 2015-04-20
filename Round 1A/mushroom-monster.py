@@ -1,3 +1,4 @@
+# https://code.google.com/codejam/contest/4224486/dashboard#s=p0
 for cas in xrange(1,1+input()):
 	n = input()
 	m = map(int, raw_input().strip().split())
