@@ -6,6 +6,8 @@ for cas in xrange(1,1+input()):
 		for i in xrange(b):
 			s += (T + m[i]-1) / m[i]
 		return s
+	
+	# find the most time when the number of guests is still less than n
 	L = 0
 	R = 10**50
 	while  R - L > 1:
