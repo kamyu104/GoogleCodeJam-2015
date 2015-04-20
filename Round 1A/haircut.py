@@ -18,12 +18,12 @@ for cas in xrange(1,1+input()):
 
 	# now f(L) < n <= f(R)
 	assert f(L) < n <= f(R)
-	dist = [0]*b
+	time_to_free = [0]*b
 	for i in xrange(b):
 		ct = (L + m[i] - 1) / m[i]
-		dist[i] = ct * m[i]
+		time_to_free[i] = ct * m[i]
 		n -= ct
 
 	assert 0 <= n <= b
-	idxs = sorted(range(b), key=lambda i: (dist[i], i))
+	idxs = sorted(range(b), key=lambda i: (time_to_free[i], i))
 	print "Case #%s: %s" % (cas, idxs[n-1]+1)
