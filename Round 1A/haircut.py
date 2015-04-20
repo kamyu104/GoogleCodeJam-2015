@@ -1,3 +1,5 @@
+# https://code.google.com/codejam/contest/4224486/dashboard#s=p1
+
 for cas in xrange(1,1+input()):
 	b, n = map(int, raw_input().strip().split())
 	m = map(int, raw_input().strip().split())
