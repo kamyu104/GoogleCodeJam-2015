@@ -1,5 +1,5 @@
 # https://code.google.com/codejam/contest/8224486/dashboard
-# Time:  O(logn)
+# Time:  O(logn), increase 1 digit every 5 loops.
 # Space: O(logn), for reversed string
 
 import sys
