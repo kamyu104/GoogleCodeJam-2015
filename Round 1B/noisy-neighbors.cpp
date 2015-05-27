@@ -59,7 +59,7 @@ int main() {
             // Max edge number of vacant odd rooms.
             int odd_edges = accumulate(edges[1].cbegin(),
                                        edges[1].cbegin() + vacant_num, 0);
-            // Total edge number - max edge numbers of vacant rooms.
+            // (total edge number) - (max edge numbers of vacant rooms).
             answer = (R * (C - 1) + (R - 1) * C) - max(even_edges, odd_edges);
         }
         cout << "Case #" << test << ": " << answer << endl;
