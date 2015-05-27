@@ -9,6 +9,7 @@ def reverse(num):
 
 for case in xrange(input()):
     n = int(raw_input())
+    
     count = 0
     while n > 0:
         digits = str(n)
@@ -25,4 +26,5 @@ for case in xrange(input()):
         else: # 100999 => 100001
             n -= (mod-1)
             count += (mod-1)
+            
     print("Case #%d: %s" % (case+1, count))
