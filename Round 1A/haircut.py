@@ -1,3 +1,5 @@
+# https://code.google.com/codejam/contest/4224486/dashboard#s=p1
+
 for cas in xrange(1,1+input()):
 	b, n = map(int, raw_input().strip().split())
 	m = map(int, raw_input().strip().split())
@@ -6,6 +8,8 @@ for cas in xrange(1,1+input()):
 		for i in xrange(b):
 			s += (T + m[i]-1) / m[i]
 		return s
+	
+	# find the most time when the number of guests is still less than n
 	L = 0
 	R = 10**50
 	while  R - L > 1:
@@ -18,12 +22,13 @@ for cas in xrange(1,1+input()):
 
 	# now f(L) < n <= f(R)
 	assert f(L) < n <= f(R)
-	dist = [0]*b
+	time_to_available = [0]*b
 	for i in xrange(b):
 		ct = (L + m[i] - 1) / m[i]
-		dist[i] = ct * m[i]
+		time_to_available[i] = ct * m[i]
 		n -= ct
 
 	assert 0 <= n <= b
-	idxs = sorted(range(b), key=lambda i: (dist[i], i))
+	# sort time_to_available by time and id, assign guest to the available one 
+	idxs = sorted(range(b), key=lambda i: (time_to_available[i], i))
 	print "Case #%s: %s" % (cas, idxs[n-1]+1)

@@ -1,4 +1,4 @@
-#!/bin/env python
+# https://code.google.com/codejam/contest/4224486/dashboard#s=p2
 import math
 
 for c in xrange(input()):
