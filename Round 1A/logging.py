@@ -5,7 +5,7 @@ for c in xrange(input()):
   tree_count = int(raw_input())
   dims = []
   for t in xrange(tree_count):
-  	dims.append(map(int, raw_input().split()))
+  	dims.append(map(int, raw_input().strip().split()))
 
   print "Case #{}:".format(c+1)
   for i, p in enumerate(dims):
