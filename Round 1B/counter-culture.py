@@ -2,8 +2,6 @@
 # Time:  O(logn), increase 1 digit every 5 loops.
 # Space: O(logn), for reversed string
 
-import sys
-
 def reverse(num):
     return int(str(num)[::-1])
 
