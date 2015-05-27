@@ -64,4 +64,5 @@ int main() {
         }
         cout << "Case #" << test << ": " << answer << endl;
     }
+    return 0;
 }
