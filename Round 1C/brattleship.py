@@ -15,5 +15,5 @@ def score(R, C, W):
     return ((R - 1) * (C // W)) + ((C - 1) // W + W)
 
 for case in xrange(input()):
-    (R, C, W) = map(int, raw_input().strip().split())
+    R, C, W = map(int, raw_input().strip().split())
     print "Case #%d: %d" % (case+1, score(R, C, W))
