@@ -2,7 +2,7 @@
 # Time:  O(V)
 # Space: O(1)
 
-def solve(C, V, D, denominations):
+def new_denominations(C, V, D, denominations):
     # First, we remove all denominations that are too big
     while D > 0 and denominations[D-1] > V:
         denominations.pop()
@@ -25,4 +25,4 @@ def solve(C, V, D, denominations):
 for case in xrange(input()):
     C, D, V = map(int, raw_input().strip().split())
     denominations = map(int, raw_input().strip().split())
-    print "Case #{:d}: {:d}".format(case+1, solve(C, V, D, denominations))
+    print "Case #{:d}: {:d}".format(case+1, new_denominations(C, V, D, denominations))
