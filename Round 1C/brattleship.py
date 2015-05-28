@@ -3,7 +3,7 @@
 # Space: O(1)
 
 def score(R, C, W):
-    # 1. The move to find the correct row where battleshipt:
+    # 1. The move to find the correct row where the battleship is:
     #    (R - 1) * (C // W)
     #
     # 2. The move to find the whole battle ship in the last row:
