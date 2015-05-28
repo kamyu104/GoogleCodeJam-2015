@@ -1,4 +1,4 @@
-# https://code.google.com/codejam/contest/4244486/dashboard
+# https://code.google.com/codejam/contest/4244486/dashboard#s=p0
 # Time:  O(1)
 # Space: O(1)
 
