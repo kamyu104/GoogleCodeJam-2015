@@ -1,4 +1,3 @@
-#include <iostream>
 // Copyright (c) 2015 kamyu. All rights reserved.
 
 /*
@@ -10,6 +9,7 @@
  *
  */
 
+#include <iostream>
 #include <vector>
 #include <cmath>
 #include <utility>
