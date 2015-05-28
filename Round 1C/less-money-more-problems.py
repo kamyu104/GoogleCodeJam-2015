@@ -1,5 +1,5 @@
 # https://code.google.com/codejam/contest/4244486/dashboard#s=p2
-# Time:  O(V)
+# Time:  O(V / ((C + D) * D))
 # Space: O(1)
 
 def new_denominations(C, V, D, denominations):
