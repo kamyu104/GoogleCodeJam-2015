@@ -1,5 +1,5 @@
 # https://code.google.com/codejam/contest/4244486/dashboard#s=p1
-# Time:  O(K + L^2  + L * S)
+# Time:  O(K + L * S)
 # Space: O(K + L)
 
 def chars_before_repeat(s):
