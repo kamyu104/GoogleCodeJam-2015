@@ -1,25 +1,28 @@
 # https://code.google.com/codejam/contest/4224486/dashboard#s=p2
-import math
+from math import pi
+from math import atan2
 
 for c in xrange(input()):
-  tree_count = int(raw_input())
-  dims = []
-  for t in xrange(tree_count):
-  	dims.append(map(int, raw_input().strip().split()))
+    N = int(raw_input())
+    dims = []
+    for t in xrange(N):
+    	dims.append(map(int, raw_input().strip().split()))
 
-  print "Case #{}:".format(c+1)
-  for i, p in enumerate(dims):
-  	rest = [d for d in dims if d[0] != p[0] or d[1] != p[1]]
-  	angles = [math.atan2(r[1]-p[1], r[0]-p[0]) for r in rest]
-  	angles = angles + [a + 2*math.pi for a in angles] + [a + 4*math.pi for a in angles]
-  	angles.sort()
-  	end = 0
+    print "Case #{}:".format(c+1)
+    for i, p in enumerate(dims):
+    	angles = [atan2(r[1]-p[1], r[0]-p[0]) for j, r in enumerate(dims) if j != i]
+    	angles.extend([a + 2*pi for a in angles])
+    	angles.sort()
 
-  	min_remove = float("inf")
-  	for start in xrange(len(angles) / 2):
-  		while angles[end] < (angles[start] + math.pi - 1e-12):
-  			end += 1
-  		min_remove = min(min_remove, end - start - 1)
-  	if min_remove == float("inf"):
-  		min_remove = 0
-  	print min_remove
+    	min_remove = N - 1
+        start, end = 0, 0
+    	for i in xrange(len(angles) / 2):
+            while start + 1 < len(angles) and \
+                  angles[start] - angles[i]  < 1e-15:
+                start += 1
+    		while end < len(angles) and \
+                  angles[end] - angles[i]  < pi - 1e-15:
+    			end += 1
+    		min_remove = min(min_remove, end - start)
+
+    	print min_remove
