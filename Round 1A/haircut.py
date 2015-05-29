@@ -31,7 +31,7 @@ def haircut():
     assert f(L) < n <= f(R)
     time_to_available = [0]*b
     for i in xrange(b):
-        ct = (L + m[i] - 1) / m[i]
+        ct = (L + m[i] - 1) // m[i]
         time_to_available[i] = ct * m[i]
         n -= ct
     
