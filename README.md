@@ -34,4 +34,4 @@ Solutions of Google Code Jam 2015
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
 |A| [Brattleship](https://code.google.com/codejam/contest/4244486/dashboard#s=p0)| [Python](./Round 1C/brattleship.py)| _O(1)_ | _O(1)_ | Easy | | |
 |B| [Typewriter Monkey](https://code.google.com/codejam/contest/4244486/dashboard#s=p1)|[Python](./Round 1C/typewriter-monkey.py)| _O(K + L * S)_ | _O(K + L)_ | Medium | | |
-|C| [Less Money, More Problems](https://code.google.com/codejam/contest/4244486/dashboard#s=p2)| [Python](./Round 1C/less-money-more-problems.py)| _O(V / ((C + D) * D))_ | _O(H)_ | Easy | | |
+|C| [Less Money, More Problems](https://code.google.com/codejam/contest/4244486/dashboard#s=p2)| [Python](./Round 1C/less-money-more-problems.py)| _O(V / ((C + D) * D))_ | _O(1)_ | Easy | | |
