@@ -62,4 +62,4 @@ for case in xrange(input()):
     K, L, S =  map(int, raw_input().strip().split())
     keyboard = raw_input()
     target = raw_input()
-    print "Case #%d: %.10f".format(case+1, remaining_bananas(K, L, S, keyboard, target))
+    print "Case #%d: %.10f" % (case+1, remaining_bananas(K, L, S, keyboard, target))

@@ -30,4 +30,4 @@ def new_denominations(C, V, D, denominations):
 for case in xrange(input()):
     C, D, V = map(int, raw_input().strip().split())
     denominations = map(int, raw_input().strip().split())
-    print "Case #%d: %d".format(case+1, new_denominations(C, V, D, denominations))
+    print "Case #%d: %d" % (case+1, new_denominations(C, V, D, denominations))
