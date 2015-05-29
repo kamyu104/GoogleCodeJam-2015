@@ -1,6 +1,6 @@
 # Copyright (c) 2015 kamyu. All rights reserved.
 #
-# Google Code Jam 2015 Qualification Round - Problem C. Standing Ovation
+# Google Code Jam 2015 Qualification Round - Problem A. Standing Ovation
 # https://code.google.com/codejam/contest/6224486/dashboard#s=p0
 #
 # Time:  O(S)
