@@ -1,12 +1,19 @@
-# Problem Description: https://code.google.com/codejam/contest/6224486/dashboard#s=p0
+# Copyright (c) 2015 kamyu. All rights reserved.
+#
+# Google Code Jam 2015 Qualification Round - Problem C. Standing Ovation
+# https://code.google.com/codejam/contest/6224486/dashboard#s=p0
+#
+# Time:  O(S)
+# Space: O(1)
+#
 
-def solve():
-    num, shy = raw_input().split()
+def invite():
+    num, shy = raw_input().strip().split()
     num = int(num)
     friends = 0
     stand = int(shy[0])
-    for i in xrange(1, num + 1):
-        # make sure current standing people are enough to make shy[i] stand up, 
+    for i in xrange(1, num+1):
+        # Make sure current standing people are enough to make shy[i] stand up, 
         # if not, add friends
         if i > stand:
             friends += i-stand
@@ -14,6 +21,5 @@ def solve():
         stand += int(shy[i])
     return friends
 
-T = input()
-for i in xrange(T):
-    print 'Case #%d: %s' % (i + 1, solve())
+for case in xrange(input()):
+    print 'Case #%d: %s' % (case+1, invite())
