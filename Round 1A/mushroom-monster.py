@@ -13,4 +13,4 @@ for case in xrange(input()):
 	first = sum(max(0, m[i]-m[i+1]) for i in xrange(n-1))
 	rate = max(max(0, m[i]-m[i+1]) for i in xrange(n-1))
 	second = sum(min(rate, m[i]) for i in xrange(n-1))
-	print "Case #%d: %s %s" % (case+1, first, second)
+	print "Case #%d: %d %d" % (case+1, first, second)
