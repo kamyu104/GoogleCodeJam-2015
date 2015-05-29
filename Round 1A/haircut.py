@@ -12,19 +12,18 @@ def haircut():
     m = map(int, raw_input().strip().split())
     # Count the number of coming guests at the time T.
     def guest_num(T):
-    	s = 0
+    	num = 0
     	for i in xrange(b):
-    	    s += (T + m[i]-1) // m[i]
-        return s
+    	    num += (T + m[i]-1) // m[i]
+        return num
 
     # Time:  O(log(N * max(M)))
     # Find the most time when the number of guests is still less than n
     L = 0
     R = 10**14
-    while  L <= R:
+    while L <= R:
         M = L + R >> 1
-        guest_num_M = guest_num(M)
-        if guest_num_M >= n:
+        if guest_num(M) >= n:
             R = M - 1
         else:
             L = M + 1
@@ -33,9 +32,9 @@ def haircut():
     # At the time L, the number of coming guest achieves n.
     time_to_available = [0]*b
     for i in xrange(b):
-        ct = (L-1 + m[i] - 1) // m[i]
-        time_to_available[i] = ct * m[i]
-        n -= ct
+        cnt = (L-1 + m[i]-1) // m[i]
+        time_to_available[i] = cnt * m[i]
+        n -= cnt
     
     # Time:  O(BlogB)
     # Sort time_to_available by time and id,
