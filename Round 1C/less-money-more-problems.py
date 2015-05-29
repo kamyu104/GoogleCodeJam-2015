@@ -1,7 +1,7 @@
 # Copyright (c) 2015 kamyu. All rights reserved.
 #
 # Google Code Jam 2015 Round 1C - Problem C. Less Money, More Problems
-# https://code.google.com/codejam/contest/4244486/dashboard#s=p3
+# https://code.google.com/codejam/contest/4244486/dashboard#s=p2
 #
 # Time:  O(V / ((C + D) * D))
 # Space: O(1)
