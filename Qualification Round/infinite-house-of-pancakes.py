@@ -21,4 +21,4 @@ def pancake():
     return time
 
 for case in xrange(input()):
-    print 'Case #%d: %s' % (case+1, pancake())
+    print 'Case #%d: %d' % (case+1, pancake())
