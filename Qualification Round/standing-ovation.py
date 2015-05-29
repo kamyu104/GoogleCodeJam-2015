@@ -22,4 +22,4 @@ def invite():
     return friends
 
 for case in xrange(input()):
-    print 'Case #%d: %s' % (case+1, invite())
+    print 'Case #%d: %d' % (case+1, invite())
