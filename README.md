@@ -15,5 +15,5 @@ Solutions of Google Code Jam 2015
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
 |A| [Mushroom Monster](https://code.google.com/codejam/contest/4224486/dashboard#s=p0)| [Python](./Round 1A/mushroom-monster.py)| _O(S)_ | _O(1)_ | Easy | | |
-|B| [Haircut](https://code.google.com/codejam/contest/4224486/dashboard#s=p1)| [Python](././Round 1A/haircut.py)| _O(max(P) * D)_ | _O(1)_ | Medium | | Binary Search |
+|B| [Haircut](https://code.google.com/codejam/contest/4224486/dashboard#s=p1)| [Python](././Round 1A/haircut.py)| _O(log(N * max(M)) + BlogB)_ | _O(B)_ | Medium | | Binary Search |
 |C| [Logging](https://code.google.com/codejam/contest/4224486/dashboard#s=p2)| [C++](./Round 1A/logging.cpp) [Python](./Round 1A/logging.py)| _O(N^2)_ | _O(N)_ | Medium | | |
