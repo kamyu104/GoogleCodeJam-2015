@@ -39,7 +39,7 @@ def remaining_bananas(K, L, S, keyboard, target):
     if L == 1:
         return ideal_bananas - S * keyboard_prob[target[0]]
 
-    # Compute the probability of each position by DP.
+    # Sum up each probability of the string at position i matching the target by DP.
     expected_bananas = 0.0
     running_prob = [0.0 for i in xrange(L-1)]
     for i in xrange(S):
