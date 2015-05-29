@@ -39,4 +39,4 @@ def unhappiness(R, C, N):
 
 for case in xrange(input()):
     R, C, N = map(int, raw_input().strip().split())
-    print("Case #%d: %s" % (case+1, unhappiness(R, C, N)))
+    print("Case #%d: %d" % (case+1, unhappiness(R, C, N)))

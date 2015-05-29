@@ -1,6 +1,11 @@
+# Copyright (c) 2015 kamyu. All rights reserved.
+#
+# Google Code Jam 2015 Round 1C - Problem B. Typewriter Monkey
 # https://code.google.com/codejam/contest/4244486/dashboard#s=p1
+#
 # Time:  O(K + L * S)
 # Space: O(K + L)
+#
 
 def chars_before_repeat(s):
     L = len(s)
@@ -57,4 +62,4 @@ for case in xrange(input()):
     K, L, S =  map(int, raw_input().strip().split())
     keyboard = raw_input()
     target = raw_input()
-    print "Case #{:d}: {:.10f}".format(case+1, remaining_bananas(K, L, S, keyboard, target))
+    print "Case #%d: %.10f".format(case+1, remaining_bananas(K, L, S, keyboard, target))

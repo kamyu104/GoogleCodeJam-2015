@@ -1,6 +1,11 @@
+# Copyright (c) 2015 kamyu. All rights reserved.
+#
+# Google Code Jam 2015 Round 1C - Problem C. Less Money, More Problems
 # https://code.google.com/codejam/contest/4244486/dashboard#s=p2
+#
 # Time:  O(V / ((C + D) * D))
 # Space: O(1)
+#
 
 def new_denominations(C, V, D, denominations):
     # First, we remove all denominations that are too big
@@ -25,4 +30,4 @@ def new_denominations(C, V, D, denominations):
 for case in xrange(input()):
     C, D, V = map(int, raw_input().strip().split())
     denominations = map(int, raw_input().strip().split())
-    print "Case #{:d}: {:d}".format(case+1, new_denominations(C, V, D, denominations))
+    print "Case #%d: %d".format(case+1, new_denominations(C, V, D, denominations))
