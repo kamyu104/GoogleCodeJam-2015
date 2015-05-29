@@ -29,6 +29,7 @@ def hiking_deer():
         current -= d
         encounters = min(encounters, current)
         heapq.heappush(heap, (t+circle_t, -1, circle_t))
+    return encounters
         
 for case in xrange(input()):
-    print("Case #%d: %s" % (case+1, hiking_deer()))
+    print("Case #%d: %d" % (case+1, hiking_deer()))
