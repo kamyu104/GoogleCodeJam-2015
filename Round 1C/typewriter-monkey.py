@@ -1,6 +1,11 @@
+# Copyright (c) 2015 kamyu. All rights reserved.
+#
+# Google Code Jam 2015 Round 1C - Problem B. Typewriter Monkey
 # https://code.google.com/codejam/contest/4244486/dashboard#s=p1
+#
 # Time:  O(K + L * S)
 # Space: O(K + L)
+#
 
 def chars_before_repeat(s):
     L = len(s)
