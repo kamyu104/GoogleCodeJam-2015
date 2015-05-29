@@ -23,6 +23,6 @@ Solutions of Google Code Jam 2015
 ##Round 1B
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
-|A| [Counter Culture](https://code.google.com/codejam/contest/4224486/dashboard#s=p0)| [Python](./Round 1B/counter-culture.py)| _O(logN)_ | _O(logN)_ | Easy | | |
+|A| [Counter Culture](https://code.google.com/codejam/contest/8224486/dashboard#s=p0)| [Python](./Round 1B/counter-culture.py)| _O(logN)_ | _O(logN)_ | Easy | | |
 |B| [Noisy Neighbors](https://code.google.com/codejam/contest/8224486/dashboard#s=p1)| [C++](././Round 1B/noisy-neighbors.cpp) [Python](././Round 1B/noisy-neighbors.py)| _O(R * C)_ | _O(R * C)_ | Medium | | |
-|C| [Hiking Deer](https://code.google.com/codejam/contest/4224486/dashboard#s=p2)| [C++](./Round 1A/hiking-deer.cpp) [Python](./Round 1B/hiking-deer.py)| _O(HlogH)_ | _O(H)_ | Hard | | |
+|C| [Hiking Deer](https://code.google.com/codejam/contest/8224486/dashboard#s=p2)| [C++](./Round 1B/hiking-deer.cpp) [Python](./Round 1B/hiking-deer.py)| _O(HlogH)_ | _O(H)_ | Hard | | |
