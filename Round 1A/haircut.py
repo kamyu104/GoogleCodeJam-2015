@@ -23,8 +23,7 @@ def haircut():
     R = 10**14
     while  L <= R:
         M = L + R >> 1
-        guest_num_M = guest_num(M)
-        if guest_num_M >= n:
+        if guest_num(M) >= n:
             R = M - 1
         else:
             L = M + 1
