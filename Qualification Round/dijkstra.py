@@ -17,7 +17,7 @@ multiplicative = { '1':{'1': '1', 'i': 'i', 'j': 'j', 'k': 'k'},
                   '-k':{'1':'-k', 'i':'-j', 'j': 'i', 'k': '1'}}
 
 def dijkstra():
-    L, X = map(int, raw_input().split())
+    L, X = map(int, raw_input().strip().split())
     S = raw_input()
     
     # Every four copies of anything mutilply to 1, so we can reduce mod 4
@@ -42,4 +42,4 @@ def dijkstra():
         return "NO"
 
 for case in xrange(input()):
-    print "Case #{:d}: {:s}".format(case+1, dijkstra())
+    print "Case #%d: %s" % (case+1, dijkstra())
