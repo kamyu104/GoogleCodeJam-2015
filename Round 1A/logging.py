@@ -1,4 +1,12 @@
+# Copyright (c) 2015 kamyu. All rights reserved.
+#
+# Google Code Jam 2015 Round 1A - Problem C. Loggin
 # https://code.google.com/codejam/contest/4224486/dashboard#s=p2
+#
+# Time:  O(N^2)
+# Space: O(N)
+#
+
 from math import pi
 from math import atan2
 
