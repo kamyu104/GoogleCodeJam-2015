@@ -30,4 +30,4 @@ for case in xrange(input()):
             N -= (mod-1)
             count += (mod-1)
             
-    print("Case #%d: %s" % (case+1, count))
+    print("Case #%d: %d" % (case+1, count))
