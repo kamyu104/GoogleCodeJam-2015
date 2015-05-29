@@ -1,6 +1,6 @@
 # Copyright (c) 2015 kamyu. All rights reserved.
 #
-# Google Code Jam 2015 Round 1A - Problem C. Loggin
+# Google Code Jam 2015 Round 1A - Problem C. Logging
 # https://code.google.com/codejam/contest/4224486/dashboard#s=p2
 #
 # Time:  O(N^2)
