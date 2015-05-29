@@ -1,10 +1,15 @@
-# https://code.google.com/codejam/contest/8224486/dashboard#s=p2
+# Copyright (c) 2015 kamyu. All rights reserved.
+#
+# Google Code Jam 2015 Round 1B - Problem C. Hiking Deer
+# # https://code.google.com/codejam/contest/8224486/dashboard#s=p2
+#
 # Time:  O(HlogH)
 # Space: O(H)
+#
 
 import heapq
 
-for case in xrange(input()):
+def hiking_deer():
     heap = []
     hikers = 0
     for i in xrange(input()):
@@ -15,14 +20,15 @@ for case in xrange(input()):
             hikers += 1
 
     current = hikers
-    result = current
+    encounters = current
     # At most 2H times to find min encounters.
     # undertake <= H, overtake <= H,
     # current = undertak + overtack <= 2H
     while current <= hikers*2:
         t, d, circle_t = heapq.heappop(heap)
         current -= d
-        result = min(result, current)
+        encounters = min(encounters, current)
         heapq.heappush(heap, (t+circle_t, -1, circle_t))
-
-    print("Case #%d: %s" % (case+1, result))
+        
+for case in xrange(input()):
+    print("Case #%d: %s" % (case+1, hiking_deer()))
