@@ -1,18 +1,24 @@
-# Problem Description: https://code.google.com/codejam/contest/6224486/dashboard#s=p1
+# Copyright (c) 2015 kamyu. All rights reserved.
+#
+# Google Code Jam 2015 Qualification Round - Problem B. Infinite House of Pancakes
+# https://code.google.com/codejam/contest/6224486/dashboard#s=p1
+#
+# Time:  O(max(P) * D)
+# Space: O(1)
+#
 
-def solve():
-    d = int(input())
-    p = map(int, raw_input().split())
-    ans = max(p)
+def pancake():
+    D = int(input())
+    P = map(int, raw_input().strip().split())
+    time = max(P)
     
-    # try to split each plate into target count of pancakes, and count waiting time
-    for cnt in xrange(2, max(p)):
+    # Try to split each plate into target count of pancakes, and count waiting time
+    for cnt in xrange(2, max(P)):
         wait = 0
-        for x in p:
-            wait += (x-1)//cnt
-        ans = min(ans, cnt+wait)
-    return ans
+        for cakes in P:
+            wait += (cakes-1)//cnt
+        time = min(time, cnt+wait)
+    return time
 
-T = input()
-for i in xrange(T):
-    print 'Case #%d: %s' % (i + 1, solve())
+for case in xrange(input()):
+    print 'Case #%d: %s' % (case+1, pancake())
