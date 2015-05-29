@@ -1,6 +1,11 @@
+# Copyright (c) 2015 kamyu. All rights reserved.
+#
+# Google Code Jam 2015 Round 1C - Problem A. Brattleship
 # https://code.google.com/codejam/contest/4244486/dashboard#s=p0
+#
 # Time:  O(1)
 # Space: O(1)
+#
 
 def score(R, C, W):
     # 1. The move to find the correct row where the battleship is:
