@@ -1,7 +1,11 @@
+# Copyright (c) 2015 kamyu. All rights reserved.
+#
 # Google Code Jam 2015 Round 1B - Problem B. Noisy Neighbors
 # https://code.google.com/codejam/contest/8224486/dashboard#s=p1
+#
 # Time:  O(R * C)
 # Space: O(R * C)
+#
 
 def unhappiness(R, C, N):
     answer = 0
