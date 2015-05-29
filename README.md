@@ -1,4 +1,4 @@
-## Google Code Jam 2015
+# Google Code Jam 2015
 Solutions of Google Code Jam 2015
 
 ##Qualification Round
