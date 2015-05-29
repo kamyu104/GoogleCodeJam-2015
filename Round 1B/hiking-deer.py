@@ -1,7 +1,7 @@
 # Copyright (c) 2015 kamyu. All rights reserved.
 #
 # Google Code Jam 2015 Round 1B - Problem C. Hiking Deer
-# # https://code.google.com/codejam/contest/8224486/dashboard#s=p2
+# https://code.google.com/codejam/contest/8224486/dashboard#s=p2
 #
 # Time:  O(HlogH)
 # Space: O(H)
