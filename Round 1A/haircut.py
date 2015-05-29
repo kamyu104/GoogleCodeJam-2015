@@ -32,9 +32,9 @@ def haircut():
     # At the time L, the number of coming guest achieves n.
     time_to_available = [0]*b
     for i in xrange(b):
-        ct = (L-1 + m[i] - 1) // m[i]
-        time_to_available[i] = ct * m[i]
-        n -= ct
+        cnt = (L-1 + m[i]-1) // m[i]
+        time_to_available[i] = cnt * m[i]
+        n -= cnt
     
     # Time:  O(BlogB)
     # Sort time_to_available by time and id,
