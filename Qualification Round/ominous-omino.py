@@ -35,7 +35,7 @@ def omino():
          #  xx
          return "RICHARD"
 
-    if X == 5 and min(R,C) == 3 and max(R, C) == 5:
+    if X == 5 and min(R, C) == 3 and max(R, C) == 5:
          #Richard wins by choosing the W pentomino
          # x
          # xx
