@@ -12,7 +12,8 @@ def unhappiness(R, C, N):
     if N > (R * C + 1) / 2:
         vacant_num = R * C - N
         directions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
-        rooms = [[0 for _ in xrange(4)] for _ in xrange(2)]
+        # Number of rooms for each edge number.
+        rooms = [[0 for _ in xrange(5)] for _ in xrange(2)]
         for i in xrange(R):
             for j in xrange(C):
                 count = 0
@@ -21,19 +22,19 @@ def unhappiness(R, C, N):
                         j + d[1] < 0 or j + d[1] >= C:
                         continue
                     count += 1
-                rooms[(i+j)%2][4-count] += 1
+                rooms[(i+j)%2][count] += 1
 
-        # Max edge number of vacant even / odd rooms.
+        # Max edge number of vacant even rooms.
         even_edges, remaining = 0, vacant_num
-        for i in xrange(3):
-            even_edges += (4-i) * min(rooms[0][i], remaining)
-            remaining -= min(rooms[0][i], remaining)
+        for count in reversed(xrange(5)):
+            even_edges += count * min(rooms[0][count], remaining)
+            remaining -= min(rooms[0][count], remaining)
         
-        # Max edge number of vacantodd rooms.
+        # Max edge number of vacant odd rooms.
         odd_edges, remaining = 0, vacant_num
-        for i in xrange(4):
-            odd_edges += (4-i) * min(rooms[1][i], remaining)
-            remaining -= min(rooms[1][i], remaining)
+        for count in reversed(xrange(5)):
+            odd_edges += count * min(rooms[1][count], remaining)
+            remaining -= min(rooms[1][count], remaining)
 
         # (total edge number) - (max edge numbers of vacant rooms).
         answer = (R * (C - 1) + (R - 1) * C) - max(even_edges, odd_edges)
