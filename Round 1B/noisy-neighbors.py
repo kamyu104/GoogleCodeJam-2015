@@ -3,8 +3,13 @@
 # Google Code Jam 2015 Round 1B - Problem B. Noisy Neighbors
 # https://code.google.com/codejam/contest/8224486/dashboard#s=p1
 #
+<<<<<<< HEAD
 # Time:  O(R * C)
 # Space: O(1)
+=======
+# Time:  O(RClogRC)
+# Space: O(RC)
+>>>>>>> 590ca17334c60779ad3700c74274bf05a02b6d42
 #
 
 def unhappiness(R, C, N):
