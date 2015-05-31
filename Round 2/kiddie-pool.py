@@ -38,7 +38,7 @@ def kiddie_pool():
                 Tmax = max(Tmax, Tx)
         return Tmax
 
-    # Every Ci > 0 or every Ci < 0
+    # Every Ci > 0 or every Ci < 0.
     return "IMPOSSIBLE"
 
 
