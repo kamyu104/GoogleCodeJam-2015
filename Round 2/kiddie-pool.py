@@ -9,12 +9,7 @@
 
 # Minimize max(T_i) s.t.
 # sum(R_i * T_i) = V
-# sum(R_i * C_i * T_i) = X * V
-# => sum(R_i * (C_i - X) * T_i) = sum(R_i * C_i * T_i) - X * sum(R_i * T_i) = 0
-# => sum(R_i * (C_i - X) * T_i) = sum((C_i - X) * V_i) = 0
-# = 1 / V * sum(R_i * (C_i - X) * R_i)
-# sum(R_i * (C_i - X) * R_i)
-# =>  sum(R_j * (C_i - X) * opt_R_j) = R_i * (C_i - X) * -R_i
+# sum(R_i * C_i * T_i) = X * V => sum(R_i * (C_i - X) * T_i) = 0
 
 def kiddie_pool():
     R, C = 0, 1
