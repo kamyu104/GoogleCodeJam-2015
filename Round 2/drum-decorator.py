@@ -7,27 +7,28 @@
 # Space: O(R)
 #
 
-
-# In a 1xC, it must be all 2s if previous row is all 3s
+# In a 1xC, it must be all 2s if the previous row is all 3s
+# 222
 #
-# In a 2xC, if previous row is all 3s:
+# In a 2xC, if the previous row is all 3s:
 # if C % 3 == 0, it can be:
-#  221
-#  221
+# 221
+# 221
 # if C % 6, it can be:
 # 122221
 # 221122
 #
-# In a 2xC, if previous row is 1s and 2s:
+# In a 2xC, if the previous row is 1s and 2s:
 # 333
 # 333
 #
-# In a 3xC, if previous row is all 3s:
+# In a 3xC, if the previous row is all 3s:
 # if C % 4 == 0, it can be:
 # 1222
 # 1212
 # 2212
 #
+
 from fractions import gcd
 
 def addin(dict, key, value):
