@@ -1,6 +1,11 @@
 # Google Code Jam 2015
 Solutions of Google Code Jam 2015
 
+* [Qualification Round](https://github.com/kamyu104/GoogleCodeJam-2015#qualification-round)
+* [Round 1A](https://github.com/kamyu104/GoogleCodeJam-2015#round-1a)
+* [Round 1B](https://github.com/kamyu104/GoogleCodeJam-2015#round-1b)
+* [Round 1C](https://github.com/kamyu104/GoogleCodeJam-2015#round-1c)
+
 ##Qualification Round
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
