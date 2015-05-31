@@ -24,10 +24,11 @@ def kiddie_pool():
         for x in sources:
             if (x[R]*x[C]) != 0:
                 Cx = x[C]
-                # For each Cx find Tx
-                # 1. KxTx + sum(RiTi) = V
-                # 2. KxTxCx + sum(RiTi) = 0 <=> KxTx + sum(RiTiCi/Cx) = 0
-                # 1 - 2: V = sum(RiTi(1 - Ci/Cx)) <= Tmax * sum(Ri(1 - Ci/Cx))
+                # For each Cx find Tx by the following:
+                # (1) V = KxTx + sum(RiTi)
+                # (2) 0 = KxTxCx + sum(RiTi)
+                # <=> 0 = KxTx + sum(RiTiCi/Cx)
+                # (1) - (2): V = sum(RiTi(1 - Ci/Cx)) <= Tmax * sum(Ri(1 - Ci/Cx))
                 # <=> V / Tmax <= sum(Ri(1 - Ci/Cx)) = Kx
                 # <=> V / Kx <= Tmax
                 # To minimize Tmax, is to maximize every Kx, i.e minimize every Tx = V / Kx .
