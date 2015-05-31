@@ -10,7 +10,6 @@
 # Minimize Tmax = max(Ti) s.t.
 # (1) sum(RiTi) = V
 # (2) sum(RiCiTi) = X * V, let Ci be Ci - X => sum(RiCiTi) = 0
-
 def kiddie_pool():
     R, C = 0, 1
     N, V, X = map(float, raw_input().strip().split())
