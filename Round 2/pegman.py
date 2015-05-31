@@ -36,7 +36,7 @@ def pegman():
                    (can_up and grid[i][j] == "^") or \
                    (can_down and grid[i][j] == "v"):
                     continue
-                else: # Change the direction.
+                else: # Change the direction of the arrow.
                     ans += 1
     return ans
 
