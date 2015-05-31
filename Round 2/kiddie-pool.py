@@ -24,14 +24,16 @@ def kiddie_pool():
         T = V / sum(source[R] for source in sources)
         for source in sources:
             if (source[R]*source[C]) != 0:
-                C_max = source[C]
-                # RmaxTmax + sum(RiTi) = V
-                # CmaxRmaxTmax + sum(CiRiTi) = 0
-                # => Tmax = sum(Ri(1 - Ci/Cmax)Ti) <= max(Ti) * sum(Ri(1 - Ci/Cmax))
-                # => R_max' = Tmax/max(Ti) <= sum(Ri(1 - Ci/Cmax))
-                # R_max' <= sum(source[R]*(1 - source[C]/C_max))
-                R_max = sum(max(0, source[R]*(1-source[C]/C_max)) for source in sources)
-                T = max(T, V / R_max)
+                Cx = source[C]
+                # For each Cx find Tx
+                # RxTx + sum(RiTi) = V
+                # CxRxTx + sum(CiRiTi) = 0
+                # => V = sum(Ri(1 - Ci/Cx)Ti) <= Tmax * sum(Ri(1 - Ci/Cx))
+                # => Rx = V / Tmax <= sum(Ri(1 - Ci/Cx))
+                # Rx <= sum(source[R]*(1 - source[C]/Cx))
+                # To minimize Tmax, is to maximize Rx.
+                Rx = sum(max(0, source[R]*(1-source[C]/Cx)) for source in sources)
+                T = max(T, V / Rx)
     return T
 
 
