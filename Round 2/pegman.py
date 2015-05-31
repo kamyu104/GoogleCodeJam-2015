@@ -17,10 +17,8 @@ def pegman():
     col_up = [min([i for i in xrange(R) if grid[i][j] != "."]+[R]) for j in xrange(C)]
     col_down = [max([i for i in xrange(R) if grid[i][j] != "."]+[-1]) for j in xrange(C)]
     
-    ans, impossible = 0, False
+    ans = 0
     for i in xrange(R):
-        if impossible:
-            break
         for j in xrange(C):
             if grid[i][j] == ".":
                 continue
@@ -32,8 +30,8 @@ def pegman():
                 
                 # Impossible if no other arrow can be found in each direction.
                 if not (can_left or can_right or can_up or can_down):
-                    impossible = True
-                    break
+                    return "IMPOSSIBLE"
+                # No need to chage arrow if another arrow can be found in each direction.
                 if (can_left and grid[i][j] == "<") or \
                    (can_right and grid[i][j] == ">") or \
                    (can_up and grid[i][j] == "^") or \
@@ -41,10 +39,7 @@ def pegman():
                     continue
                 else: # Change the direction.
                     ans += 1
-    if impossible:
-        return "IMPOSSIBLE"
-    else:
-        return ans
+    return ans
 
 for case in xrange(input()):
     print "Case #%d: %s" % (case+1, pegman())
