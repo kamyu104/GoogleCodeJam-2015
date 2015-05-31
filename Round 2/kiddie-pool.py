@@ -19,21 +19,20 @@ def kiddie_pool():
     sources = [(source[0], (source[1]-X)) for source in sources]
     Tmax = "IMPOSSIBLE"
     
-    if max((source[R]*source[C]) for source in sources) >= 0 and \
-       min((source[R]*source[C]) for source in sources) <= 0:
-        Tmax = V / sum(source[R] for source in sources)
-        for source in sources:
-            if (source[R]*source[C]) != 0:
-                Cx = source[C]
+    if max((x[R]*x[C]) for x in sources) >= 0 and \
+       min((x[R]*x[C]) for x in sources) <= 0:
+        Tmax = V / sum(x[R] for x in sources)
+        for x in sources:
+            if (x[R]*x[C]) != 0:
+                Cx = x[C]
                 # For each Cx find Tx
                 # 1. RxTx + sum(RiTi) = V
-                # 2. CxRxTx + sum(CiRiTi) = 0
-                # 1 + 2: V = sum(Ri(1 - Ci/Cx)Ti) <= Tmax * sum(Ri(1 - Ci/Cx))
-                # => V / Tmax <= sum(Ri(1 - Ci/Cx))
-                # Let Rx = sum(source[R]*(1 - source[C]/Cx))
-                # => V / Rx <= Tmax
+                # 2. RxTxCx + sum(RiTi) = 0 <=> RxTx + sum(RiTiCi/Cx) = 0
+                # 1 - 2: V = sum(RiTi(1 - Ci/Cx)) <= Tmax * sum(Ri(1 - Ci/Cx))
+                # <=> V / Tmax <= sum(Ri(1 - Ci/Cx)) = Rx
+                # <=> V / Rx <= Tmax
                 # To minimize Tmax, is to maximize every Rx.
-                Rx = sum(max(0, source[R]*(1-source[C]/Cx)) for source in sources)
+                Rx = sum(max(0, i[R]*(1-i[C]/Cx)) for i in sources)
                 Tx = V / Rx
                 Tmax = max(Tmax, Tx)
     return Tmax
