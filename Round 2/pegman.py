@@ -20,9 +20,7 @@ def pegman():
     ans = 0
     for i in xrange(R):
         for j in xrange(C):
-            if grid[i][j] == ".":
-                continue
-            else:
+            if grid[i][j] != ".":
                 can_left = row_left[i] < j
                 can_right = row_right[i] > j
                 can_up = col_up[j] < i
@@ -31,6 +29,7 @@ def pegman():
                 # Impossible if no other arrow can be found in each direction.
                 if not (can_left or can_right or can_up or can_down):
                     return "IMPOSSIBLE"
+                    
                 # No need to chage arrow if another arrow can be found in each direction.
                 if (can_left and grid[i][j] == "<") or \
                    (can_right and grid[i][j] == ">") or \
