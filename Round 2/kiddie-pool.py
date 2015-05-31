@@ -27,8 +27,8 @@ def kiddie_pool():
                 C_max = source[C]
                 # RmaxTmax + sum(RiTi) = V
                 # CmaxRmaxTmax + sum(CiRiTi) = 0
-                # => # Tmax = sum(Ri(1 - Ci/Cmax)Ti) <= max(Ti) * sum(Ri(1 - Ci/Cmax))
-                # => # R_max' = Tmax/max(Ti) <= sum(Ri(1 - Ci/Cmax))
+                # => Tmax = sum(Ri(1 - Ci/Cmax)Ti) <= max(Ti) * sum(Ri(1 - Ci/Cmax))
+                # => R_max' = Tmax/max(Ti) <= sum(Ri(1 - Ci/Cmax))
                 # R_max' <= sum(source[R]*(1 - source[C]/C_max))
                 R_max = sum(max(0, source[R]*(1-source[C]/C_max)) for source in sources)
                 T = max(T, V / R_max)
