@@ -32,7 +32,7 @@ def kiddie_pool():
                 # (1) - (2): V = sum(RiTi(1 - Ci/Cx)) <= Tmax * sum(Ri(1 - Ci/Cx))
                 # <=> V / Tmax <= sum(Ri(1 - Ci/Cx)) = Fx
                 # <=> V / Fx <= Tmax
-                # To minimize Tmax, is to maximize every Fx, i.e minimize every Tx = V / Fx .
+                # To minimize Tmax, is to maximize every Fx, i.e minimize every Tx = V / Fx.
                 Fx = sum(max(0, i[R]*(1-i[C]/Cx)) for i in sources)
                 Tx = V / Fx
                 Tmax = max(Tmax, Tx)
