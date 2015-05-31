@@ -5,6 +5,7 @@ Solutions of Google Code Jam 2015
 * [Round 1A](https://github.com/kamyu104/GoogleCodeJam-2015#round-1a)
 * [Round 1B](https://github.com/kamyu104/GoogleCodeJam-2015#round-1b)
 * [Round 1C](https://github.com/kamyu104/GoogleCodeJam-2015#round-1c)
+* [Round 2](https://github.com/kamyu104/GoogleCodeJam-2015#round-2)
 
 ##Qualification Round
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
@@ -40,3 +41,10 @@ Solutions of Google Code Jam 2015
 |A| [Brattleship](https://code.google.com/codejam/contest/4244486/dashboard#s=p0)| [Python](./Round 1C/brattleship.py)| _O(1)_ | _O(1)_ | Easy | | |
 |B| [Typewriter Monkey](https://code.google.com/codejam/contest/4244486/dashboard#s=p1)|[Python](./Round 1C/typewriter-monkey.py)| _O(K + L * S)_ | _O(K + L)_ | Medium | | DP |
 |C| [Less Money, More Problems](https://code.google.com/codejam/contest/4244486/dashboard#s=p2)| [Python](./Round 1C/less-money-more-problems.py)| _O(V / ((C + D) * D))_ | _O(1)_ | Easy | | |
+
+--
+
+##Round 2
+| # | Title | Solution | Time | Space | Difficulty | Tag | Note |
+|---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
+|A| [Pegman](https://code.google.com/codejam/contest/8234486/dashboard#s=p0)| [Python](./Round 2/pegman.py)| _O(R * C)_ | _O(1)_ | Easy | | |
