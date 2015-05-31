@@ -19,7 +19,8 @@ def kiddie_pool():
     
     if max((x[R]*x[C]) for x in sources) >= 0 and \
        min((x[R]*x[C]) for x in sources) <= 0:
-        Tmax = None
+        Tmax = V / sum(x[R] for x in sources) # This is the min of Tmax,
+                                              # only happens if every x[R]*x[C] is zero
         for x in sources:
             if (x[R]*x[C]) != 0:
                 Cx = x[C]
@@ -34,11 +35,9 @@ def kiddie_pool():
                 Kx = sum(max(0, i[R]*(1-i[C]/Cx)) for i in sources)
                 Tx = V / Kx
                 Tmax = max(Tmax, Tx)
-        if not Tmax:  # Every x[R]*x[C] is zero
-            Tmax = V / sum(x[R] for x in sources)
         return Tmax
-    else:
-        return "IMPOSSIBLE"
+
+    return "IMPOSSIBLE"
 
 
 for case in xrange(input()):
