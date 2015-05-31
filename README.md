@@ -47,4 +47,4 @@ Solutions of Google Code Jam 2015
 ##Round 2
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
-|A| [Pegman](https://code.google.com/codejam/contest/8234486/dashboard#s=p0)| [Python](./Round 2/pegman.py)| _O(R * C)_ | _O(1)_ | Easy | | |
+|A| [Pegman](https://code.google.com/codejam/contest/8234486/dashboard#s=p0)| [Python](./Round 2/pegman.py)| _O(R * C)_ | _O(R + C)_ | Easy | | |
