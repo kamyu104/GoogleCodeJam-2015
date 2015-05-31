@@ -7,6 +7,8 @@
 # Space: O(N)
 #
 
+from sys import float_info
+
 # Minimize Tmax = max(Ti) s.t.
 # (1) sum(RiTi) = V
 # (2) sum(RiCiTi) = X * V, let Ci be Ci - X => sum(RiCiTi) = 0
@@ -18,12 +20,12 @@ def kiddie_pool():
     sources = [[i[0], (i[1]-X)] for i in sources]
     
     # Rx always > 0, no need to care special case.
-    if max(x[C] for x in sources) >= 0 and \
-       min(x[C] for x in sources) <= 0:
+    if max(x[C] for x in sources) >= -float_info.epsilon and \
+       min(x[C] for x in sources) <= float_info.epsilon:
         Tmax = V / sum(x[R] for x in sources) # This is the min of Tmax,
                                               # only happens if every x[R]*x[C] is zero
         for x in sources:
-            if x[C] != 0:
+            if abs(x[C]) > float_info.epsilon:
                 Cx = x[C]
                 # For each Cx find Tx by the following:
                 # (1) V = RxTx   + sum(RiTi),     (sum() for each i != x)
