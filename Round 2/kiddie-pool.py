@@ -37,8 +37,8 @@ def kiddie_pool():
         if not Tmax:  # Every x[R]*x[C] is zero
             Tmax = V / sum(x[R] for x in sources)
         return Tmax
-
-    return "IMPOSSIBLE"
+    else:
+        return "IMPOSSIBLE"
 
 
 for case in xrange(input()):
