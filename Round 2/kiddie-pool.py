@@ -7,9 +7,9 @@
 # Space: O(N)
 #
 
-# Minimize max(T_i) s.t.
-# sum(R_i * T_i) = V
-# sum(R_i * C_i * T_i) = X * V <=> sum(R_i * (C_i - X) * T_i) = 0
+# Minimize Tmax = max(Ti) s.t.
+# (1) sum(RiTi) = V
+# (2) sum(RiCiTi) = X * V, let Ci be Ci - X => sum(RiCiTi) = 0
 
 def kiddie_pool():
     R, C = 0, 1
@@ -25,8 +25,8 @@ def kiddie_pool():
             if (x[R]*x[C]) != 0:
                 Cx = x[C]
                 # For each Cx find Tx by the following:
-                # (1) V = KxTx + sum(RiTi)
-                # (2) 0 = KxTxCx + sum(RiTi)
+                # (1) V = KxTx   + sum(RiTi),     (sum() for each i != x)
+                # (2) 0 = KxTxCx + sum(RiTiCi),   (sum() for each i != x)
                 # <=> 0 = KxTx + sum(RiTiCi/Cx)
                 # (1) - (2): V = sum(RiTi(1 - Ci/Cx)) <= Tmax * sum(Ri(1 - Ci/Cx))
                 # <=> V / Tmax <= sum(Ri(1 - Ci/Cx)) = Kx
