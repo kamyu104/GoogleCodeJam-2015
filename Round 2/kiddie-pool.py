@@ -17,12 +17,13 @@ def kiddie_pool():
     sources = [map(float, raw_input().strip().split()) for _ in xrange(N)]
     sources = [[i[0], (i[1]-X)] for i in sources]
     
-    if max((x[R]*x[C]) for x in sources) >= 0 and \
-       min((x[R]*x[C]) for x in sources) <= 0:
+    # Rx always > 0, no need to care special case.
+    if max(x[C] for x in sources) >= 0 and \
+       min(x[C] for x in sources) <= 0:
         Tmax = V / sum(x[R] for x in sources) # This is the min of Tmax,
                                               # only happens if every x[R]*x[C] is zero
         for x in sources:
-            if (x[R]*x[C]) != 0:
+            if x[C] != 0:
                 Cx = x[C]
                 # For each Cx find Tx by the following:
                 # (1) V = KxTx   + sum(RiTi),     (sum() for each i != x)
