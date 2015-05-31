@@ -14,8 +14,8 @@ def kiddie_pool():
     R, C = 0, 1
     N, V, X = map(float, raw_input().strip().split())
     N = int(N)
-    sources = [map(float, raw_input().strip().split()) for i in xrange(N)]
-    sources = [(source[0], (source[1]-X)) for source in sources]
+    sources = [map(float, raw_input().strip().split()) for _ in xrange(N)]
+    sources = [(i[0], (i[1]-X)) for i in sources]
     
     if max((x[R]*x[C]) for x in sources) >= 0 and \
        min((x[R]*x[C]) for x in sources) <= 0:
@@ -37,7 +37,7 @@ def kiddie_pool():
                 Tmax = max(Tmax, Tx)
         return Tmax
 
-    # Every Ci > 0 or every Ci < 0 
+    # Every Ci > 0 or every Ci < 0
     return "IMPOSSIBLE"
 
 
