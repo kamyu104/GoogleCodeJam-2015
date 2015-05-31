@@ -30,7 +30,7 @@ def pegman():
                 can_up = col_up[j] < i
                 can_down = col_down[j] > i
                 
-                # Impossible if each direction is
+                # Impossible if no other arrow can be found in each direction.
                 if not (can_left or can_right or can_up or can_down):
                     impossible = True
                     break
