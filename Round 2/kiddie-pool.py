@@ -25,14 +25,14 @@ def kiddie_pool():
             if (x[R]*x[C]) != 0:
                 Cx = x[C]
                 # For each Cx find Tx
-                # 1. RxTx + sum(RiTi) = V
-                # 2. RxTxCx + sum(RiTi) = 0 <=> RxTx + sum(RiTiCi/Cx) = 0
+                # 1. KxTx + sum(RiTi) = V
+                # 2. KxTxCx + sum(RiTi) = 0 <=> KxTx + sum(RiTiCi/Cx) = 0
                 # 1 - 2: V = sum(RiTi(1 - Ci/Cx)) <= Tmax * sum(Ri(1 - Ci/Cx))
-                # <=> V / Tmax <= sum(Ri(1 - Ci/Cx)) = Rx
-                # <=> V / Rx <= Tmax
-                # To minimize Tmax, is to maximize every Rx.
-                Rx = sum(max(0, i[R]*(1-i[C]/Cx)) for i in sources)
-                Tx = V / Rx
+                # <=> V / Tmax <= sum(Ri(1 - Ci/Cx)) = Kx
+                # <=> V / Kx <= Tmax
+                # To minimize Tmax, is to maximize every Kx, i.e minimize every Tx = V / Kx .
+                Kx = sum(max(0, i[R]*(1-i[C]/Cx)) for i in sources)
+                Tx = V / Kx
                 Tmax = max(Tmax, Tx)
         if not Tmax:  # Every x[R]*x[C] is zero
             Tmax = V / sum(x[R] for x in sources)
