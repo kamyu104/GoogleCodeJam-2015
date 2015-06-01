@@ -21,7 +21,7 @@ def dfs(node, sink, used, E):
             return True
     return False
 
-def word_idx(values, word):
+def word_id(values, word):
     if word in values:
         return values[word]
     values[word] = len(values)
@@ -30,7 +30,7 @@ def word_idx(values, word):
 def bilingual():
     N = input()
     values = {}
-    lines = [list(set([word_idx(values, word) \
+    lines = [list(set([word_id(values, word) \
              for word in raw_input().strip().split()])) \
              for _ in xrange(N)]
     # Init edges.
