@@ -6,6 +6,10 @@
 # Time:  O(R * C)
 # Space: O(1)
 #
+# It does exist Time: O(1) formula-based solution, 
+# but the formula is error-prone, 
+# hard to figure out it during the contest time.
+#
 
 def unhappiness(R, C, N):
     answer = 0
