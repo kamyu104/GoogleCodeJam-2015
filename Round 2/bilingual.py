@@ -22,17 +22,19 @@ def dfs(node, sink, used, E):
 
 def bilingual():
     N = input()
-    values = {}
-
+    
     def word_id(values, word):
         if word in values:
             return values[word]
         values[word] = len(values)
         return values[word]
 
+    # Parse lines.
+    values = {}
     lines = [list(set([word_id(values, word) \
              for word in raw_input().strip().split()])) \
              for _ in xrange(N)]
+
     # Init edges.
     source, sink = 0, 1
     E = [[] for _ in xrange(2*len(values)+N)]
