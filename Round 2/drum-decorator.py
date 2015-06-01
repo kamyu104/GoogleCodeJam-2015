@@ -43,7 +43,7 @@ def lcm(a,b):
 def drum_decorator():
     type_1_2, type_3 = 0, 1
     R, C = map(int, raw_input().strip().split())
-    states = [{(type_1_2,1):1,(type_3,1):1}]+[{} for i in xrange(4)]
+    states = [{(type_1_2,1):1,(type_3,1):1}]+[{} for i in xrange(3)]
     for i in xrange(R):
         for (prev_type, degree) in states[i%4]:
             if prev_type == type_1_2:  # previous one is the type of 1s and 2s decoration.
