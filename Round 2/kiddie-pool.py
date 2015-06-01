@@ -26,7 +26,6 @@ def kiddie_pool():
                                               # only happens if every x[R]*x[C] is zero
         for x in sources:
             if abs(x[C]) > float_info.epsilon:
-                Cx = x[C]
                 # For each Cx find Tx by the following:
                 # (1) V = RxTx   + sum(RiTi),     (sum() for each i != x)
                 # (2) 0 = RxTxCx + sum(RiTiCi),   (sum() for each i != x)
@@ -35,7 +34,7 @@ def kiddie_pool():
                 # <=> V / Tmax <= sum(Ri(1 - Ci/Cx)) = Fx
                 # <=> V / Fx <= Tmax
                 # To minimize Tmax, is to maximize every Fx, i.e minimize every Tx = V / Fx.
-                Fx = sum(max(0, i[R]*(1-i[C]/Cx)) for i in sources)
+                Fx = sum(max(0, i[R]*(1-i[C]/x[C])) for i in sources)
                 Tx = V / Fx
                 Tmax = max(Tmax, Tx)
         return Tmax
