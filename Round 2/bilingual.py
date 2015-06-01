@@ -30,7 +30,9 @@ def word_idx(values, word):
 def bilingual():
     N = input()
     values = {}
-    lines = [list(set([word_idx(values, word) for word in raw_input().strip().split()])) for _ in xrange(N)]
+    lines = [list(set([word_idx(values, word) \
+             for word in raw_input().strip().split()])) \
+             for _ in xrange(N)]
     # Init edges.
     source, sink = 0, 1
     E = [[] for _ in xrange(2*len(values)+N)]
