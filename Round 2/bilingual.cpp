@@ -28,7 +28,7 @@ using std::unordered_set;
 using std::swap;
 
 bool dfs(int node, int sink,
-        vector<bool> *used_ptr,
+         vector<bool> *used_ptr,
          vector<vector<int>> *E_ptr) {
     vector<bool>& used = *used_ptr;
     vector<vector<int>>& E = *E_ptr;
