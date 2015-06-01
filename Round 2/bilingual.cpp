@@ -28,21 +28,17 @@ using std::unordered_set;
 using std::swap;
 
 bool dfs(int node, int sink,
-         vector<bool> *used_ptr,
-         vector<vector<int>> *E_ptr) {
-    vector<bool>& used = *used_ptr;
-    vector<vector<int>>& E = *E_ptr;
-
-    if (used[node]) {
+         vector<bool> *used,
+         vector<vector<int>> *E) {
+    if ((*used)[node]) {
         return false;
     }
-    used[node] = true;
-    for (auto it = E[node].begin(); it != E[node].end(); ++it) {
-        auto x = *it;
-        if (x == sink || dfs(x, sink, &used, &E)) {
-            E[x].emplace_back(node);
-            swap(E[node].back(), *it);
-            E[node].pop_back();
+    (*used)[node] = true;
+    for (auto it = (*E)[node].begin(); it != (*E)[node].end(); ++it) {
+        if (*it == sink || dfs(*it, sink, used, E)) {
+            (*E)[*it].emplace_back(node);
+            swap((*E)[node].back(), *it);
+            (*E)[node].pop_back();
             return true;
         }
     }
@@ -79,14 +75,14 @@ int bilingual() {
     for (int i = 0; i < values.size(); ++i) {
         E[2 * i + N].emplace_back(2 * i + N + 1);
     }
-    for (const auto &x : lines[0]) {
+    for (const auto& x : lines[0]) {
         E[source].emplace_back(2 * x + N);
     }
-    for (const auto &y : lines[1]) {
+    for (const auto& y : lines[1]) {
         E[2 * y + N + 1].emplace_back(sink);
     }
     for (int i = 2; i < N; ++i) {
-        for (const auto &x : lines[i]) {
+        for (const auto& x : lines[i]) {
             E[2 * x + N + 1].emplace_back(i);
             E[i].emplace_back(2 * x + N);
         }
