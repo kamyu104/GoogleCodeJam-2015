@@ -49,4 +49,5 @@ Solutions of Google Code Jam 2015
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
 |A| [Pegman](https://code.google.com/codejam/contest/8234486/dashboard#s=p0)| [Python](./Round 2/pegman.py)| _O(R * C)_ | _O(R + C)_ | Easy | | |
 |B| [Kiddie Pool](https://code.google.com/codejam/contest/8234486/dashboard#s=p1)| [Python](./Round 2/kiddie-pool.py)| _O(N^2)_ | _O(1)_ | Hard | | Linear Programming |
+|C| [Bilingual](https://code.google.com/codejam/contest/8234486/dashboard#s=p2)| [C++](./Round 2/bilingual.cpp)| _O(N * W)_ | _O(N + W)_ | Hard | | Max Flow |
 |D| [Drum Decorator](https://code.google.com/codejam/contest/8234486/dashboard#s=p3)| [Python](./Round 2/drum-decorator.py)| _O(R^2)_ | _O(1)_ | Hard | | DP |
