@@ -4,7 +4,7 @@
 # https://code.google.com/codejam/contest/8234486/dashboard#s=p1
 #
 # Time:  O(N^2)
-# Space: O(N)
+# Space: O(1)
 #
 
 from sys import float_info
