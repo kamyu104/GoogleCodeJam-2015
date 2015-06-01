@@ -12,7 +12,6 @@ def dfs(node, sink, used, E):
         return False
     used[node] = True
 
-    i = 0
     for i in xrange(len(E[node])):
         if E[node][i] == sink or dfs(E[node][i], sink, used, E):
             E[E[node][i]].append(node)
@@ -21,15 +20,16 @@ def dfs(node, sink, used, E):
             return True
     return False
 
-def word_id(values, word):
-    if word in values:
-        return values[word]
-    values[word] = len(values)
-    return values[word]
-
 def bilingual():
     N = input()
     values = {}
+
+    def word_id(values, word):
+        if word in values:
+            return values[word]
+        values[word] = len(values)
+        return values[word]
+
     lines = [list(set([word_id(values, word) \
              for word in raw_input().strip().split()])) \
              for _ in xrange(N)]
