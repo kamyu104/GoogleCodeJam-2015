@@ -69,7 +69,7 @@ int bilingual() {
         istringstream in(line);
         string word;
         while (in >> word) {
-            lines[i].insert(get(word));
+            lines[i].emplace(get(word));
         }
     }
 
