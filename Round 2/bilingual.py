@@ -3,8 +3,8 @@
 # Google Code Jam 2015 Round 2 - Problem C. Bilingual
 # https://code.google.com/codejam/contest/8234486/dashboard#s=p2
 #
-# Time:  O(N * W)
-# Space: O(N + W)
+# Time  : O((N * L)^2)
+# Space : O(N * L)
 #
 
 def dfs(node, sink, used, E):
