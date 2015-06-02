@@ -37,17 +37,17 @@ def bilingual():
 
     # Init edges.
     source, sink = 0, 1
-    E = [[] for _ in xrange(2*len(values)+N)]
+    E = [[] for _ in xrange(2 * len(values) + N)]
     for i in xrange(len(values)):
-        E[2*i+N].append(2*i+N+1)
+        E[2 * i + N].append(2 * i + N + 1)
     for x in lines[0]:
-        E[source].append(2*x+N)
+        E[source].append(2 * x + N)
     for y in lines[1]:
-        E[2*y+N+1].append(sink)
+        E[2 * y + N + 1].append(sink)
     for i in xrange(2, N):
         for x in lines[i]:
-            E[2*x+N+1].append(i)
-            E[i].append(2*x+N)
+            E[2 * x + N + 1].append(i)
+            E[i].append(2 * x + N)
     # Run max flow.
     flow = 0
     used = [False for _ in xrange(len(E))]
@@ -58,4 +58,4 @@ def bilingual():
 
 
 for case in xrange(input()):
-    print "Case #%d: %d" % (case+1, bilingual())
+    print "Case #%d: %d" % (case + 1, bilingual())
