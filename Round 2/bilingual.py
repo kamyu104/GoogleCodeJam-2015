@@ -23,22 +23,25 @@ def dfs(node, sink, used, E):
 def bilingual():
     N = input()
     
-    def word_id(values, word):
-        if word in values:
-            return values[word]
-        values[word] = len(values)
-        return values[word]
+    def word_id(word_ids, word):
+        if word in word_ids:
+            return word_ids[word]
+        word_ids[word] = len(word_ids)
+        return word_ids[word]
 
     # Parse lines.
-    values = {}
-    lines = [list(set([word_id(values, word) \
+    word_ids = {}
+    lines = [list(set([word_id(word_ids, word) \
              for word in raw_input().strip().split()])) \
              for _ in xrange(N)]
 
     # Init edges.
+    # i (0 ~ N) represents the ith line.
+    # 2 * i + N node represents the word i is english
+    # 2 * i + N + 1 node represents the word i is French
     source, sink = 0, 1
-    E = [[] for _ in xrange(2 * len(values) + N)]
-    for i in xrange(len(values)):
+    E = [[] for _ in xrange(2 * len(word_ids) + N)]
+    for i in xrange(len(word_ids)):
         E[2 * i + N].append(2 * i + N + 1)
     for x in lines[0]:
         E[source].append(2 * x + N)
