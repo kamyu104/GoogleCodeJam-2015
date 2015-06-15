@@ -16,8 +16,8 @@ def fairland(N, D, S, M):
         max_salary[i] = max(max_salary[M[i]], S[i])
         min_salary[i] = min(min_salary[M[i]], S[i])
 
-    # Employee i can still be hired with range [salary, salary+D] 
-    # if min_salary[i] >= salary and max_salary[i] <= salary + D
+    # Employee i can still be hired with range [salary, salary + D] 
+    # if and only if min_salary[i] >= salary and max_salary[i] <= salary + D
     salary_count= {}
     for i in xrange(N):
         if min_salary[i] >= max_salary[i] - D:
