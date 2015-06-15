@@ -58,4 +58,4 @@ Solutions of Google Code Jam 2015
 ##Round 3
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
-|A| [Fairland](https://code.google.com/codejam/contest/4254486/dashboard#s=p0)| [Python](./Round 3/fairland.py)| _O(NlogN)_ | _O(N)_ | Medium | | |
+|A| [Fairland](https://code.google.com/codejam/contest/4254486/dashboard#s=p0)| [Python](./Round 3/fairland.py)| _O(NlogN)_ | _O(N)_ | Easy | | |
