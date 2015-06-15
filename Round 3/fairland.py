@@ -51,6 +51,6 @@ for case in xrange(input()):
     for _ in xrange(N - 1):
         S.append((S[-1] * As + Cs) % Rs)
         M.append((M[-1] * Am + Cm) % Rm)
-    M = [0] + [M[i] % i for i in xrange(1,N)]
+    M = [0] + [M[i] % i for i in xrange(1, N)]
 
     print "Case #%d: %d" % (case+1, fairland(N, D, S, M))
