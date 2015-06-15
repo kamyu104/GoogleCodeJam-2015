@@ -8,36 +8,36 @@
 #
 
 def fairland(N, D, S, M):
-    mx = [0] * N  # mx[i]: max salary of employee i's bosses or coworkers.
-    mn = [0] * N  # mn[i]: min salary of employee i's bosses or coworkers.
-    mx[0] = S[0]
-    mn[0] = S[0]
+    max_salary = [0] * N  # max_salary[i]: max salary of employee i's bosses or coworkers.
+    min_salary = [0] * N  # min_salary[i]: min salary of employee i's bosses or coworkers.
+    max_salary[0] = S[0]
+    min_salary[0] = S[0]
     for i in xrange(1, N):
-        mx[i] = max(mx[M[i]], S[i])
-        mn[i] = min(mn[M[i]], S[i])
+        max_salary[i] = max(max_salary[M[i]], S[i])
+        min_salary[i] = min(min_salary[M[i]], S[i])
 
-    # Employee i can still be hired with range [z, z+D] 
-    # if mn[i] >= z and mx[i] <= z + D
-    w = {}
+    # Employee i can still be hired with range [salary, salary+D] 
+    # if min_salary[i] >= salary and max_salary[i] <= salary + D
+    salary_count= {}
     for i in xrange(N):
-        if mn[i] >= mx[i] - D:
-            # When z = mx[i] - D, hire = employee i.
-            if mx[i] - D in w:
-                w[mx[i] - D] += 1
+        if min_salary[i] >= max_salary[i] - D:
+            # When salary = max_salary[i] - D, hire = employee i.
+            if max_salary[i] - D in salary_count:
+                salary_count[max_salary[i] - D] += 1
             else:
-                w[mx[i] - D] = 1
-            # When z = mn[i] + 1, fire the employee i.
-            if mn[i] + 1 in w:
-                w[mn[i] + 1] -= 1
+                salary_count[max_salary[i] - D] = 1
+            # When salary = min_salary[i] + 1, fire the employee i.
+            if min_salary[i] + 1 in salary_count:
+                salary_count[min_salary[i] + 1] -= 1
             else:
-                w[mn[i] + 1] = -1
-    w = sorted([(z, cnt) for (z, cnt) in w.items()])
+                salary_count[min_salary[i] + 1] = -1
+    salary_count= sorted([(salary, count) for (salary, count) in salary_count.items()])
 
     # Count and Find the max number of the employees
-    # by increasing z.
+    # by increasing salary.
     max_num, num = 0, 0
-    for (z, cnt) in w:
-        num += cnt
+    for (salary, count) in salary_count:
+        num += count
         max_num = max(max_num, num)
     return max_num
 
