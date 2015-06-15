@@ -8,8 +8,8 @@
 #
 
 def fairland(N, D, S, M):
-    max_salary = [0] * N  # max_salary[i]: max salary of employee i's bosses or coworkers.
-    min_salary = [0] * N  # min_salary[i]: min salary of employee i's bosses or coworkers.
+    max_salary = [0] * N  # max_salary[i]: max salary of employee i's bosses and himself.
+    min_salary = [0] * N  # min_salary[i]: min salary of employee i's bosses and himself.
     max_salary[0] = S[0]
     min_salary[0] = S[0]
     for i in xrange(1, N):
