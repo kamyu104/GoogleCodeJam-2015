@@ -8,8 +8,8 @@
 #
 
 def fairland(N, D, S, M):
-    max_salary = [0] * N  # max_salary[i]: max salary of employee i's bosses and himself.
-    min_salary = [0] * N  # min_salary[i]: min salary of employee i's bosses and himself.
+    max_salary = [0] * N  # max_salary[i]: max salary of the employee i's bosses and himself.
+    min_salary = [0] * N  # min_salary[i]: min salary of the employee i's bosses and himself.
     max_salary[0] = S[0]
     min_salary[0] = S[0]
     for i in xrange(1, N):
@@ -21,7 +21,7 @@ def fairland(N, D, S, M):
     salary_count= {}
     for i in xrange(N):
         if min_salary[i] >= max_salary[i] - D:
-            # When salary = max_salary[i] - D, hire = employee i.
+            # When salary = max_salary[i] - D, hire the employee i.
             if max_salary[i] - D in salary_count:
                 salary_count[max_salary[i] - D] += 1
             else:
