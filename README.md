@@ -6,6 +6,7 @@ Solutions of Google Code Jam 2015
 * [Round 1B](https://github.com/kamyu104/GoogleCodeJam-2015#round-1b)
 * [Round 1C](https://github.com/kamyu104/GoogleCodeJam-2015#round-1c)
 * [Round 2](https://github.com/kamyu104/GoogleCodeJam-2015#round-2)
+* [Round 3](https://github.com/kamyu104/GoogleCodeJam-2015#round-3)
 
 ##Qualification Round
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
@@ -51,3 +52,10 @@ Solutions of Google Code Jam 2015
 |B| [Kiddie Pool](https://code.google.com/codejam/contest/8234486/dashboard#s=p1)| [Python](./Round 2/kiddie-pool.py)| _O(N^2)_ | _O(1)_ | Hard | | Optimization |
 |C| [Bilingual](https://code.google.com/codejam/contest/8234486/dashboard#s=p2)| [C++](./Round 2/bilingual.cpp) [Python](./Round 2/bilingual.py)| _O((N * L)^2)_ | _O(N * L)_ | Hard | | Max Flow |
 |D| [Drum Decorator](https://code.google.com/codejam/contest/8234486/dashboard#s=p3)| [Python](./Round 2/drum-decorator.py)| _O(R^2)_ | _O(1)_ | Hard | | DP |
+
+--
+
+##Round 3
+| # | Title | Solution | Time | Space | Difficulty | Tag | Note |
+|---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
+|A| [Fairland](https://code.google.com/codejam/contest/4254486/dashboard#s=p0)| [Python](./Round 3/fairland.py)| _O(NlogN)_ | _O(N)_ | Medium | | |
