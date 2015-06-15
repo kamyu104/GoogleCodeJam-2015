@@ -42,7 +42,7 @@ def fairland(N, D, S, M):
     return max_num
 
 for case in xrange(input()):
-    # Read the input
+    # Read the input.
     N, D = map(int, raw_input().strip().split())
     S0, As, Cs, Rs = map(int, raw_input().strip().split())
     M0, Am, Cm, Rm = map(int, raw_input().strip().split())
