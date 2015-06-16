@@ -61,7 +61,8 @@ def kiddie_pool():
                     # Slow down the source i, the rate is Ri'.
                     return V / r_max(sources, i)
             i += 1
-            
+        
+        # Turning of all possible sources still does not achieve expected C. 
         return "IMPOSSIBLE"
 
     return V / Rmax
