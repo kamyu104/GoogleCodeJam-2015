@@ -55,7 +55,7 @@ def kiddie_pool():
                     # Update current C.
                     cur_C -= sources[i][R] * sources[i][C]
                 elif i != len(sources) - 1:
-                    # Slow down the source i, the rate is Ri'
+                    # Slow down the source i, the rate is Ri'.
                     return V / r_max(sources, i)
             i += 1
             
