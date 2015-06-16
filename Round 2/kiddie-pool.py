@@ -62,7 +62,7 @@ def kiddie_pool():
                     return V / r_max(sources, i)
             i += 1
         
-        # Turning of all possible sources still does not achieve expected C. 
+        # Turning off all possible sources still does not achieve expected C. 
         return "IMPOSSIBLE"
 
     return V / Rmax
