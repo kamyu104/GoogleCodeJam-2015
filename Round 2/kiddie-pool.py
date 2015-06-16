@@ -3,21 +3,79 @@
 # Google Code Jam 2015 Round 2 - Problem B. Kiddie Pool
 # https://code.google.com/codejam/contest/8234486/dashboard#s=p1
 #
-# Time:  O(N^2)
+# Time:  O(NlogN)
 # Space: O(1)
 #
 
 from sys import float_info
 
+def kiddie_pool():
+    C, R = 0, 1
+    N, V, X = map(float, raw_input().strip().split())
+    N = int(N)
+    sources = [map(float, raw_input().strip().split()) for _ in xrange(N)]
+    sources = [[(x[1]-X), x[0]] for x in sources]
+    
+    # Turning on all the sources and get current C.
+    cur_C = sum(x[R] * x[C] for x in sources)
+    # The rate of turning on all the sources.
+    Rmax = sum(x[R] for x in sources)
+    if abs(cur_C) > float_info.epsilon:
+        sources = sorted(sources, reverse = cur_C > float_info.epsilon)
+        
+        # For better precision. Recompute Rmax.
+        # Rmax = sum(Rj), where j in xrange(i, len(sources))
+        # Ri may be slowed down.
+        def r_max(sources, i):
+            Rmax, cur_C = 0, 0
+            # Sum R from i + 1 to len(sources) - 1.
+            for j in xrange(i + 1, len(sources)):
+                Rmax += sources[j][R]
+                cur_C += sources[j][R] * sources[j][C]
+            # Check if Ri should be slowed down.
+            if abs(sources[i][C]) > float_info.epsilon:
+                # 0 = cur_C + Ri' * sources[i][C].
+                # Ri' = -cur_C / sources[i][C].
+                Rmax += -cur_C / sources[i][C]
+            else:
+                Rmax += sources[i][R]
+            return Rmax
+ 
+        i = 0
+        while i < len(sources):
+            # Current C is as expected.
+            if abs(sources[i][C]) <= float_info.epsilon :
+                return V / r_max(sources, i)
+            elif (cur_C / sources[i][C]) > float_info.epsilon:
+                # Slow down or turn off the hotest source i if C > 0.
+                # Slow down or turn off the coldest source i if C < 0.
+                if abs(cur_C) > abs(sources[i][R] * sources[i][C]):
+                    # Turn off the source i.
+                    Rmax -= sources[i][R]
+                    # Update current C.
+                    cur_C -= sources[i][R] * sources[i][C]
+                elif i != len(sources) - 1:
+                    # Slow down the source i, the rate is Ri'
+                    return V / r_max(sources, i)
+            i += 1
+            
+        return "IMPOSSIBLE"
+
+    return V / Rmax
+
+
+# Time:  O(N^2)
+# Space: O(1)
+#
 # Minimize Tmax = max(Ti) s.t.
 # (1) sum(RiTi) = V
 # (2) sum(RiCiTi) = X * V, let Ci be Ci - X => sum(RiCiTi) = 0
-def kiddie_pool():
+def kiddie_pool2():
     R, C = 0, 1
     N, V, X = map(float, raw_input().strip().split())
     N = int(N)
     sources = [map(float, raw_input().strip().split()) for _ in xrange(N)]
-    sources = [[i[0], (i[1]-X)] for i in sources]
+    sources = [[x[R], (x[C]-X)] for x in sources]
     
     # Rx always > 0, no need to care special case.
     if max(x[C] for x in sources) >= -float_info.epsilon and \
