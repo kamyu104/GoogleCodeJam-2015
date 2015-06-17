@@ -46,7 +46,7 @@ def kiddie_pool():
             # Current C is as expected.
             if abs(sources[i][C]) <= float_info.epsilon :
                 return V / r_max(sources, i)
-            elif (cur_C / sources[i][C]) > float_info.epsilon:
+            elif cur_C / sources[i][C] > float_info.epsilon:
                 # To slow down Rmax as little as possible:
                 # 1. Always cool down cur_C by slowing down or 
                 #    turning off the hotest source i until Ci == 0.
