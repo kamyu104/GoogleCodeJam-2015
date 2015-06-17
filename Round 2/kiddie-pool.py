@@ -52,7 +52,8 @@ def kiddie_pool():
                 #    turning off the hotest source i until Ci == 0.
                 # 2. Always warm up cur_C by slowing down or 
                 #    turning off the coldest source i until Ci == 0.
-                if abs(cur_C) > abs(sources[i][R] * sources[i][C]):
+                if abs(cur_C) - abs(sources[i][R] * sources[i][C]) > \
+                   float_info.epsilon:
                     # Turn off the source i.
                     Rmax -= sources[i][R]
                     # Update current C.
