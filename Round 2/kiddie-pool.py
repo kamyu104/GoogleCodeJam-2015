@@ -41,6 +41,7 @@ def kiddie_pool():
                 Rmax += sources[i][R]
             return Rmax
  
+        # Turn off the sources from the start until cur_C is as expected.
         i = 0
         while i < len(sources):
             # Current C is as expected.

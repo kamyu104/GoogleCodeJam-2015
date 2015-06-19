@@ -1,5 +1,5 @@
 # Google Code Jam 2015
-Solutions of Google Code Jam 2015
+Python solutions of Google Code Jam 2015
 
 * [Qualification Round](https://github.com/kamyu104/GoogleCodeJam-2015#qualification-round)
 * [Round 1A](https://github.com/kamyu104/GoogleCodeJam-2015#round-1a)
@@ -59,3 +59,4 @@ Solutions of Google Code Jam 2015
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
 |A| [Fairland](https://code.google.com/codejam/contest/4254486/dashboard#s=p0)| [Python](./Round 3/fairland.py)| _O(NlogN)_ | _O(N)_ | Easy | | |
+|B| [Smoothing Window](https://code.google.com/codejam/contest/4254486/dashboard#s=p1)| [Python](./Round 3/smoothing-window.py)| _O(N)_ | _O(N)_ | Medium | | |
