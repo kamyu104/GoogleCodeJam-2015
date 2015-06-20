@@ -8,7 +8,7 @@
 #
 
 def smoothing_window(N, K, S):
-    # diff[i]: x[i+k] - x[i]
+    # diff[i]: x[i + K] - x[i]
     diff = [S[i + 1] - S[i] for i in xrange(N - K)]
     P, Q = [], S[0]
     for i in xrange(K):
