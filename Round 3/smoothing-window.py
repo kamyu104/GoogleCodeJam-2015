@@ -20,6 +20,8 @@ def smoothing_window(N, K, S):
         P.append(max_diff - min_diff)
         Q += min_diff
 
+    # P[i]: max diff with x[i], i in xrange (0, K).
+    # Q:    min(sum(x[i + j * K])), i in xrange(0, K).
     res = max(P)
     if max(P) * K - sum(P) < Q % K:
         res += 1
