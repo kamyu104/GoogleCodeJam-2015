@@ -20,12 +20,17 @@ def smoothing_window(N, K, S):
         P.append(max_diff - min_diff)
         Q += min_diff
 
-    # P[i]: max(x[i + m * K]) - min(x[i + n * K]), i in xrange (0, K).
-    # Q:    sum(min(x[i + j * K])), i in xrange(0, K).
-    res = max(P)
-    if max(P) * K - sum(P) < Q % K:
-        res += 1
-    return res
+    # P[i]: max(x[i + m * K]) - min(x[i + n * K]), for i in xrange (0, K).
+    # Q:    sum(min(x[i + j * K])), for i in xrange(0, K).
+    # Assume max(x[i + m * K]) = Q / K + max(P), for i in xrange(0, K)
+    # If sum(Q / K + max(P) - P[i]) >= Q <=> max(P) * K - sum(P) >= Q % K, max_diff = max(P)
+    # Else max_diff = max(P) + 1
+    max_diff = 0
+    if max(P) * K - sum(P) >= Q % K:
+        max_diff = max(P)
+    else:
+        max_diff = max(P) + 1
+    return max_diff
 
 for case in xrange(input()):
     N, K = map(int, raw_input().strip().split())
