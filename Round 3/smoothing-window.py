@@ -22,7 +22,7 @@ def smoothing_window(N, K, S):
 
     # P[i]: max(x[i + m * K]) - min(x[i + n * K]), for i in xrange (0, K).
     # Q:    sum(min(x[i + j * K])), for i in xrange(0, K).
-    # Assume max(x[i + m * K]) = Q / K + max(P), for i in xrange(0, K)
+    # Let max(x[i + m * K]) = Q / K + max(P), for i in xrange(0, K)
     # If sum(Q / K + max(P) - P[i]) >= Q <=> max(P) * K - sum(P) >= Q % K, max_diff = max(P)
     # Else max_diff = max(P) + 1
     max_diff = 0
