@@ -60,4 +60,4 @@ Python solutions of Google Code Jam 2015
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
 |A| [Fairland](https://code.google.com/codejam/contest/4254486/dashboard#s=p0)| [Python](./Round 3/fairland.py)| _O(NlogN)_ | _O(N)_ | Easy | | |
 |B| [Smoothing Window](https://code.google.com/codejam/contest/4254486/dashboard#s=p1)| [Python](./Round 3/smoothing-window.py)| _O(N)_ | _O(N)_ | Medium | | |
-|C| [Running Quail](https://code.google.com/codejam/contest/4254486/dashboard#s=p2)| [C++](./Round 3/running-quail.cpp)| _O(N^3)_ | _O(N^2)_ | Medium | | |
+|C| [Runaway Quail](https://code.google.com/codejam/contest/4254486/dashboard#s=p2)| [C++](./Round 3/runaway-quail.cpp)| _O(N^3)_ | _O(N^2)_ | Medium | | |
