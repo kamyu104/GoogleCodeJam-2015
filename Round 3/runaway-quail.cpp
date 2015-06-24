@@ -25,17 +25,18 @@ using std::pair;
 using std::max;
 using std::min;
 
-void cor(vector<pair<int, int>> *a_ptr) {
-    auto& a = *a_ptr;
+void cor(vector<pair<int, int>> *direction_ptr) {
+    auto& direction = *direction_ptr;
     int k = 0;
-    sort(a.begin(), a.end());
-    for (int i = 0; i < a.size(); ++i) {
-        while (k > 0 && a[i].second >= a[k - 1].second) {
+    sort(direction.begin(), direction.end());
+    for (int i = 0; i < direction.size(); ++i) {
+        while (k > 0 && direction[i].second >=
+               direction[k - 1].second) {
             --k;
         }
-        a[k++] = a[i];
+        direction[k++] = direction[i];
     }
-    a.resize(k);
+    direction.resize(k);
 }
 
 double get(const int Y, const double t0,
@@ -60,34 +61,34 @@ double runaway_quail() {
         cin >> S[i];
     }
 
-    vector<pair<int, int>> a, b;
+    vector<pair<int, int>> left, right;
     for (int i = 0; i < N; ++i) {
         (P[i] < 0 ? a : b).emplace_back(pair<int, int>(abs(P[i]), S[i]));
     }
-    cor(&a), cor(&b);  // O(NlogN)
-    vector<vector<double>> f(a.size() + 1,
-                             vector<double>(b.size() + 1,
+    cor(&left), cor(&right);  // O(NlogN)
+    vector<vector<double>> f(left.size() + 1,
+                             vector<double>(right.size() + 1,
                              numeric_limits<double>::max()));
     f[0][0] = 0;
 
     double ans = numeric_limits<double>::max();
-    for (int i = 0; i <= a.size(); ++i) {
-        for (int j = 0; j <= b.size(); ++j) {
+    for (int i = 0; i <= left.size(); ++i) {
+        for (int j = 0; j <= right.size(); ++j) {
             double ma = 0, F = f[i][j];
-            for (int k = j; k < b.size(); ++k) {
-                ma = max(ma, get(Y, F, b[k]));
+            for (int k = j; k < right.size(); ++k) {
+                ma = max(ma, get(Y, F, right[k]));
                 relax(i, k + 1, F + 2 * ma, &f);
             }
-            if (i == a.size()) {
+            if (i == left.size()) {
                 ans = min(ans, F + ma);
             }
 
             ma = 0;
-            for (int k = i; k < a.size(); ++k) {
-                ma = max(ma, get(Y, F, a[k]));
+            for (int k = i; k < left.size(); ++k) {
+                ma = max(ma, get(Y, F, left[k]));
                 relax(k + 1, j, F + 2 * ma, &f);
             }
-            if (j == b.size()) {
+            if (j == right.size()) {
                 ans = min(ans, F + ma);
             }
         }
