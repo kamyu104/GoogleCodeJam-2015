@@ -63,7 +63,7 @@ double runaway_quail() {
 
     vector<pair<int, int>> left, right;
     for (int i = 0; i < N; ++i) {
-        (P[i] < 0 ? a : b).emplace_back(pair<int, int>(abs(P[i]), S[i]));
+        (P[i] < 0 ? left : right).emplace_back(pair<int, int>(abs(P[i]), S[i]));
     }
     cor(&left), cor(&right);  // O(NlogN)
     vector<vector<double>> f(left.size() + 1,
