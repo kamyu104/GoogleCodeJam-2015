@@ -25,29 +25,28 @@ using std::pair;
 using std::max;
 using std::min;
 
-void cor(vector<pair<int, int>> *direction_ptr) {
-    auto& direction = *direction_ptr;
+void representive_quails(vector<pair<int, int>> *quails_ptr) {
+    auto& quails = *quails_ptr;
     int k = 0;
-    sort(direction.begin(), direction.end());
-    for (int i = 0; i < direction.size(); ++i) {
-        while (k > 0 && direction[i].second >=
-               direction[k - 1].second) {
+
+    // Sort by position.
+    sort(quails.begin(), quails.end());
+
+    // Simplify quails by strictly decreasing speed.
+    for (int i = 0; i < quails.size(); ++i) {
+        while (k > 0 && quails[i].second >=
+               quails[k - 1].second) {
             --k;
         }
-        direction[k++] = direction[i];
+        quails[k++] = quails[i];
     }
-    direction.resize(k);
+    // Only keep representive quails.
+    quails.resize(k);
 }
 
-double get(const int Y, const double t0,
-           const pair<int, int> p) {
-    return (t0 * p.second + p.first) / (Y - p.second);
-}
-
-void relax(const int i, const int j,
-           const double F,
-           vector<vector<double>> *f) {
-    (*f)[i][j] = min((*f)[i][j], F);
+double catch_time(const int Y, const double t,
+           const pair<int, int> quail) {
+    return (t * quail.second + quail.first) / (Y - quail.second);
 }
 
 double runaway_quail() {
@@ -61,39 +60,52 @@ double runaway_quail() {
         cin >> S[i];
     }
 
-    vector<pair<int, int>> left, right;
+    vector<pair<int, int>> left_quails, right_quails;
     for (int i = 0; i < N; ++i) {
-        (P[i] < 0 ? left : right).emplace_back(pair<int, int>(abs(P[i]), S[i]));
+        if (P[i] < 0) {
+            left_quails.emplace_back(pair<int, int>(-P[i], S[i]));
+        } else {
+            right_quails.emplace_back(pair<int, int>(P[i], S[i]));
+        }
     }
-    cor(&left), cor(&right);  // O(NlogN)
-    vector<vector<double>> f(left.size() + 1,
-                             vector<double>(right.size() + 1,
+    representive_quails(&left_quails), representive_quails(&right_quails);
+    vector<vector<double>> time(left_quails.size() + 1,
+                             vector<double>(right_quails.size() + 1,
                              numeric_limits<double>::max()));
-    f[0][0] = 0;
+    time[0][0] = 0;
 
-    double ans = numeric_limits<double>::max();
-    for (int i = 0; i <= left.size(); ++i) {
-        for (int j = 0; j <= right.size(); ++j) {
-            double ma = 0, F = f[i][j];
-            for (int k = j; k < right.size(); ++k) {
-                ma = max(ma, get(Y, F, right[k]));
-                relax(i, k + 1, F + 2 * ma, &f);
+    // Dynamic programming
+    double min_time = numeric_limits<double>::max();
+    for (int i = 0; i <= left_quails.size(); ++i) {
+        for (int j = 0; j <= right_quails.size(); ++j) {
+            double t = 0, T = time[i][j];
+            for (int k = j; k < right_quails.size(); ++k) {
+                t = max(t, catch_time(Y, T, right_quails[k]));
+                // Update time to catch right_quails[k],
+                // and goes back to position zero.
+                // It costs 2t.
+                time[i][k + 1] = min(time[i][k + 1], T + 2 * t);
             }
-            if (i == left.size()) {
-                ans = min(ans, F + ma);
+            // No need to go back to position zero for the last one, it costs t.
+            if (i == left_quails.size()) {
+                min_time = min(min_time, T + t);
             }
 
-            ma = 0;
-            for (int k = i; k < left.size(); ++k) {
-                ma = max(ma, get(Y, F, left[k]));
-                relax(k + 1, j, F + 2 * ma, &f);
+            t = 0;
+            for (int k = i; k < left_quails.size(); ++k) {
+                t = max(t, catch_time(Y, T, left_quails[k]));
+                // Update time to catch left_quails[k],
+                // and goes back to position zero.
+                // It costs 2t.
+                time[k + 1][j] = min(time[k + 1][j], T + 2 * t);
             }
-            if (j == right.size()) {
-                ans = min(ans, F + ma);
+            // No need to go back to position zero for the last one, it costs t.
+            if (j == right_quails.size()) {
+                min_time = min(min_time, T + t);
             }
         }
     }
-    return ans;
+    return min_time;
 }
 
 int main() {
