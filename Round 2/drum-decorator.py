@@ -67,7 +67,6 @@ def drum_decorator():
         ans %= 10**9 + 7
     return ans
 
-
 for case in xrange(input()):
     print "Case #%d: %s" % (case+1, drum_decorator())
 
