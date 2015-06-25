@@ -3,7 +3,7 @@
 # Google Code Jam 2015 Round C - Problem D. Log Set
 # https://code.google.com/codejam/contest/4254486/dashboard#s=p3
 #
-# Time:  O(P * PlogP)
+# Time:  O(P^2 * logP)
 # Space: O(P)
 #
 
