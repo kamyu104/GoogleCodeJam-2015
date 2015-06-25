@@ -24,18 +24,18 @@ def possible(d, D):
                     tot -= scr
                     cur_d = [z+scr for z in cur_d[:j]] + cur_d[j:j+D] + [z+scr for z in cur_d[j+D:2*D]]
                 if min(cur_d) < 0:
-                    return False, -1
+                    return -1
                 w[j] = (w[j] + w[j + D]) / 2
         if D == 1:
             break
         D = D >> 1
-    return True, tot
+    return tot
 
 def river_flow(N, D, d):
     if len([i for i in xrange(N-2*D) if d[i] != d[i+2*D]]):
         return "CHEATERS!"
-    poss, tot = possible(d[:2*D], D)
-    if not poss:
+    tot = possible(d[:2*D], D)
+    if tot < 0:
         return "CHEATERS!"
     return tot
 
