@@ -1,7 +1,7 @@
 # Copyright (c) 2015 kamyu. All rights reserved.
 #
-# Google Code Jam 2015 Round C - Problem C. Runaway Quail
-# https://code.google.com/codejam/contest/4254486/dashboard#s=p2
+# Google Code Jam 2015 Round C - Problem E. River Flow
+# https://code.google.com/codejam/contest/4254486/dashboard#s=p4
 #
 # Time:  O(D^2 * logD)
 # Space: O(D)
