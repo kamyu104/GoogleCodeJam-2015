@@ -7,7 +7,7 @@
 # Space: O(D)
 #
 
-def possible(d, D):
+def possible(D, d):
     cur_d = [z for z in d]
     w = [d[i]-d[i-1] for i in xrange(len(d))]
     tot = 0
@@ -34,7 +34,7 @@ def possible(d, D):
 def river_flow(N, D, d):
     if len([i for i in xrange(N-2*D) if d[i] != d[i+2*D]]):
         return "CHEATERS!"
-    tot = possible(d[:2*D], D)
+    tot = possible(D, d[:2*D])
     if tot < 0:
         return "CHEATERS!"
     return tot
