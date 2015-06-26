@@ -11,7 +11,7 @@ def possible(D, d):
     cur_d = [z for z in d]
     w = [d[i]-d[i-1] for i in xrange(len(d))]
     tot = 0
-    while True:
+    while D != 0:
         for j in xrange(D):
             if (w[j] + w[j + D]) % 2 == 1:
                 return False, -1
@@ -26,8 +26,6 @@ def possible(D, d):
                 if min(cur_d) < 0:
                     return -1
                 w[j] = (w[j] + w[j + D]) / 2
-        if D == 1:
-            break
         D = D >> 1
     return tot
 
