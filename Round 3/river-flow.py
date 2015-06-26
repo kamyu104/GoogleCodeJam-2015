@@ -8,7 +8,7 @@
 #
 
 def possible(D, d):
-    cur_d = [z for z in d]
+    cur_d = list(d)
     w = [d[i]-d[i-1] for i in xrange(len(d))]
     tot = 0
     while D != 0:
