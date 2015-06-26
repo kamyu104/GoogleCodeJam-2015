@@ -14,7 +14,7 @@ def possible(D, d):
     while D != 0:
         for j in xrange(D):
             if (w[j] + w[j + D]) % 2 == 1:
-                return False, -1
+                return -1
             else:
                 scr = (w[j] - w[j + D]) / 2
                 if w[j] >= w[j + D]:
