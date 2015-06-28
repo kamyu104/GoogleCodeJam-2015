@@ -26,7 +26,7 @@ def possible(D, d):
                 if min(cur_d) < 0:
                     return -1
                 w[j] = (w[j] + w[j + D]) / 2
-        D = D >> 1
+        D >>= 1
     return tot
 
 def river_flow(N, D, d):
