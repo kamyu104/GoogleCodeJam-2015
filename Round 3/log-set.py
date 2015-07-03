@@ -11,11 +11,11 @@ from math import log
 
 def log_set(P, E, F):
     G = {E[i]-E[0]:F[i] for i in xrange(P)}
-    nums = []
+    abs_nums = []
     while len(G) > 1:
         Gk = sorted(G.keys())
         num = Gk[1]
-        nums.append(num)
+        abs_nums.append(num)
         for i in Gk:
             if (i + num) in G:
                 G[i + num] += -G[i]
@@ -24,10 +24,10 @@ def log_set(P, E, F):
         G = {key:val for (key,val) in G.items() if val != 0}
     
     G = {E[i]-E[0]:F[i] for i in xrange(P)}
-    nums = [0] * int(log(G[0], 2)) + nums
+    abs_nums = [0] * int(log(G[0], 2)) + abs_nums
     goal = -E[0]
     log_set = []
-    for num in nums[::-1]:
+    for num in abs_nums[::-1]:
         Gk = sorted(G.keys())
         for i in Gk:
             if (i + num) in G:
