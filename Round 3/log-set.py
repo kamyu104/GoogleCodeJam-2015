@@ -39,7 +39,7 @@ def log_set(P, E, F):
             goal += -num
         else:
             w.append(num)
-    w = sorted(w)
+    w.sort()
     return " ".join(str(i) for i in w)
 
 for case in xrange(input()):
