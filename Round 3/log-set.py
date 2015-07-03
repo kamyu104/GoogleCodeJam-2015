@@ -40,7 +40,7 @@ def log_set(P, E, F):
         else:
             w.append(num)
     w.sort()
-    return " ".join(str(i) for i in w)
+    return " ".join(map(str, w))
 
 for case in xrange(input()):
     # Read the input.
