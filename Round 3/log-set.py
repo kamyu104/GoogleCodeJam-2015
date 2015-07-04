@@ -35,7 +35,7 @@ def log_set(P, E, F):
             else:
                 G[i + num] = -G[i]
         G = {key:val for (key,val) in G.items() if val != 0}
-        if goal - num in G:
+        if goal + (-num) in G:
             log_set.append(-num)
             goal += -num
         else:
