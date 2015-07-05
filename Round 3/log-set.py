@@ -18,7 +18,7 @@ def log_set(P, E, F):
         abs_nums.append(num)
         for i in Gk:
             if (i + num) in G:
-                G[i + num] += -G[i]
+                G[i + num] -= G[i]
             else:
                 G[i + num] = -G[i]
         G = {key:val for (key,val) in G.items() if val != 0}
@@ -31,7 +31,7 @@ def log_set(P, E, F):
         Gk = sorted(G.keys())
         for i in Gk:
             if (i + num) in G:
-                G[i + num] += -G[i]
+                G[i + num] -= G[i]
             else:
                 G[i + num] = -G[i]
         G = {key:val for (key,val) in G.items() if val != 0}
