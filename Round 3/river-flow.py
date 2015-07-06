@@ -11,7 +11,7 @@ def possible(D, d):
     cur_d = list(d)
     w = [d[i]-d[i-1] for i in xrange(len(d))]
     tot = 0
-    while D != 0:
+    while D > 0:
         for j in xrange(D):
             if (w[j] + w[j + D]) % 2 == 1:
                 return -1
