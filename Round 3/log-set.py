@@ -19,7 +19,7 @@ def log_set(P, E, F):
         element = Eis[1] - Eis[0]
         abs_elements.append(element)
         for Ei in Eis:
-            # Decrease frequencies of E[i] shifted by element.
+            # Decrease frequencies of E[i] shifted by element by adjusted frequencies.
             if (Ei + element) in Ei_to_Fi:
                 Ei_to_Fi[Ei + element] -= Ei_to_Fi[Ei]
         # print element, Eis, Ei_to_Fi
@@ -38,9 +38,6 @@ def log_set(P, E, F):
         for i in Eis:
             if (i + element) in Ei_to_Fi:
                 Ei_to_Fi[i + element] -= Ei_to_Fi[i]
-        # print element, base, Eis, Ei_to_Fi
-        # Keep keys which val > 0 to get new set without current element.
-        # This would decrease the sum of frequencies to half of it.
         Ei_to_Fi = {Ei:Fi for (Ei,Fi) in Ei_to_Fi.items() if Fi != 0}
         
         # If negative of element could be put to set,
