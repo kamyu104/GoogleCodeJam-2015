@@ -27,7 +27,7 @@ def log_set(P, E, F):
         # This would decrease the sum of frequencies to half of it.
         # Time: O(N')
         Ei_to_Fi = {Ei:Fi for (Ei,Fi) in Ei_to_Fi.items() if Fi != 0}
-    
+
     Ei_to_Fi = {E[i]:F[i] for i in xrange(P)}
     abs_elements = [0] * int(log(F[0], 2)) + abs_elements
     base, log_set = 0, []
@@ -50,6 +50,8 @@ def log_set(P, E, F):
             base += -element
         else: # element must be positive.
             log_set.append(element)
+
+    # Nondecreasing order.
     log_set.sort()
     return " ".join(map(str, log_set))
 
