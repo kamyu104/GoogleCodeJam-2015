@@ -38,6 +38,7 @@ def log_set(P, E, F):
         for i in Eis:
             if (i + element) in Ei_to_Fi:
                 Ei_to_Fi[i + element] -= Ei_to_Fi[i]
+        # print element, base, Eis, Ei_to_Fi
         Ei_to_Fi = {Ei:Fi for (Ei,Fi) in Ei_to_Fi.items() if Fi != 0}
         
         # If negative of element could be put to set,
