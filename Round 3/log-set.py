@@ -3,7 +3,7 @@
 # Google Code Jam 2015 Round C - Problem D. Log Set
 # https://code.google.com/codejam/contest/4254486/dashboard#s=p3
 #
-# Time:  O(N), N is sum of F
+# Time:  O(N(logN)^2), N is sum of F
 # Space: O(logN)
 #
 
@@ -12,8 +12,10 @@ from math import log
 def log_set(P, E, F):
     Ei_to_Fi = {E[i]:F[i] for i in xrange(P)}
     abs_elements = []
-    while len(Ei_to_Fi) > 1: # Time: O(N)
-        Eis = sorted(Ei_to_Fi.keys())
+    
+    # Total Time: O(1 + 2log2 + (2^2)log(2^2) + ... NlogN) = O(N(logN)^2)
+    while len(Ei_to_Fi) > 1: # logN times
+        Eis = sorted(Ei_to_Fi.keys()) # Time: O(N'logN')
         element = Eis[1] - Eis[0]
         abs_elements.append(element)
         for Ei in Eis:
@@ -23,6 +25,7 @@ def log_set(P, E, F):
         # print element, Eis, Ei_to_Fi
         # Keep keys which val > 0 to get new log set without current element.
         # This would decrease the sum of frequencies to half of it.
+        # Time: O(N')
         Ei_to_Fi = {Ei:Fi for (Ei,Fi) in Ei_to_Fi.items() if Fi != 0}
     
     Ei_to_Fi = {E[i]:F[i] for i in xrange(P)}
@@ -30,8 +33,8 @@ def log_set(P, E, F):
     base, log_set = 0, []
     # print abs_elements[::-1]
     # Reversely eelementerate abs_elements to achieve the earliest set.
-    for element in abs_elements[::-1]:
-        Eis = sorted(Ei_to_Fi.keys())
+    for element in abs_elements[::-1]: # logN Times
+        Eis = sorted(Ei_to_Fi.keys()) # Time: O(N'logN')
         for i in Eis:
             if (i + element) in Ei_to_Fi:
                 Ei_to_Fi[i + element] -= Ei_to_Fi[i]
