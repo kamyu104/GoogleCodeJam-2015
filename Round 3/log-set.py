@@ -3,7 +3,7 @@
 # Google Code Jam 2015 Round C - Problem D. Log Set
 # https://code.google.com/codejam/contest/4254486/dashboard#s=p3
 #
-# Time:  O(N(logN)^2), N is sum of F
+# Time:  O(N * (logN)^2), N is sum of F
 # Space: O(logN)
 #
 
@@ -13,7 +13,7 @@ def log_set(P, E, F):
     Ei_to_Fi = {E[i]:F[i] for i in xrange(P)}
     abs_elements = []
     
-    # Total Time: O(1 + 2log2 + (2^2)log(2^2) + ... NlogN) = O(N(logN)^2)
+    # Total Time: O(1 + 2log2 + (2^2)log(2^2) + ... NlogN) = O(N * (logN)^2)
     while len(Ei_to_Fi) > 1: # logN times
         Eis = sorted(Ei_to_Fi.keys()) # Time: O(N'logN')
         element = Eis[1] - Eis[0]
