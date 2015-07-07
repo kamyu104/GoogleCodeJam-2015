@@ -8,7 +8,6 @@
 #
 
 def possible(D, d):
-    cur_d = list(d)
     w = [d[i]-d[i-1] for i in xrange(len(d))]
     tot = 0
     while D > 0:
@@ -19,11 +18,11 @@ def possible(D, d):
                 scr = (w[j] - w[j + D]) / 2
                 if w[j] >= w[j + D]:
                     tot += scr
-                    cur_d = cur_d[:j] + [z - scr for z in cur_d[j:j+D]] + cur_d[j+D:2*D]
+                    d = d[:j] + [z - scr for z in d[j:j+D]] + d[j+D:2*D]
                 else:
                     tot -= scr
-                    cur_d = [z+scr for z in cur_d[:j]] + cur_d[j:j+D] + [z+scr for z in cur_d[j+D:2*D]]
-                if min(cur_d) < 0:
+                    d = [z+scr for z in d[:j]] + d[j:j+D] + [z+scr for z in d[j+D:2*D]]
+                if min(d) < 0:
                     return -1
                 w[j] = (w[j] + w[j + D]) / 2
         D >>= 1
