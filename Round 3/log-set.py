@@ -10,39 +10,39 @@
 from math import log
 
 def log_set(P, E, F):
-    Ei_Fi_map = {E[i]:F[i] for i in xrange(P)}
+    Ei_to_Fi = {E[i]:F[i] for i in xrange(P)}
     abs_elements = []
-    while len(Ei_Fi_map) > 1: # Time: O(N)
-        Eis = sorted(Ei_Fi_map.keys())
+    while len(Ei_to_Fi) > 1: # Time: O(N)
+        Eis = sorted(Ei_to_Fi.keys())
         element = Eis[1] - Eis[0]
         abs_elements.append(element)
         for Ei in Eis:
             # Decrease frequencies of E[i] shifted by element.
-            if (Ei + element) in Ei_Fi_map:
-                Ei_Fi_map[Ei + element] -= Ei_Fi_map[Ei]
-        # print element, Eis, Ei_Fi_map
+            if (Ei + element) in Ei_to_Fi:
+                Ei_to_Fi[Ei + element] -= Ei_to_Fi[Ei]
+        # print element, Eis, Ei_to_Fi
         # Keep keys which val > 0 to get new log set without current element.
         # This would decrease the sum of frequencies to half of it.
-        Ei_Fi_map = {Ei:Fi for (Ei,Fi) in Ei_Fi_map.items() if Fi != 0}
+        Ei_to_Fi = {Ei:Fi for (Ei,Fi) in Ei_to_Fi.items() if Fi != 0}
     
-    Ei_Fi_map = {E[i]:F[i] for i in xrange(P)}
+    Ei_to_Fi = {E[i]:F[i] for i in xrange(P)}
     abs_elements = [0] * int(log(F[0], 2)) + abs_elements
     base, log_set = 0, []
     # print abs_elements[::-1]
     # Reversely eelementerate abs_elements to achieve the earliest set.
     for element in abs_elements[::-1]:
-        Eis = sorted(Ei_Fi_map.keys())
+        Eis = sorted(Ei_to_Fi.keys())
         for i in Eis:
-            if (i + element) in Ei_Fi_map:
-                Ei_Fi_map[i + element] -= Ei_Fi_map[i]
-        # print element, base, Eis, Ei_Fi_map
+            if (i + element) in Ei_to_Fi:
+                Ei_to_Fi[i + element] -= Ei_to_Fi[i]
+        # print element, base, Eis, Ei_to_Fi
         # Keep keys which val > 0 to get new set without current element.
         # This would decrease the sum of frequencies to half of it.
-        Ei_Fi_map = {Ei:Fi for (Ei,Fi) in Ei_Fi_map.items() if Fi != 0}
+        Ei_to_Fi = {Ei:Fi for (Ei,Fi) in Ei_to_Fi.items() if Fi != 0}
         
         # If negative of element could be put to set,
         # add it to achieve the earliest set.
-        if base + (-element) in Ei_Fi_map:
+        if base + (-element) in Ei_to_Fi:
             log_set.append(-element)
             base += -element
         else: # element must be positive.
