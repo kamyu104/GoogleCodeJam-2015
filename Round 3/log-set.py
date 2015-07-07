@@ -3,43 +3,50 @@
 # Google Code Jam 2015 Round C - Problem D. Log Set
 # https://code.google.com/codejam/contest/4254486/dashboard#s=p3
 #
-# Time:  O(P^2 * logP)
-# Space: O(P)
+# Time:  O(N), N is sum of F
+# Space: O(logN)
 #
 
 from math import log
 
 def log_set(P, E, F):
-    G = {E[i]-E[0]:F[i] for i in xrange(P)}
-    abs_nums = []
-    while len(G) > 1:
-        Gk = sorted(G.keys())
-        num = Gk[1]
-        abs_nums.append(num)
-        for i in Gk:
-            if (i + num) in G:
-                G[i + num] -= G[i]
-            else:
-                G[i + num] = -G[i]
-        G = {key:val for (key,val) in G.items() if val != 0}
+    Ei_Fi_map = {E[i]:F[i] for i in xrange(P)}
+    abs_elements = []
+    while len(Ei_Fi_map) > 1: # Time: O(N)
+        Eis = sorted(Ei_Fi_map.keys())
+        element = Eis[1] - Eis[0]
+        abs_elements.append(element)
+        for Ei in Eis:
+            # Decrease frequencies of E[i] shifted by element.
+            if (Ei + element) in Ei_Fi_map:
+                Ei_Fi_map[Ei + element] -= Ei_Fi_map[Ei]
+        # print element, Eis, Ei_Fi_map
+        # Keep keys which val > 0 to get new log set without current element.
+        # This would decrease the sum of frequencies to half of it.
+        Ei_Fi_map = {Ei:Fi for (Ei,Fi) in Ei_Fi_map.items() if Fi != 0}
     
-    G = {E[i]-E[0]:F[i] for i in xrange(P)}
-    abs_nums = [0] * int(log(G[0], 2)) + abs_nums
-    goal = -E[0]
-    log_set = []
-    for num in abs_nums[::-1]:
-        Gk = sorted(G.keys())
-        for i in Gk:
-            if (i + num) in G:
-                G[i + num] -= G[i]
-            else:
-                G[i + num] = -G[i]
-        G = {key:val for (key,val) in G.items() if val != 0}
-        if goal + (-num) in G:
-            log_set.append(-num)
-            goal += -num
-        else:
-            log_set.append(num)
+    Ei_Fi_map = {E[i]:F[i] for i in xrange(P)}
+    abs_elements = [0] * int(log(F[0], 2)) + abs_elements
+    base, log_set = 0, []
+    # print abs_elements[::-1]
+    # Reversely eelementerate abs_elements to achieve the earliest set.
+    for element in abs_elements[::-1]:
+        Eis = sorted(Ei_Fi_map.keys())
+        for i in Eis:
+            if (i + element) in Ei_Fi_map:
+                Ei_Fi_map[i + element] -= Ei_Fi_map[i]
+        # print element, base, Eis, Ei_Fi_map
+        # Keep keys which val > 0 to get new set without current element.
+        # This would decrease the sum of frequencies to half of it.
+        Ei_Fi_map = {Ei:Fi for (Ei,Fi) in Ei_Fi_map.items() if Fi != 0}
+        
+        # If negative of element could be put to set,
+        # add it to achieve the earliest set.
+        if base + (-element) in Ei_Fi_map:
+            log_set.append(-element)
+            base += -element
+        else: # element must be positive.
+            log_set.append(element)
     log_set.sort()
     return " ".join(map(str, log_set))
 
@@ -48,5 +55,6 @@ for case in xrange(input()):
     P = input()
     E = map(int, raw_input().strip().split())
     F = map(int, raw_input().strip().split())
+    # print E, F
 
     print "Case #%d: %s" % (case+1, log_set(P, E, F))
