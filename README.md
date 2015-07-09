@@ -62,4 +62,4 @@ Python solutions of Google Code Jam 2015
 |B| [Smoothing Window](https://code.google.com/codejam/contest/4254486/dashboard#s=p1)| [Python](./Round 3/smoothing-window.py)| _O(N)_ | _O(N)_ | Medium | | |
 |C| [Runaway Quail](https://code.google.com/codejam/contest/4254486/dashboard#s=p2)| [C++](./Round 3/runaway-quail.cpp) [Python](./Round 3/runaway-quail.py)| _O(N^3)_ | _O(N^2)_ | Medium | | DP |
 |D| [Log Set](https://code.google.com/codejam/contest/4254486/dashboard#s=p3)| [Python](./Round 3/log-set.py)| _O(N * (logN)^2)_ | _O(logN)_ | Hard | | Hash |
-|E| [River Flow](https://code.google.com/codejam/contest/4254486/dashboard#s=p4)| [Python](./Round 3/river-flow.py)| _O(D^2 * logD)_ | _O(D)_ | Medium | | |
+|E| [River Flow](https://code.google.com/codejam/contest/4254486/dashboard#s=p4)| [Python](./Round 3/river-flow.py)| _O(D^2 * logD)_ | _O(D)_ | Hard |
