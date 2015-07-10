@@ -13,13 +13,16 @@ def possible(D, d):
     # the previous day in the 2D-day cycle.
     x = [d[i] - d[i - 1] for i in xrange(len(d))]
     farmers, P = 0, D
+    # For each period P in D, D / 2, D / 4, ..., 1.
     while P > 0:
+        # For each T in period P.
         for T in xrange(P):
             if (x[T] + x[T + P]) % 2 == 1:
                 return -1
-            else:
+            elif x[T] - x[T + P] != 0:
                 cnt = (x[T] - x[T + P]) / 2
-                if cnt >= 0:
+                # Update flow data by removing F(T, P) quantity.
+                if cnt > 0:
                     farmers += cnt
                     d = d[:T] + [flow - cnt for flow in d[T:T + P]] + d[T + P:2*P]
                 else:
@@ -27,6 +30,7 @@ def possible(D, d):
                     d = [flow + cnt for flow in d[:T]] + d[T:T + P] + [flow + cnt for flow in d[T + P:2*P]]
                 if min(d) < 0:
                     return -1
+                # Update flow data difference after removing F(T, P) quantity.
                 x[T] = (x[T] + x[T + P]) / 2
         P >>= 1
     return farmers
