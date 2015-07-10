@@ -17,6 +17,7 @@ def possible(D, d):
     while P > 0:
         # For each T in period P.
         for T in xrange(P):
+            # x[T] + x[T+P] should be even.
             if (x[T] + x[T + P]) % 2 == 1:
                 return -1
             elif x[T] - x[T + P] != 0:
@@ -28,6 +29,7 @@ def possible(D, d):
                 else:
                     farmers += -cnt
                     d = [flow + cnt for flow in d[:T]] + d[T:T + P] + [flow + cnt for flow in d[T + P:2*P]]
+                # There should be no flow data less than zero.
                 if min(d) < 0:
                     return -1
                 # Update flow data difference after removing F(T, P) quantity.
