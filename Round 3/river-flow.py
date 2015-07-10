@@ -14,20 +14,20 @@ def possible(D, d):
     x = [d[i]-d[i-1] for i in xrange(len(d))]
     farmers = 0
     while D > 0:
-        for j in xrange(D):
-            if (x[j] + x[j + D]) % 2 == 1:
+        for i in xrange(D):
+            if (x[i] + x[i + D]) % 2 == 1:
                 return -1
             else:
-                scr = (x[j] - x[j + D]) / 2
-                if x[j] >= x[j + D]:
-                    farmers += scr
-                    d = d[:j] + [z - scr for z in d[j:j+D]] + d[j+D:2*D]
+                num = (x[i] - x[i + D]) / 2
+                if num >= 0:
+                    farmers += num
+                    d = d[:i] + [flow - num for flow in d[i:i+D]] + d[i+D:2*D]
                 else:
-                    farmers -= scr
-                    d = [z+scr for z in d[:j]] + d[j:j+D] + [z+scr for z in d[j+D:2*D]]
+                    farmers += -num
+                    d = [flow + num for flow in d[:i]] + d[i:i+D] + [flow + num for flow in d[i+D:2*D]]
                 if min(d) < 0:
                     return -1
-                x[j] = (x[j] + x[j + D]) / 2
+                x[i] = (x[i] + x[i + D]) / 2
         D >>= 1
     return farmers
 
