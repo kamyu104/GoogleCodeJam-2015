@@ -12,23 +12,23 @@ def possible(D, d):
     # xi represents the difference in flow between day i and
     # the previous day in the 2D-day cycle.
     x = [d[i] - d[i-1] for i in xrange(len(d))]
-    farmers = 0
-    while D > 0:
-        for i in xrange(D):
-            if (x[i] + x[i + D]) % 2 == 1:
+    farmers, P = 0, D
+    while P > 0:
+        for T in xrange(P):
+            if (x[T] + x[T + P]) % 2 == 1:
                 return -1
             else:
-                num = (x[i] - x[i + D]) / 2
+                num = (x[T] - x[T + P]) / 2
                 if num >= 0:
                     farmers += num
-                    d = d[:i] + [flow - num for flow in d[i:i + D]] + d[i + D:2 * D]
+                    d = d[:T] + [flow - num for flow in d[T:T + P]] + d[T + P:2 * P]
                 else:
                     farmers += -num
-                    d = [flow + num for flow in d[:i]] + d[i:i + D] + [flow + num for flow in d[i + D:2 * D]]
+                    d = [flow + num for flow in d[:T]] + d[T:T + P] + [flow + num for flow in d[T + P:2 * P]]
                 if min(d) < 0:
                     return -1
-                x[i] = (x[i] + x[i + D]) / 2
-        D >>= 1
+                x[T] = (x[T] + x[T + P]) / 2
+        P >>= 1
     return farmers
 
 def river_flow(N, D, d):
