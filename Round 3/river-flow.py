@@ -11,7 +11,7 @@ def possible(D, d):
     # Let xi be di - di-1 when i > 1, and x1 = d1 - d2D.
     # xi represents the difference in flow between day i and
     # the previous day in the 2D-day cycle.
-    x = [d[i] - d[i-1] for i in xrange(len(d))]
+    x = [d[i] - d[i - 1] for i in xrange(len(d))]
     farmers, P = 0, D
     while P > 0:
         for T in xrange(P):
@@ -21,10 +21,10 @@ def possible(D, d):
                 cnt = (x[T] - x[T + P]) / 2
                 if cnt >= 0:
                     farmers += cnt
-                    d = d[:T] + [flow - cnt for flow in d[T:T + P]] + d[T + P:2 * P]
+                    d = d[:T] + [flow - cnt for flow in d[T:T + P]] + d[T + P:2*P]
                 else:
                     farmers += -cnt
-                    d = [flow + cnt for flow in d[:T]] + d[T:T + P] + [flow + cnt for flow in d[T + P:2 * P]]
+                    d = [flow + cnt for flow in d[:T]] + d[T:T + P] + [flow + cnt for flow in d[T + P:2*P]]
                 if min(d) < 0:
                     return -1
                 x[T] = (x[T] + x[T + P]) / 2
@@ -34,7 +34,7 @@ def possible(D, d):
 def river_flow(N, D, d):
     # If the river flow data is not periodic with period 2D.
     # the farmers are cheating.
-    if len([i for i in xrange(N-2*D) if d[i] != d[i+2*D]]):
+    if len([i for i in xrange(N - 2*D) if d[i] != d[i + 2*D]]):
         return "CHEATERS!"
     # Count farmers by first 2D river flow data.
     farmers = possible(D, d[:2*D])
