@@ -11,7 +11,7 @@ def possible(D, d):
     # Let xi be di - di-1 when i > 1, and x1 = d1 - d2D.
     # xi represents the difference in flow between day i and
     # the previous day in the 2D-day cycle.
-    x = [d[i]-d[i-1] for i in xrange(len(d))]
+    x = [d[i] - d[i-1] for i in xrange(len(d))]
     farmers = 0
     while D > 0:
         for i in xrange(D):
@@ -21,10 +21,10 @@ def possible(D, d):
                 num = (x[i] - x[i + D]) / 2
                 if num >= 0:
                     farmers += num
-                    d = d[:i] + [flow - num for flow in d[i:i+D]] + d[i+D:2*D]
+                    d = d[:i] + [flow - num for flow in d[i:i + D]] + d[i + D:2 * D]
                 else:
                     farmers += -num
-                    d = [flow + num for flow in d[:i]] + d[i:i+D] + [flow + num for flow in d[i+D:2*D]]
+                    d = [flow + num for flow in d[:i]] + d[i:i + D] + [flow + num for flow in d[i + D:2 * D]]
                 if min(d) < 0:
                     return -1
                 x[i] = (x[i] + x[i + D]) / 2
