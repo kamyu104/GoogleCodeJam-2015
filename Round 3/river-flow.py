@@ -8,15 +8,18 @@
 #
 
 def possible(D, d):
-    w = [d[i]-d[i-1] for i in xrange(len(d))]
+    # Let xi be di - di-1 when i > 1, and x1 = d1 - d2D.
+    # xi represents the difference in flow between day i and
+    # the previous day in the 2D-day cycle.
+    x = [d[i]-d[i-1] for i in xrange(len(d))]
     tot = 0
     while D > 0:
         for j in xrange(D):
-            if (w[j] + w[j + D]) % 2 == 1:
+            if (x[j] + x[j + D]) % 2 == 1:
                 return -1
             else:
-                scr = (w[j] - w[j + D]) / 2
-                if w[j] >= w[j + D]:
+                scr = (x[j] - x[j + D]) / 2
+                if x[j] >= x[j + D]:
                     tot += scr
                     d = d[:j] + [z - scr for z in d[j:j+D]] + d[j+D:2*D]
                 else:
@@ -24,7 +27,7 @@ def possible(D, d):
                     d = [z+scr for z in d[:j]] + d[j:j+D] + [z+scr for z in d[j+D:2*D]]
                 if min(d) < 0:
                     return -1
-                w[j] = (w[j] + w[j + D]) / 2
+                x[j] = (x[j] + x[j + D]) / 2
         D >>= 1
     return tot
 
