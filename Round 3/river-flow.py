@@ -18,13 +18,13 @@ def possible(D, d):
             if (x[T] + x[T + P]) % 2 == 1:
                 return -1
             else:
-                num = (x[T] - x[T + P]) / 2
-                if num >= 0:
-                    farmers += num
-                    d = d[:T] + [flow - num for flow in d[T:T + P]] + d[T + P:2 * P]
+                cnt = (x[T] - x[T + P]) / 2
+                if cnt >= 0:
+                    farmers += cnt
+                    d = d[:T] + [flow - cnt for flow in d[T:T + P]] + d[T + P:2 * P]
                 else:
-                    farmers += -num
-                    d = [flow + num for flow in d[:T]] + d[T:T + P] + [flow + num for flow in d[T + P:2 * P]]
+                    farmers += -cnt
+                    d = [flow + cnt for flow in d[:T]] + d[T:T + P] + [flow + cnt for flow in d[T + P:2 * P]]
                 if min(d) < 0:
                     return -1
                 x[T] = (x[T] + x[T + P]) / 2
