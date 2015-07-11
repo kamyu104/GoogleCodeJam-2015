@@ -25,22 +25,22 @@ def possible(D, d):
                 # Update flow data by removing F(T, P) quantity.
                 if cnt > 0:
                     farmers += cnt
-                    for flow in xrange(T, T + P):
-                        flow -= cnt
+                    for i in xrange(T, T + P):
+                        d[i] -= cnt
                         # There should be no flow data less than zero.
-                        if flow < 0:
+                        if d[i] < 0:
                             return -1          
                 else:
                     farmers += -cnt
-                    for flow in xrange(T):
-                        flow -= -cnt
+                    for i in xrange(T):
+                        d[i] -= -cnt
                         # There should be no flow data less than zero.
-                        if flow < 0:
+                        if d[i] < 0:
                             return -1                    
-                    for flow in xrange(T + P, T + 2 * P):
-                        flow -= -cnt
+                    for i in xrange(T + P, 2*P):
+                        d[i] -= -cnt
                         # There should be no flow data less than zero.
-                        if flow < 0:
+                        if d[i] < 0:
                             return -1                
                 # Update flow data difference after removing F(T, P) quantity.
                 x[T] = (x[T] + x[T + P]) / 2
