@@ -3,7 +3,7 @@
 # Google Code Jam 2015 Round C - Problem E. River Flow
 # https://code.google.com/codejam/contest/4254486/dashboard#s=p4
 #
-# Time:  O(D^2 * logD)
+# Time:  O(DlogD)
 # Space: O(D)
 #
 
@@ -25,11 +25,14 @@ def possible(D, d):
                 # Update flow data by removing F(T, P) quantity.
                 if cnt > 0:
                     farmers += cnt
-                    d = d[:T] + [flow - cnt for flow in d[T:T + P]] + d[T + P:2*P]
+                    for flow in xrange(T, T + P):
+                        flow -= cnt
                 else:
                     farmers += -cnt
-                    d = [flow + cnt for flow in d[:T]] + d[T:T + P] + [flow + cnt for flow in d[T + P:2*P]]
-                # There should be no flow data less than zero.
+                    for flow in xrange(T):
+                        flow -= -cnt
+                    for flow in xrange(T + P, T + 2 * P):
+                        flow -= -cnt                # There should be no flow data less than zero.
                 if min(d) < 0:
                     return -1
                 # Update flow data difference after removing F(T, P) quantity.
