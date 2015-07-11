@@ -32,7 +32,8 @@ def possible(D, d):
                     for flow in xrange(T):
                         flow -= -cnt
                     for flow in xrange(T + P, T + 2 * P):
-                        flow -= -cnt                # There should be no flow data less than zero.
+                        flow -= -cnt
+                # There should be no flow data less than zero.
                 if min(d) < 0:
                     return -1
                 # Update flow data difference after removing F(T, P) quantity.
