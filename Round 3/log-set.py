@@ -33,7 +33,7 @@ def log_set(P, E, F):
     base, log_set = 0, []
     # print abs_elements[::-1]
     # Reversely enumerate abs_elements to achieve the earliest set.
-    for element in abs_elements[::-1]: # logN Times
+    for element in abs_elements[::-1]: # logN times
         Eis = sorted(Ei_to_Fi.keys()) # Time: O(N'logN')
         for i in Eis:
             if (i + element) in Ei_to_Fi:
