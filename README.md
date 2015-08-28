@@ -68,3 +68,9 @@ Python solutions of Google Code Jam 2015
 ##Final Round
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
+|A| [Costly Binary Search](https://code.google.com/codejam/contest/5224486/dashboard#s=p0)| | | | | | |
+|B| [Campinatorics](https://code.google.com/codejam/contest/5224486/dashboard#s=p1)| | | | | | |
+|C| [Pretty Good Proportion](https://code.google.com/codejam/contest/5224486/dashboard#s=p2)| | | | | | |
+|D| [Taking Over The World](https://code.google.com/codejam/contest/5224486/dashboard#s=p3)| | | | | | |
+|E| [Merlin QA](https://code.google.com/codejam/contest/5224486/dashboard#s=p4)| | | | | | |
+|F| [Crane Truck](https://code.google.com/codejam/contest/5224486/dashboard#s=p5)| | | | | | |
