@@ -7,7 +7,7 @@ Python solutions of Google Code Jam 2015
 * [Round 1C](https://github.com/kamyu104/GoogleCodeJam-2015#round-1c)
 * [Round 2](https://github.com/kamyu104/GoogleCodeJam-2015#round-2)
 * [Round 3](https://github.com/kamyu104/GoogleCodeJam-2015#round-3)
-* [Final Round](https://github.com/kamyu104/GoogleCodeJam-2015#final-round)
+* [World Finals](https://github.com/kamyu104/GoogleCodeJam-2015#world-finals)
 
 ##Qualification Round
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
@@ -65,7 +65,7 @@ Python solutions of Google Code Jam 2015
 |D| [Log Set](https://code.google.com/codejam/contest/4254486/dashboard#s=p3)| [Python](./Round 3/log-set.py)| _O(N * (logN)^2)_ | _O(logN)_ | Hard | | Hash |
 |E| [River Flow](https://code.google.com/codejam/contest/4254486/dashboard#s=p4)| [Python](./Round 3/river-flow.py)| _O(DlogD)_ | _O(D)_ | Medium |
 
-##Final Round
+##World Finals
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
 |A| [Costly Binary Search](https://code.google.com/codejam/contest/5224486/dashboard#s=p0)| | | | | | |
