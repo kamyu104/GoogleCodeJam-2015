@@ -66,6 +66,8 @@ Python solutions of Google Code Jam 2015
 |E| [River Flow](https://code.google.com/codejam/contest/4254486/dashboard#s=p4)| [Python](./Round 3/river-flow.py)| _O(DlogD)_ | _O(D)_ | Medium |
 
 ##World Finals
+You can relive the magic of the 2015 Code Jam World Finals by watching the [Live Stream Recording](https://www.youtube.com/watch?v=rh_EYIu7Ztc) of the competition, problem explanations, interviews with Google and Code Jam engineers, and announcement of winners.
+
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
 |A| [Costly Binary Search](https://code.google.com/codejam/contest/5224486/dashboard#s=p0)| | | | | | |
