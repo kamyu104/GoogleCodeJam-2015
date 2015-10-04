@@ -2,7 +2,7 @@
 
 ![Language](https://img.shields.io/badge/language-Python%20-orange.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Progress](https://img.shields.io/badge/progress-%2022%20%2F%2028%20%20-ff69b4.svg)
+![Progress](https://img.shields.io/badge/progress-22%20%2F%2028%20-ff69b4.svg)
 
 Python solutions of Google Code Jam 2015.
 
