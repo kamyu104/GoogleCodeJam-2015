@@ -1,4 +1,9 @@
 # Google Code Jam 2015
+
+![Language](https://img.shields.io/badge/language-Python%20-orange.svg)
+![License](https://img.shields.io/github/license/lexrus/ios-dev-playbook.svg?style=flat)
+![Progress](https://img.shields.io/badge/progress-%2022%20%2F%2028%20%20-ff69b4.svg)
+
 Python solutions of Google Code Jam 2015.
 
 * [Qualification Round](https://github.com/kamyu104/GoogleCodeJam-2015#qualification-round)
