@@ -13,14 +13,11 @@ for i in xrange(5, MAX_N + 1):
 
 w = [(w[i] * fc[i] * (i - 1)) % modulo for i in xrange(len(w))]
 
-def g(z):
-    return w[z]
-
 def combin(n, k):
     return fc[n] * fc2[k] * fc2[n - k]
 
 def f(N, i):
-    return ((combin(N, i) ** 2) * fc[i] * g(N - i)) % modulo
+    return ((combin(N, i) ** 2) * fc[i] * w[N - i]) % modulo
 
 def campinatorics(N, X):
     return sum(f(N, i) for i in xrange(X, N + 1)) % modulo
