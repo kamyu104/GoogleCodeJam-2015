@@ -25,8 +25,8 @@ def combin(n, k):
     return fc[n] * fc2[k] * fc2[n - k]
 
 # f(N, X) = C(N, X)^2 * X! * ((N-X)! * Dearrangement(N-X))
-def f(N, i):
-    return ((combin(N, i) ** 2) * fc[i] * der[N - i]) % modulo
+def f(N, X):
+    return ((combin(N, X) ** 2) * fc[X] * der[N - X]) % modulo
 
 def campinatorics(N, X):
     return sum(f(N, i) for i in xrange(X, N + 1)) % modulo
