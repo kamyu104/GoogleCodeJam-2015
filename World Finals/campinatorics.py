@@ -1,4 +1,4 @@
-# Time:  O(N - X)
+# Time:  O(N)
 # Space: O(N)
 
 MAX_N = 10 ** 6 
