@@ -10,7 +10,6 @@ fc2 = [pow(z, modulo - 2, modulo) for z in fc]
 w = [-1, 0, 1, 1, 3]
 for i in xrange(5, MAX_N + 1):
     w.append((w[i - 1] * (i - 1) - w[i - 3] * (i - 4)) % modulo)
-
 w = [(w[i] * fc[i] * (i - 1)) % modulo for i in xrange(len(w))]
 
 def combin(n, k):
