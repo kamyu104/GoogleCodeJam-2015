@@ -1,3 +1,6 @@
+# Time:  O(N - X)
+# Space: O(N)
+
 MAX_N = 10 ** 6 
 modulo = 10 ** 9 + 7
 
