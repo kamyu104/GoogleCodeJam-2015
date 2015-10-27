@@ -1,5 +1,11 @@
+# Copyright (c) 2015 kamyu. All rights reserved.
+#
+# Google Code Jam 2015 World Finals - Problem B. Campinatorics
+# https://code.google.com/codejam/contest/5224486/dashboard#s=p1
+#
 # Time:  O(N)
 # Space: O(N)
+#
 
 MAX_N = 10 ** 6 
 modulo = 10 ** 9 + 7
