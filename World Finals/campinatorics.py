@@ -8,7 +8,7 @@
 #
 
 MAX_N = 10 ** 6 
-modulo = 10 ** 9 + 7
+modulo = 10 ** 9 + 7  # prime
 
 fc = [1]
 for i in xrange(1, MAX_N + 1):
