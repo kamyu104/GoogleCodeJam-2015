@@ -16,6 +16,7 @@ for i in xrange(1, MAX_N + 1):
 
 inv_fc = [pow(x, prime - 2, prime) for x in fc]
 
+# D(n) = (n - 1) * (D(i - 1) + D(n - 2))
 D = [1, 0]
 for i in xrange(2, MAX_N + 1):
     D.append((i - 1) * (D[i - 1] + D[i - 2]) % prime)
