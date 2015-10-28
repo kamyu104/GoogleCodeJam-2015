@@ -17,8 +17,8 @@ for i in xrange(1, MAX_N + 1):
 inv_fc = [pow(x, prime - 2, prime) for x in fc]
 
 # D(n) = (n-1）* (D(n-1）+ D(n-2)）
-D = [1, 0, 1]
-for i in xrange(3, MAX_N + 1):
+D = [1, 0]
+for i in xrange(2, MAX_N + 1):
     D.append((i - 1) * (D[i - 1] + D[i - 2]) % prime)
 
 # C(n, k) = n! / (k!*(n - k)!) = n! * (k!*(n - k)!)^-1 (mod p)
