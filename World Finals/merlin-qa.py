@@ -1,5 +1,11 @@
+# Copyright (c) 2015 kamyu. All rights reserved.
+#
+# Google Code Jam 2015 World Finals - Problem E. Merlin QA
+# https://code.google.com/codejam/contest/5224486/dashboard#s=p4
+#
 # Time:  O(M! * (N * M))
 # Space: O(N * M)
+#
 
 from itertools import permutations
 
