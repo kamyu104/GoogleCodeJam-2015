@@ -22,7 +22,8 @@ for i in xrange(2, MAX_N + 1):
     D.append((i - 1) * (D[i - 1] + D[i - 2]) % prime)
 
 # C(n, k) = n! / (k!*(n - k)!) = n! * (k!*(n - k)!)^-1
-# For p prime, the inverse of any number x mod p is x^(p - 2) mod p (Euler's Theorem).
+# According to Euler's Theorem: x^(p - 1) mod p = 1
+# For p prime, the inverse of any number x mod p is x^(p - 2) mod p:
 # => C(n, k) mod p =  n! * (k!)^(p - 2) * ((n - k)!)^(p - 2) mod p
 def C(n, k):
     return (fc[n] * inv_fc[k] * inv_fc[n - k]) % prime
