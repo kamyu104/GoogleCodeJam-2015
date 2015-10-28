@@ -14,7 +14,7 @@ fc = [1]
 for i in xrange(1, MAX_N + 1):
     fc.append((fc[-1] * i) % prime)
 
-fc2 = [pow(x, prime - 2, prime) for x in fc]
+inv_fc = [pow(x, prime - 2, prime) for x in fc]
 
 der = [-1, 0, 1, 1, 3]
 for i in xrange(5, MAX_N + 1):
@@ -24,7 +24,7 @@ der = [(der[i] * fc[i] * (i - 1)) % prime for i in xrange(len(der))]
 # C(n, k) = n! / (k!*(n - k)!) = n! * (k!*(n - k)!)^-1 (mod p)
 # For p prime, the inverse of any number x mod p is x^(p - 2) mod p (Euler's Theorem).
 def C(n, k):
-    return fc[n] * fc2[k] * fc2[n - k]
+    return fc[n] * inv_fc[k] * inv_fc[n - k]
 
 # f(N, X) = C(N, X)^2 * X! * ((N-X)! * Dearrangement(N-X))
 def f(N, X):
