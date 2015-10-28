@@ -28,7 +28,7 @@ def C(n, k):
 
 # f(N, X) = C(N, X)^2 * X! * ((N - X)! * Dearrangement(N - X))
 def f(N, X):
-    return ((C(N, X) ** 2) * fc[X] * fc[N - X] * D[N - X]) % prime
+    return (pow(C(N, X), 2, prime) * fc[X] * fc[N - X] * D[N - X]) % prime
 
 def campinatorics(N, X):
     return sum(f(N, i) for i in xrange(X, N + 1)) % prime
