@@ -27,7 +27,7 @@ for i in xrange(2, MAX_N + 1):
 def C(n, k):
     return (fc[n] * inv_fc[k] * inv_fc[n - k]) % prime
 
-
+#
 #   3 0 0 0 0 0    |
 #   0 3 0 0 0 0    X
 #   0 0 3 0 0 0    |
