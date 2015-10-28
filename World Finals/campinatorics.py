@@ -10,10 +10,12 @@
 MAX_N = 10 ** 6 
 prime = 10 ** 9 + 7
 
+# Factorial:
 fc = [1]
 for i in xrange(1, MAX_N + 1):
     fc.append((fc[-1] * i) % prime)
 
+# Inverse of factorial (mod p):
 inv_fc = [pow(x, prime - 2, prime) for x in fc]
 
 # Dearrangement(n):
