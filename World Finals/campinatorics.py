@@ -16,11 +16,13 @@ for i in xrange(1, MAX_N + 1):
 
 inv_fc = [pow(x, prime - 2, prime) for x in fc]
 
-# D(n) = (n - 1) * (D(i - 1) + D(n - 2))
+# Dearrangement(n):
+# D(n) = (n - 1) * (D(n - 1) + D(n - 2))
 D = [1, 0]
 for i in xrange(2, MAX_N + 1):
     D.append((i - 1) * (D[i - 1] + D[i - 2]) % prime)
 
+# Combination(n, k):
 # C(n, k) = n! / (k!*(n - k)!) = n! * (k!*(n - k)!)^-1
 # According to Euler's Theorem: x^(p - 1) mod p = 1
 # For p prime, the inverse of any number x mod p is x^(p - 2) mod p:
@@ -28,6 +30,7 @@ for i in xrange(2, MAX_N + 1):
 def C(n, k):
     return (fc[n] * inv_fc[k] * inv_fc[n - k]) % prime
 
+# Given N, X:
 #
 #   3 0 0 0 0 0    |
 #   0 3 0 0 0 0    X
@@ -36,6 +39,7 @@ def C(n, k):
 #   0 0 0 0 1 2  N - X    
 #   0 0 0 2 0 1    |
 #
+# Formula:
 # f(N, X) = C(N, X)^2 * X! * ((N - X)! * Dearrangement(N - X))
 def f(N, X):
     return (pow(C(N, X), 2, prime) * fc[X] * fc[N - X] * D[N - X]) % prime
