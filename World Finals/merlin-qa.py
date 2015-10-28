@@ -22,7 +22,7 @@ def f(spells):
     return vals
 
 def merlin_qa(N, M, spells):
-    spells = [i for i in spells if max(i) > 0]
+    spells = [spell for spell in spells if max(spell) > 0]
     if not spells:
         return 0
     largest = 0
