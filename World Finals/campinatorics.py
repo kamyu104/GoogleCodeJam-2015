@@ -42,7 +42,7 @@ def C(n, k):
 #   0 0 0 2 0 1    |
 #
 # Formula:
-# f(N, X) = C(N, X)^2 * X! * ((N - X)! * Dearrangement(N - X))
+# f(N, X) = C(N, X)^2 * X! * (N - X)! * Dearrangement(N - X)
 def f(N, X):
     return (pow(C(N, X), 2, prime) * fc[X] * fc[N - X] * D[N - X]) % prime
 
