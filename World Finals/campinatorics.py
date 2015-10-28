@@ -16,10 +16,10 @@ for i in xrange(1, MAX_N + 1):
 
 inv_fc = [pow(x, prime - 2, prime) for x in fc]
 
-der = [-1, 0, 1, 1, 3]
+D = [-1, 0, 1, 1, 3]
 for i in xrange(5, MAX_N + 1):
-    der.append((der[i - 1] * (i - 1) - der[i - 3] * (i - 4)) % prime)
-der = [(der[i] * fc[i] * (i - 1)) % prime for i in xrange(len(der))]
+    D.append((D[i - 1] * (i - 1) - D[i - 3] * (i - 4)) % prime)
+D = [(D[i] * fc[i] * (i - 1)) % prime for i in xrange(len(D))]
 
 # C(n, k) = n! / (k!*(n - k)!) = n! * (k!*(n - k)!)^-1 (mod p)
 # For p prime, the inverse of any number x mod p is x^(p - 2) mod p (Euler's Theorem).
@@ -28,7 +28,7 @@ def C(n, k):
 
 # f(N, X) = C(N, X)^2 * X! * ((N-X)! * Dearrangement(N-X))
 def f(N, X):
-    return ((C(N, X) ** 2) * fc[X] * der[N - X]) % prime
+    return ((C(N, X) ** 2) * fc[X] * D[N - X]) % prime
 
 def campinatorics(N, X):
     return sum(f(N, i) for i in xrange(X, N + 1)) % prime
