@@ -26,7 +26,7 @@ for i in xrange(2, MAX_N + 1):
 def C(n, k):
     return fc[n] * inv_fc[k] * inv_fc[n - k]
 
-# f(N, X) = C(N, X)^2 * X! * ((N-X)! * Dearrangement(N-X))
+# f(N, X) = C(N, X)^2 * X! * ((N - X)! * Dearrangement(N - X))
 def f(N, X):
     return ((C(N, X) ** 2) * fc[X] * fc[N - X] * D[N - X]) % prime
 
