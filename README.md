@@ -62,7 +62,7 @@ You can relive the magic of the 2015 Code Jam World Finals by watching the [Live
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
 |A| [Costly Binary Search](https://code.google.com/codejam/contest/5224486/dashboard#s=p0)| | | | | | |
-|B| [Campinatorics](https://code.google.com/codejam/contest/5224486/dashboard#s=p1)| [Python](./World Finals/campinatorics.py) | _O(N)_ | _O(N)_ | Medium | | |
+|B| [Campinatorics](https://code.google.com/codejam/contest/5224486/dashboard#s=p1)| [Python](./World Finals/campinatorics.py) | _O(N)_ | _O(N)_ | Medium | | DP |
 |C| [Pretty Good Proportion](https://code.google.com/codejam/contest/5224486/dashboard#s=p2)| | | | | | |
 |D| [Taking Over The World](https://code.google.com/codejam/contest/5224486/dashboard#s=p3)| | | | | | |
 |E| [Merlin QA](https://code.google.com/codejam/contest/5224486/dashboard#s=p4)| | | | | | |
