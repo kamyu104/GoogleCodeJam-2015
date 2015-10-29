@@ -41,10 +41,10 @@ int costly_binary_search() {
             right[c][j] = right[c - 1][j];
         }
         for (int j = 0; j < n; ++j) {
-            int cc = (c + '0') - S[j];
+            const int cc = (c + '0') - S[j];
             if (cc >= 0) {
-                int l = left[cc][j];
-                int r = right[cc][j + 1];
+                const int l = left[cc][j];
+                const int r = right[cc][j + 1];
                 left[c][r] = min(left[c][r], l);
                 right[c][l] = max(right[c][l], r);
             }
