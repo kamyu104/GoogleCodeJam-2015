@@ -23,21 +23,22 @@ using std::min;
 
 const int MAX_TIMES = 180;
 const int MAX_N = 1e6;
-int right[MAX_TIMES + 1][MAX_N + 1];
+
 int left[MAX_TIMES + 1][MAX_N + 1];
+int right[MAX_TIMES + 1][MAX_N + 1];
 
 int costly_binary_search() {
     string S;
     cin >> S;
     const int n = S.length();
     for (int j = 0; j < n + 1; ++j) {
-        right[0][j] = j;
         left[0][j] = j;
+        right[0][j] = j;
     }
     for (int c = 1; c <= MAX_TIMES; ++c) {
         for (int j = 0; j < n + 1; ++j) {
-            right[c][j] = right[c - 1][j];
             left[c][j] = left[c - 1][j];
+            right[c][j] = right[c - 1][j];
         }
         for (int j = 0; j < n; ++j) {
             int cc = (c + '0') - S[j];
