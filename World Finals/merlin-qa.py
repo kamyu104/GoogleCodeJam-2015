@@ -14,7 +14,9 @@ def f(spells):
     vals = 0
     for spell in spells:    # Time: O(N)
         val, costs = 0, 0
-        # Get max cost sum of spell vector from the beginning.
+        # Get max sum of the consecutive subarray of spell vector from the beginning.
+        # Then, the maximal arrangement of the spells would be the order sorted
+        # by the length of each max subarray, of which the cost sum is the max.
         for cost in spell:  # Time: O(M)
             costs += cost
             val = max(val, costs)
@@ -22,7 +24,7 @@ def f(spells):
     return vals
 
 def merlin_qa(N, M, spells):
-    spells = [i for i in spells if max(i) > 0]
+    spells = [spell for spell in spells if max(spell) > 0]
     if not spells:
         return 0
     largest = 0

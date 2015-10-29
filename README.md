@@ -1,4 +1,4 @@
-# [GoogleCodeJam 2015](https://code.google.com/codejam/contests.html) ![Language](https://img.shields.io/badge/language-Python-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md) ![Progress](https://img.shields.io/badge/progress-23%20%2F%2028-ff69b4.svg)
+# [GoogleCodeJam 2015](https://code.google.com/codejam/contests.html) ![Language](https://img.shields.io/badge/language-Python-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md) ![Progress](https://img.shields.io/badge/progress-25%20%2F%2028-ff69b4.svg)
 
 Python solutions of Google Code Jam 2015.
 
@@ -61,7 +61,7 @@ You can relive the magic of the 2015 Code Jam World Finals by watching the [Live
 
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
-|A| [Costly Binary Search](https://code.google.com/codejam/contest/5224486/dashboard#s=p0)| | | | | | |
+|A| [Costly Binary Search](https://code.google.com/codejam/contest/5224486/dashboard#s=p0)| [C++](./World Finals/costly-binary-search.cpp) | _O(N)_ | _O(N)_ | Medium | | DP 
 |B| [Campinatorics](https://code.google.com/codejam/contest/5224486/dashboard#s=p1)| [Python](./World Finals/campinatorics.py) | _O(N)_ | _O(N)_ | Medium | | DP, Euler's Theorem |
 |C| [Pretty Good Proportion](https://code.google.com/codejam/contest/5224486/dashboard#s=p2)| | | | | | |
 |D| [Taking Over The World](https://code.google.com/codejam/contest/5224486/dashboard#s=p3)| | | | | | |
