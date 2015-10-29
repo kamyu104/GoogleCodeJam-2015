@@ -14,7 +14,8 @@ def f(spells):
     vals = 0
     for spell in spells:    # Time: O(N)
         val, costs = 0, 0
-        # Get max cost sum of spell vector from the beginning.
+        # Get max sum of the consecutive subarray of spell vector from the beginning.
+        # Then the spells are ordered by the length of it max subarray in increasing order.
         for cost in spell:  # Time: O(M)
             costs += cost
             val = max(val, costs)
