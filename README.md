@@ -61,7 +61,7 @@ You can relive the magic of the 2015 Code Jam World Finals by watching the [Live
 
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
-|A| [Costly Binary Search](https://code.google.com/codejam/contest/5224486/dashboard#s=p0)| [C++](./World Finals/costly-binary-search.cpp) [Python](./World Finals/costly-binary-search.py) | _O(NlogN)_ | _O(NlogN)_ | Medium | | DP (Python would TLE in large input) 
+|A| [Costly Binary Search](https://code.google.com/codejam/contest/5224486/dashboard#s=p0)| [C++](./World Finals/costly-binary-search.cpp) [Python](./World Finals/costly-binary-search.py) | _O(NlogN)_ | _O(N)_ | Medium | | DP (Python would TLE in large input) 
 |B| [Campinatorics](https://code.google.com/codejam/contest/5224486/dashboard#s=p1)| [Python](./World Finals/campinatorics.py) | _O(N)_ | _O(N)_ | Medium | | DP, Euler's Theorem |
 |C| [Pretty Good Proportion](https://code.google.com/codejam/contest/5224486/dashboard#s=p2)| | | | | | |
 |D| [Taking Over The World](https://code.google.com/codejam/contest/5224486/dashboard#s=p3)| | | | | | |
