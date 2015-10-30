@@ -69,7 +69,8 @@ int costly_binary_search() {
         }
 
         if (right[t][0] == n) {
-            return t;  // Minimum time.
+            // Found the min time which covers the entire array.
+            return t;
         }
     }
     return MAX_TIMES;
