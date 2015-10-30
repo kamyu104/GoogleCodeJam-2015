@@ -50,7 +50,7 @@ def costly_binary_search():
         for p in reversed(xrange(1, n + 1)):
             # ------------t------------
             #       ------t------
-            #       ----------t--------
+            # ---------t---------
             # [lp   [l(p-1)      ](p-1)]p
             left[t][p - 1] = min(left[t][p - 1], left[t][p])
         for p in xrange(n):
