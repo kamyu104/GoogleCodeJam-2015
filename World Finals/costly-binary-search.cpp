@@ -5,7 +5,7 @@
  * https://code.google.com/codejam/contest/5224486/dashboard#s=p0
  *
  * Time:  O(NlogN)
- * Space: O(NlogN)
+ * Space: O(N)
  *
  */
 
@@ -29,11 +29,11 @@ const int MAX_TIMES = 180;
 
 // left[t][p]: the farest position left to p which forms the range
 //             [left[t][p], p) we can cover in time up to t
-int left[MAX_TIMES + 1][MAX_N + 1];
+int left[10][MAX_N + 1];
 
 // right[t][p]: the farest position right to p which forms the range
 //              [p, right[t][p]) we can cover in time up to t
-int right[MAX_TIMES + 1][MAX_N + 1];
+int right[10][MAX_N + 1];
 
 int costly_binary_search() {
     string S;
@@ -48,18 +48,18 @@ int costly_binary_search() {
     // we'll be able to produce the entire array.
     for (int t = 1; t <= MAX_TIMES; ++t) {
         for (int p = 0; p <= n; ++p) {
-            left[t][p] = left[t - 1][p];
-            right[t][p] = right[t - 1][p];
+            left[t % 10][p] = left[(t - 1) % 10][p];
+            right[t % 10][p] = right[(t - 1) % 10][p];
         }
         for (int p = 0; p < n; ++p) {
             const int tt = t - (S[p] - '0');
             if (tt >= 0) {
-                const int l = left[tt][p];
-                const int r = right[tt][p + 1];
+                const int l = left[tt % 10][p];
+                const int r = right[tt % 10][p + 1];
                 // --(t-S[p])--   --(t-S[p])--
                 // [l          ]p[           r]
-                left[t][r] = min(left[t][r], l);
-                right[t][l] = max(right[t][l], r);
+                left[t % 10][r] = min(left[t % 10][r], l);
+                right[t % 10][l] = max(right[t % 10][l], r);
             }
         }
 
@@ -68,17 +68,17 @@ int costly_binary_search() {
             //       ------t------
             // ---------t---------
             // [lp   [l(p-1)      ](p-1)]p
-            left[t][p - 1] = min(left[t][p - 1], left[t][p]);
+            left[t % 10][p - 1] = min(left[t % 10][p - 1], left[t % 10][p]);
         }
         for (int p = 0; p < n; ++p) {
             // -------t-------------
             //   -----t----
             //   ----------t--------
             // [p[(p+1)    ][rp     ]]r(p+1)
-            right[t][p + 1] = max(right[t][p + 1], right[t][p]);
+            right[t % 10][p + 1] = max(right[t % 10][p + 1], right[t % 10][p]);
         }
 
-        if (right[t][0] == n) {
+        if (right[t % 10][0] == n) {
             // Found the min time which covers the entire array.
             return t;
         }
