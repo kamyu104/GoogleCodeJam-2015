@@ -43,7 +43,8 @@ def costly_binary_search():
             if tt >= 0:
                 l = left[tt][p]
                 r = right[tt][p + 1]
-                # [l---]p[------r]
+                # --(t-S[p])--   --(t-S[p])--
+                # [l          ]p[           r]
                 left[t][r] = min(left[t][r], l)
                 right[t][l] = max(right[t][l], r)
 
