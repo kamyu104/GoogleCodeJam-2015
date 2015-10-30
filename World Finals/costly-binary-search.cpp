@@ -21,8 +21,12 @@ using std::string;
 using std::max;
 using std::min;
 
-const int MAX_TIMES = 180;
+
+// 1 <= N <= 10^6
 const int MAX_N = 1e6;
+
+// O(log2(N) * 9) ~=180
+const int MAX_TIMES = 180;
 
 int left[MAX_TIMES + 1][MAX_N + 1];
 int right[MAX_TIMES + 1][MAX_N + 1];
