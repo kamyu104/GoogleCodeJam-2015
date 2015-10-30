@@ -16,7 +16,6 @@ MAX_N = 10 ** 6
 # O(log2(N) * max(cost)) ~= 20 * 9 = 180
 MAX_TIMES = 180
 
-
 # left[t][p]: the farest position left to p which forms the range
 #             [left[t][p], p) we can cover in time up to t
 left = [[0 for _ in xrange(MAX_N + 1)] for _ in xrange(MAX_TIMES + 1)]
