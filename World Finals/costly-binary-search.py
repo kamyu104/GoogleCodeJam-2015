@@ -48,9 +48,15 @@ def costly_binary_search():
                 right[t][l] = max(right[t][l], r)
 
         for p in reversed(xrange(1, n + 1)):
+            # ------------t------------
+            #       ------t------
+            #       ----------t--------
             # [lp   [l(p-1)      ](p-1)]p
             left[t][p - 1] = min(left[t][p - 1], left[t][p])
         for p in xrange(n):
+            # -------t-------------
+            #   -----t----
+            #   ----------t--------
             # [p[(p+1)    ][rp     ]]r(p+1)
             right[t][p + 1] = max(right[t][p + 1], right[t][p])
 
