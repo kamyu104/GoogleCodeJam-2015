@@ -67,7 +67,7 @@ int costly_binary_search() {
             left[t][p - 1] = min(left[t][p - 1], left[t][p]);
         }
         for (int p = 0; p < n; ++p) {
-            // [p[(p+1)    ][rp     ]r(p+1)
+            // [p[(p+1)    ][rp     ]]r(p+1)
             right[t][p + 1] = max(right[t][p + 1], right[t][p]);
         }
 
