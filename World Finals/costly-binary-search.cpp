@@ -56,15 +56,18 @@ int costly_binary_search() {
             if (tt >= 0) {
                 const int l = left[tt][p];
                 const int r = right[tt][p + 1];
+                // [l---]p[------r]
                 left[t][r] = min(left[t][r], l);
                 right[t][l] = max(right[t][l], r);
             }
         }
 
         for (int p = n; p > 0; --p) {
+            // [lp   [l(p-1)      ](p-1)]p
             left[t][p - 1] = min(left[t][p - 1], left[t][p]);
         }
         for (int p = 0; p < n; ++p) {
+            // [p[(p+1)    ][rp     ]r(p+1)
             right[t][p + 1] = max(right[t][p + 1], right[t][p]);
         }
 
