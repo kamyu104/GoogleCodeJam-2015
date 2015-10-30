@@ -4,8 +4,8 @@
 # Google Code Jam 2015 World Finals - Problem A. Costly Binary Search
 # https://code.google.com/codejam/contest/5224486/dashboard#s=p0
 #
-# Time:  O(N)
-# Space: O(N)
+# Time:  O(NlogN)
+# Space: O(NlogN)
 #
 # TLE in large input
 #
