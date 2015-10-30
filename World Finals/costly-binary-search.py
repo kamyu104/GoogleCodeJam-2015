@@ -40,7 +40,7 @@ def costly_binary_search():
             left[t][p] = left[t - 1][p]
             right[t][p] = right[t - 1][p]
         for p in xrange(n):
-            tt = (t + ord('0')) - ord(S[p])
+            tt = t - int(S[p])
             if tt >= 0:
                 l = left[tt][p]
                 r = right[tt][p + 1]
