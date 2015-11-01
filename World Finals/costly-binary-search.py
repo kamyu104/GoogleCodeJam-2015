@@ -1,5 +1,4 @@
 # Copyright (c) 2015 kamyu. All rights reserved.
-
 #
 # Google Code Jam 2015 World Finals - Problem A. Costly Binary Search
 # https://code.google.com/codejam/contest/5224486/dashboard#s=p0
