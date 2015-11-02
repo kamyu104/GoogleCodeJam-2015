@@ -6,7 +6,7 @@
 # Time:  O(NlogN)
 # Space: O(N)
 #
-# TLE in large input
+# TLE in large input (Although it fails in Python, it could pass in C++ within 2 minutes)
 #
 
 # 1 <= N <= 10^6
