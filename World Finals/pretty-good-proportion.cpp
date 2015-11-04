@@ -101,7 +101,7 @@ int pretty_good_proportion() {
     // Sort the pair (e(i), i) by diff error e(i)
     sort(p.begin(), p.end())
 
-    int64_t min_x = 2, min_y = 1;  //  ans occurs at (min_x, min_y)
+    int64_t min_x = 2, min_y = 1;  //  ans is with the slope min_y / min_x
     int ans = N - 1;
     // Try out all neighboring pairs to find the points with
     // the smallest e(i) difference.
