@@ -87,15 +87,19 @@ int pretty_good_proportion() {
     }
     vector<pair<int64_t, int>> p(N + 1);
     for (int i = 0; i < N + 1; ++i) {
-        // #(1s) - i * f
+        // Diff error e(i): #(1s) - i * f
         p[i] = make_pair(static_cast<int64_t>(sum[i]) * PRECISION -
                          static_cast<int64_t>(i) * F,
                          i);
     }
-    sort(p.begin(), p.end());  // Time: O(nlogn)
+    // Time: O(nlogn)
+    // Sort the pair (e(i), i) by diff error e(i)
+    sort(p.begin(), p.end())
 
     int64_t bestx = 2, besty = 1;  // Best ans is bestx / besty
     int ans = N - 1;
+    // Try out all neighboring pairs to find the points with
+    // the smallest e(i) difference.
     for (int i = 0; i < N; ++i) {
         check(F, sum, p[i].second, p[i + 1].second,
               &bestx, &besty, &ans);
