@@ -36,6 +36,8 @@ int64_t gcd(int64_t x, int64_t y) {
     return x;
 }
 
+// No multiplication in comparison of fractions
+// to avoid overflow.
 bool smaller(int64_t x1, int64_t y1,
              int64_t x2, int64_t y2) {
     if (x1 / y1 < x2 / y2) {
@@ -54,6 +56,7 @@ bool smaller(int64_t x1, int64_t y1,
     }
 }
 
+// Find the minimum of abs(slope).
 void check(const int64_t F, const vector<int>& sum,
            int p, int q,
            int64_t *bestx, int64_t *besty,
@@ -69,6 +72,8 @@ void check(const int64_t F, const vector<int>& sum,
         *bestx = x, *besty = y;
         *ans = p;
     } else if (!smaller(*bestx, *besty, x, y) && p < *ans) {
+        // If they are the same slope,
+        // update ans to the smallest p.
         *ans = p;
     }
 }
