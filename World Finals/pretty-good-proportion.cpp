@@ -33,8 +33,7 @@ const int PRECISION = 1000000;
 int64_t gcd(int64_t x, int64_t y) {
     while (y > 0) {
         int64_t z = x % y;
-        x = y;
-        y = z;
+        x = y, y = z;
     }
     return x;
 }
@@ -64,15 +63,12 @@ void check(const int64_t F, const vector<int>& sum,
     if (p > q) {
         swap(p, q);
     }
-    int64_t dx = q - p;
-    int64_t dy = sum[q] - sum[p];
-    int64_t x = abs(dy * PRECISION - dx * F);
-    int64_t y = dx * PRECISION;
+    int64_t dx = q - p, dy = sum[q] - sum[p];
+    int64_t x = abs(dy * PRECISION - dx * F), y = dx * PRECISION;
     int64_t g = gcd(x, y);
     x /= g, y /= g;
     if (smaller(x, y, *bestx, *besty)) {
-        *bestx = x;
-        *besty = y;
+        *bestx = x, *besty = y;
         *ans = p;
     } else if (!smaller(*bestx, *besty, x, y) && p < *ans) {
         *ans = p;
