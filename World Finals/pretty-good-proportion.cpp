@@ -102,12 +102,13 @@ int pretty_good_proportion() {
     // Sort the pair (f(i), i) by diff error f(i)
     sort(p.begin(), p.end());
 
-    // ans is with the min diff error |dy / dx - f|
+    // ans is with the min diff error |dy / dx - f| = min_y / min_x
     int64_t min_x = 1, min_y = 1;
     int ans = N - 1;
-    // Try out all neighboring pairs to find the points with
-    // the smallest e(i) difference.
-    // i.e. min(abs(slope)) of any neighboring pairs.
+    // Try out all neighboring pairs which could form
+    // the substring with the minima e(i) difference - dy.
+    // Find the min diff error |dy / dx - f|
+    // in all neighboring pairs.
     for (int i = 0; i < N; ++i) {
         check(F, sum, p[i].second, p[i + 1].second,
               &min_x, &min_y, &ans);
