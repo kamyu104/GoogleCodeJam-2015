@@ -108,7 +108,7 @@ int pretty_good_proportion() {
     int64_t min_x = 1, min_y = 1;
     int ans = N - 1;
     // Try out all neighboring pairs which could form
-    // the substring with the minima e(i) difference - dy.
+    // the substring with the minima f(i) difference "dy".
     // Find the min diff error |dy / dx - f|
     // in all neighboring pairs.
     for (int i = 0; i < N; ++i) {
