@@ -1,5 +1,4 @@
 # Copyright (c) 2015 kamyu. All rights reserved.
-
 #
 # Google Code Jam 2015 World Finals - Problem A. Costly Binary Search
 # https://code.google.com/codejam/contest/5224486/dashboard#s=p0
@@ -7,7 +6,7 @@
 # Time:  O(NlogN)
 # Space: O(N)
 #
-# TLE in large input
+# TLE in large input (Although it fails in Python, it could pass in C++ within 2 minutes)
 #
 
 # 1 <= N <= 10^6
