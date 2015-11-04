@@ -65,6 +65,7 @@ void check(const int64_t F, const vector<int>& sum,
         swap(p, q);
     }
     int64_t dx = q - p, dy = sum[q] - sum[p];
+    // y / x = |dy/dx - f|
     int64_t y = abs(dy * PRECISION - dx * F), x = dx * PRECISION;
     int64_t g = gcd(x, y);
     x /= g, y /= g;
@@ -92,16 +93,16 @@ int pretty_good_proportion() {
     }
     vector<pair<int64_t, int>> p(N + 1);
     for (int i = 0; i < N + 1; ++i) {
-        // Diff error e(i): #(1s) - i * f
+        // Diff error f(i): #(1s) - i * f
         p[i] = make_pair(static_cast<int64_t>(sum[i]) * PRECISION -
                          static_cast<int64_t>(i) * F,
                          i);
     }
     // Time: O(nlogn)
-    // Sort the pair (e(i), i) by diff error e(i)
+    // Sort the pair (f(i), i) by diff error f(i)
     sort(p.begin(), p.end());
 
-    //  ans is with the min(abs(min_y / min_x - f))
+    // ans is with the min diff error |dy / dx - f|
     int64_t min_x = 1, min_y = 1;
     int ans = N - 1;
     // Try out all neighboring pairs to find the points with
