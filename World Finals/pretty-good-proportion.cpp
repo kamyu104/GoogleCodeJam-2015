@@ -60,24 +60,24 @@ bool smaller(int64_t x1, int64_t y1,
 
 // Find the minimum of |dy/dx - f|
 void check(const int64_t F, const vector<int>& sum,
-           int p, int q,
+           int i, int j,
            int64_t *min_x, int64_t *min_y,
            int *ans) {
-    if (p > q) {
-        swap(p, q);
+    if (i > j) {
+        swap(i, j);
     }
-    int64_t dx = q - p, dy = sum[q] - sum[p];
+    int64_t dx = j - i, dy = sum[j] - sum[i];
     // y / x = |dy/dx - f|
     int64_t y = abs(dy * PRECISION - dx * F), x = dx * PRECISION;
     int64_t g = gcd(x, y);
     x /= g, y /= g;
     if (smaller(y, x, *min_y, *min_x)) {
         *min_x = x, *min_y = y;
-        *ans = p;
-    } else if (!smaller(*min_y, *min_x, y, x) && p < *ans) {
+        *ans = i;
+    } else if (!smaller(*min_y, *min_x, y, x) && i < *ans) {
         // If they are the same slope,
-        // update ans to the smallest p.
-        *ans = p;
+        // update ans to the smallest i.
+        *ans = i;
     }
 }
 
