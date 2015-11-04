@@ -30,7 +30,12 @@ using std::numeric_limits;
 const int PRECISION = 1000000;
 
 int64_t gcd(int64_t x, int64_t y) {
-    return x ? gcd(y % x, x) : y;
+    while (y > 0) {
+        int64_t z = x % y;
+        x = y;
+        y = z;
+    }
+    return x;    
 }
 
 bool smaller(int64_t x1, int64_t y1,
