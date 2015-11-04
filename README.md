@@ -65,5 +65,5 @@ You can relive the magic of the 2015 Code Jam World Finals by watching the [Live
 |B| [Campinatorics](https://code.google.com/codejam/contest/5224486/dashboard#s=p1)| [Python](./World Finals/campinatorics.py) | _O(N)_ | _O(N)_ | Medium | | DP, Euler's Theorem |
 |C| [Pretty Good Proportion](https://code.google.com/codejam/contest/5224486/dashboard#s=p2)| [C++](./World Finals/pretty-good-proportion.cpp) | _O(NlogN)_ | _O(N)_ | Easy | | |
 |D| [Taking Over The World](https://code.google.com/codejam/contest/5224486/dashboard#s=p3)| | | | Hard | | Max Flow |
-|E| [Merlin QA](https://code.google.com/codejam/contest/5224486/dashboard#s=p4)| [Python](./World Finals/merlin-qa.py) | _O(M! * (N * M))_ | _O(N * M)_ | Easy | | |
+|E| [Merlin QA](https://code.google.com/codejam/contest/5224486/dashboard#s=p4)| [Python](./World Finals/merlin-qa.py) | _O(M! * (N * M))_ | _O(N * M)_ | Medium | | |
 |F| [Crane Truck](https://code.google.com/codejam/contest/5224486/dashboard#s=p5)| | | | Hard | | |
