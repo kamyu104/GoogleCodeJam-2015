@@ -59,7 +59,7 @@ bool smaller(int64_t x1, int64_t y1,
 // Find the minimum of abs(slope).
 void check(const int64_t F, const vector<int>& sum,
            int p, int q,
-           int64_t *bestx, int64_t *besty,
+           int64_t *min_x, int64_t *min_y,
            int *ans) {
     if (p > q) {
         swap(p, q);
@@ -68,10 +68,10 @@ void check(const int64_t F, const vector<int>& sum,
     int64_t x = abs(dy * PRECISION - dx * F), y = dx * PRECISION;
     int64_t g = gcd(x, y);
     x /= g, y /= g;
-    if (smaller(x, y, *bestx, *besty)) {
-        *bestx = x, *besty = y;
+    if (smaller(x, y, *min_x, *min_y)) {
+        *min_x = x, *min_y = y;
         *ans = p;
-    } else if (!smaller(*bestx, *besty, x, y) && p < *ans) {
+    } else if (!smaller(*min_x, *min_y, x, y) && p < *ans) {
         // If they are the same slope,
         // update ans to the smallest p.
         *ans = p;
@@ -101,14 +101,14 @@ int pretty_good_proportion() {
     // Sort the pair (e(i), i) by diff error e(i)
     sort(p.begin(), p.end())
 
-    int64_t bestx = 2, besty = 1;  // Best ans is bestx / besty
+    int64_t min_x = 2, min_y = 1;  //  ans occurs at (min_x, min_y)
     int ans = N - 1;
     // Try out all neighboring pairs to find the points with
     // the smallest e(i) difference.
     // i.e. min(abs(slope)) of any neighboring pairs.
     for (int i = 0; i < N; ++i) {
         check(F, sum, p[i].second, p[i + 1].second,
-              &bestx, &besty, &ans);
+              &min_x, &min_y, &ans);
     }
     return ans;
 }
