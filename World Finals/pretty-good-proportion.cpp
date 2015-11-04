@@ -22,10 +22,11 @@ using std::endl;
 using std::string;
 using std::vector;
 using std::pair;
+using std::numeric_limits;
 using std::make_pair;
 using std::sort;
 using std::swap;
-using std::numeric_limits;
+using std::abs;
 
 const int PRECISION = 1000000;
 
@@ -35,7 +36,7 @@ int64_t gcd(int64_t x, int64_t y) {
         x = y;
         y = z;
     }
-    return x;    
+    return x;
 }
 
 bool smaller(int64_t x1, int64_t y1,
@@ -65,10 +66,7 @@ void check(const int64_t F, const vector<int>& sum,
     }
     int64_t dx = q - p;
     int64_t dy = sum[q] - sum[p];
-    int64_t x = dy * PRECISION - dx * F;
-    if (x < 0) {
-        x = -x;
-    }
+    int64_t x = abs(dy * PRECISION - dx * F);
     int64_t y = dx * PRECISION;
     int64_t g = gcd(x, y);
     x /= g, y /= g;
