@@ -65,13 +65,13 @@ void check(const int64_t F, const vector<int>& sum,
         swap(p, q);
     }
     int64_t dx = q - p, dy = sum[q] - sum[p];
-    int64_t x = abs(dy * PRECISION - dx * F), y = dx * PRECISION;
+    int64_t y = abs(dy * PRECISION - dx * F), x = dx * PRECISION;
     int64_t g = gcd(x, y);
     x /= g, y /= g;
-    if (smaller(x, y, *min_x, *min_y)) {
+    if (smaller(y, x, *min_y, *min_x)) {
         *min_x = x, *min_y = y;
         *ans = p;
-    } else if (!smaller(*min_x, *min_y, x, y) && p < *ans) {
+    } else if (!smaller(*min_y, *min_x, y, x) && p < *ans) {
         // If they are the same slope,
         // update ans to the smallest p.
         *ans = p;
@@ -101,7 +101,8 @@ int pretty_good_proportion() {
     // Sort the pair (e(i), i) by diff error e(i)
     sort(p.begin(), p.end());
 
-    int64_t min_x = 2, min_y = 1;  //  ans is with the slope min_y / min_x
+    //  ans is with the min slope (min_y / min_x)
+    int64_t min_x = 1, min_y = 1;
     int ans = N - 1;
     // Try out all neighboring pairs to find the points with
     // the smallest e(i) difference.
