@@ -14,6 +14,7 @@
 #include <vector>
 #include <algorithm>
 #include <utility>
+#include <cmath>
 
 using std::cin;
 using std::cout;
@@ -25,6 +26,7 @@ using std::make_pair;
 using std::sort;
 using std::swap;
 using std::abs;
+using std::round;
 
 const int PRECISION = 1000000;
 
@@ -82,7 +84,7 @@ int pretty_good_proportion() {
     int N;
     double f;
     cin >> N >> f;
-    int64_t F = static_cast<int64_t>(f * PRECISION + 0.5);
+    int64_t F = static_cast<int64_t>(round(f * PRECISION));
     string s;
     cin >> s;
 
