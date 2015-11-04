@@ -28,7 +28,7 @@ using std::swap;
 using std::abs;
 using std::round;
 
-const int PRECISION = 1000000;
+const int PRECISION = 10e6;
 
 int64_t gcd(int64_t x, int64_t y) {
     while (y > 0) {
