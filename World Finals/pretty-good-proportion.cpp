@@ -99,7 +99,7 @@ int pretty_good_proportion() {
     }
     // Time: O(nlogn)
     // Sort the pair (e(i), i) by diff error e(i)
-    sort(p.begin(), p.end())
+    sort(p.begin(), p.end());
 
     int64_t min_x = 2, min_y = 1;  //  ans is with the slope min_y / min_x
     int ans = N - 1;
