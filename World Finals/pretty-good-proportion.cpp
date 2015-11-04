@@ -75,9 +75,9 @@ void check(const int64_t F, const vector<int>& sum,
 
 int pretty_good_proportion() {
     int N;
-    double tmp;
-    cin >> N >> tmp;
-    int64_t F = static_cast<int64_t>(tmp * PRECISION + 0.5);
+    double f;
+    cin >> N >> f;
+    int64_t F = static_cast<int64_t>(f * PRECISION + 0.5);
     string s;
     cin >> s;
 
@@ -87,6 +87,7 @@ int pretty_good_proportion() {
     }
     vector<pair<int64_t, int>> p(N + 1);
     for (int i = 0; i < N + 1; ++i) {
+        // #(1s) - i * f
         p[i] = make_pair(static_cast<int64_t>(sum[i]) * PRECISION -
                          static_cast<int64_t>(i) * F,
                          i);
