@@ -100,6 +100,7 @@ int pretty_good_proportion() {
     int ans = N - 1;
     // Try out all neighboring pairs to find the points with
     // the smallest e(i) difference.
+    // i.e. min(abs(slope)) of any neighboring pairs.
     for (int i = 0; i < N; ++i) {
         check(F, sum, p[i].second, p[i + 1].second,
               &bestx, &besty, &ans);
