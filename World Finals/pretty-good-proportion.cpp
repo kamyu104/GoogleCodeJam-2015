@@ -14,7 +14,6 @@
 #include <vector>
 #include <algorithm>
 #include <utility>
-#include <limits>
 
 using std::cin;
 using std::cout;
@@ -22,7 +21,6 @@ using std::endl;
 using std::string;
 using std::vector;
 using std::pair;
-using std::numeric_limits;
 using std::make_pair;
 using std::sort;
 using std::swap;
@@ -96,7 +94,7 @@ int pretty_good_proportion() {
     sort(p.begin(), p.end());  // Time: O(nlogn)
 
     int64_t bestx = 2, besty = 1;  // Best ans is bestx / besty
-    int ans = numeric_limits<int>::max();
+    int ans = N - 1;
     for (int i = 0; i < N; ++i) {
         check(F, sum, p[i].second, p[i + 1].second,
               &bestx, &besty, &ans);
