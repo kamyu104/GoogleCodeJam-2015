@@ -32,8 +32,8 @@ const int PRECISION = 1000000;
 
 int64_t gcd(int64_t x, int64_t y) {
     while (y > 0) {
-        int64_t z = x % y;
-        x = y, y = z;
+        x %= y;
+        swap(x, y);
     }
     return x;
 }
