@@ -95,7 +95,7 @@ int pretty_good_proportion() {
     }
     sort(p.begin(), p.end());  // Time: O(nlogn)
 
-    int64_t bestx = 2, besty = 1;  // best ans is bestx / besty
+    int64_t bestx = 2, besty = 1;  // Best ans is bestx / besty
     int ans = numeric_limits<int>::max();
     for (int i = 0; i < N; ++i) {
         check(F, sum, p[i].second, p[i + 1].second,
