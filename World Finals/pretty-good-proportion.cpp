@@ -58,7 +58,7 @@ bool smaller(int64_t x1, int64_t y1,
     }
 }
 
-// Find the minimum of abs(slope).
+// Find the minimum of |dy/dx - f|
 void check(const int64_t F, const vector<int>& sum,
            int p, int q,
            int64_t *min_x, int64_t *min_y,
