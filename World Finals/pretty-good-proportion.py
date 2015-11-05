@@ -7,7 +7,7 @@
 # Space: O(N)
 #
 
-PRECISION = 1000000
+PRECISION = 1e6
 
 # Find the minimum of |dy/dx - f|
 def check(F, cnt, i, j, min_y, min_x, ans):
