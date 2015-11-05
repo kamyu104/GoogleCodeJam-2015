@@ -151,14 +151,14 @@ int taking_over_the_world() {
     int N, M, K;
     cin >> N >> M >> K;
 
-    vector<vector<int>> A(MAX_N, vector<int>(MAX_N));
+    vector<vector<int>> A(N, vector<int>(N));
     for (int i = 0; i < M; ++i) {
         int u, v;
         cin >> u >> v;
         A[u][v] = A[v][u] = true;
     }
 
-    vector<bool> guard(MAX_N);
+    vector<bool> guard(N);
     while (true) {
         const int V = N * 2;
         const int S = vid(0, false);
