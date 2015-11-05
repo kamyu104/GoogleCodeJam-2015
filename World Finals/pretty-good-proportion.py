@@ -32,7 +32,7 @@ def check(F, sum, i, j, min_y, min_x, ans):
 def pretty_good_proportion():
     N, f = raw_input().strip().split()
     N, f = int(N), float(f)
-    F = int(round(f * PRECISION))
+    F = int(f * PRECISION)
     s = raw_input().strip()
 
     sum = [0] * (N + 1)
