@@ -72,7 +72,7 @@ int augment(const int S, const int T,
     for (; (*done)[v] < (*adj)[v].size(); ++(*done)[v]) {
         e_t &e = (*adj)[v][(*done)[v]];
         if (lev[e.to] > lev[v]) {
-            int t = augment(S, T, e.to, min(f, e.cap), lev, adj, done);
+            const int t = augment(S, T, e.to, min(f, e.cap), lev, adj, done);
             if (t > 0) {
                 e.cap -= t;
                 (*adj)[e.to][e.rev].cap += t;
