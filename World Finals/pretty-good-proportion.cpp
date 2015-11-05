@@ -27,6 +27,7 @@ using std::sort;
 using std::swap;
 using std::abs;
 using std::round;
+using std::min;
 
 const int PRECISION = 10e6;
 
@@ -63,21 +64,18 @@ void check(const int64_t F, const vector<int>& sum,
            int i, int j,
            int64_t *min_x, int64_t *min_y,
            int *ans) {
-    if (i > j) {
-        swap(i, j);
-    }
-    int64_t dx = j - i, dy = sum[j] - sum[i];
+    int64_t dx = abs(j - i), dy = abs(sum[j] - sum[i]);
     // y / x = |dy/dx - f|
     int64_t y = abs(dy * PRECISION - dx * F), x = dx * PRECISION;
     int64_t g = gcd(x, y);
-    x /= g, y /= g;
+    x /= g, y /= g;  // Avoid overflow.
     if (smaller(y, x, *min_y, *min_x)) {
         *min_x = x, *min_y = y;
-        *ans = i;
-    } else if (!smaller(*min_y, *min_x, y, x) && i < *ans) {
+        *ans = min(i, j);
+    } else if (!smaller(*min_y, *min_x, y, x) && min(i, j) < *ans) {
         // If they are the same slope,
         // update ans to the smallest i.
-        *ans = i;
+        *ans = min(i, j);
     }
 }
 
