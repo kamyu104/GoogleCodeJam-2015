@@ -179,8 +179,7 @@ int taking_over_the_world() {
                         // Edge (u, v)
                         int td = ds[u] +
                                  (guard[u] ? 1 : 0) + 1 +
-                                 (v == N - 1 ? 0 : (guard[v] ? 1 : 0) +
-                                 dt[v]);
+                                 (v == N - 1 ? 0 : (guard[v] ? 1 : 0) + dt[v]);
                         if (td == ds[N - 1]) {
                             add_edge(vid(u, true), vid(v, false), GUARD, &adj);
                         }
