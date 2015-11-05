@@ -30,8 +30,6 @@ struct e_t {
   e_t(int t, int c, int r) : to(t), cap(c), rev(r) {}
 };
 
-const int MAX_N = 100;
-const int MAX_V = MAX_N * (MAX_N - 1) / 2;
 const int GUARD = 1000;
 
 void add_edge(const int i, const int j, const int c,
@@ -43,7 +41,7 @@ void add_edge(const int i, const int j, const int c,
 bool levelize(const int V, const int S, const int T,
               vector<vector<e_t>> *adj,
               vector<int> *lev) {
-    *lev = vector<int>(MAX_V, -1);
+    *lev = vector<int>(V, -1);
     queue<int> que;
     (*lev)[S] = 0;
     que.emplace(S);
@@ -88,7 +86,7 @@ int max_flow(const int V, const int S, const int T,
     int f = 0, t;
     vector<int> lev;
     while (levelize(V, S, T, adj, &lev)) {
-        vector<int> done(MAX_V);
+        vector<int> done(V);
         while ((t = augment(S, T, S, INT_MAX, lev, adj, &done))) {
             f += t;
         }
@@ -164,7 +162,7 @@ int taking_over_the_world() {
         const int S = vid(0, false);
         const int T = vid(N - 1, false);
 
-        vector<vector<e_t>> adj(MAX_V);
+        vector<vector<e_t>> adj(V);
         for (int v = 0; v < N; ++v) {
             add_edge(vid(v, false), vid(v, true), guard[v] ? GUARD : 1,
                      &adj);
