@@ -10,8 +10,8 @@
 PRECISION = 1000000
 
 # Find the minimum of |dy/dx - f|
-def check(F, sum, i, j, min_y, min_x, ans):
-    dy, dx = abs(sum[j] - sum[i]), abs(j - i)
+def check(F, cnt, i, j, min_y, min_x, ans):
+    dy, dx = abs(cnt[j] - cnt[i]), abs(j - i)
     # y / x = |dy/dx - f|
     y, x = abs(dy * PRECISION - dx * F), dx * PRECISION
     if y * min_x < x * min_y:
@@ -29,14 +29,14 @@ def pretty_good_proportion():
     F = int(f * PRECISION)
     s = raw_input().strip()
 
-    sum = [0] * (N + 1)
+    cnt = [0] * (N + 1)
     for i in xrange(N):
-        sum[i + 1] = sum[i] + 1 if s[i] == '1' else sum[i]
+        cnt[i + 1] = cnt[i] + 1 if s[i] == '1' else cnt[i]
 
     p = []
     for i in xrange(N+1):
         # Diff error f(i): #(1s) - i * f
-        p.append((sum[i]*PRECISION - i*F, i))
+        p.append((cnt[i]*PRECISION - i*F, i))
 
     # Time: O(nlogn)
     # Sort the pair (f(i), i) by diff error f(i)
@@ -50,7 +50,7 @@ def pretty_good_proportion():
     # Find the min diff error |dy / dx - f|
     # in all neighboring pairs.
     for i in xrange(N):
-        min_y, min_x, ans = check(F, sum, p[i][1], p[i + 1][1], \
+        min_y, min_x, ans = check(F, cnt, p[i][1], p[i + 1][1], \
                                   min_y, min_x, ans)
     return ans
 
