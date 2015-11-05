@@ -9,20 +9,14 @@
 
 PRECISION = 1000000
 
-# No multiplication in comparison of fractions
-# to avoid overflow.
-def smaller(y1, x1, y2, x2):
-    return y1 * x2 < y2 * x1
-
-
 # Find the minimum of |dy/dx - f|
 def check(F, sum, i, j, min_y, min_x, ans):
     dy, dx = abs(sum[j] - sum[i]), abs(j - i)
     # y / x = |dy/dx - f|
     y, x = abs(dy * PRECISION - dx * F), dx * PRECISION
-    if smaller(y, x, min_y, min_x):
+    if y * min_x < x * min_y:
         min_y, min_x, ans = y, x, min(i, j)
-    elif (not smaller(min_y, min_x, y, x)) and min(i, j) < ans:
+    elif y * min_x == x * min_y and min(i, j) < ans:
         # If they are the same slope,
         # update ans to the smallest i.
         ans = min(i, j)
