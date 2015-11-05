@@ -29,7 +29,7 @@ using std::abs;
 using std::round;
 using std::min;
 
-const int PRECISION = 10e6;
+const int PRECISION = 1e6;
 
 int64_t gcd(int64_t x, int64_t y) {
     while (y > 0) {
