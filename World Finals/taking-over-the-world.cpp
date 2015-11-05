@@ -125,13 +125,13 @@ vector<int> dijkstra(const vector<bool>& guard,
     dst[s] = 0;
 
     while (!que.empty()) {
-        int c = que.begin()->first;
-        int v = que.begin()->second;
+        const int c = que.begin()->first;
+        const int v = que.begin()->second;
         que.erase(que.begin());
         if (dst[v] == c) {
             for (int tv = 0; tv < N; ++tv) {
                 if (A[v][tv]) {
-                    int tc = dst[v] + 1 + (guard[v] ? 1 : 0);
+                    const int tc = dst[v] + 1 + (guard[v] ? 1 : 0);
                     if (tc < dst[tv]) {
                         dst[tv] = tc;
                         que.emplace(tc, tv);
