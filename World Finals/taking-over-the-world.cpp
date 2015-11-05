@@ -143,7 +143,7 @@ vector<int> dijkstra(const vector<bool>& guard,
     return dst;
 }
 
-int vid(int v, bool o) {
+int vid(const int v, const bool o) {
     return v * 2 + (o ? 1 : 0);
 }
 
