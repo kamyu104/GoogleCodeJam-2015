@@ -30,10 +30,42 @@ struct e_t {
   e_t(int t, int c, int r) : to(t), cap(c), rev(r) {}
 };
 
+int vid(const int v, const bool o) {
+    return v * 2 + (o ? 1 : 0);
+}
+
 void add_edge(const int i, const int j, const int c,
               vector<vector<e_t>> *adj) {
     (*adj)[i].emplace_back(j, c, (*adj)[j].size());
     (*adj)[j].emplace_back(i, 0, (*adj)[i].size() - 1);
+}
+
+vector<int> dijkstra(const vector<bool>& guard,
+                     const int N,
+                     const vector<vector<int>>& A,
+                     const int s) {
+    vector<int> dst(N, INT_MAX);
+    multimap<int, int> que;
+    que.emplace(0, s);
+    dst[s] = 0;
+
+    while (!que.empty()) {
+        const int c = que.begin()->first;
+        const int v = que.begin()->second;
+        que.erase(que.begin());
+        if (dst[v] == c) {
+            for (int tv = 0; tv < N; ++tv) {
+                if (A[v][tv]) {
+                    const int tc = dst[v] + 1 + (guard[v] ? 1 : 0);
+                    if (tc < dst[tv]) {
+                        dst[tv] = tc;
+                        que.emplace(tc, tv);
+                    }
+                }
+            }
+        }
+    }
+    return dst;
 }
 
 bool levelize(const int V, const int S, const int T,
@@ -109,38 +141,6 @@ vector<bool> min_cut(const int V, const int S,
         }
     }
     return vis;
-}
-
-vector<int> dijkstra(const vector<bool>& guard,
-                     const int N,
-                     const vector<vector<int>>& A,
-                     const int s) {
-    vector<int> dst(N, INT_MAX);
-    multimap<int, int> que;
-    que.emplace(0, s);
-    dst[s] = 0;
-
-    while (!que.empty()) {
-        const int c = que.begin()->first;
-        const int v = que.begin()->second;
-        que.erase(que.begin());
-        if (dst[v] == c) {
-            for (int tv = 0; tv < N; ++tv) {
-                if (A[v][tv]) {
-                    const int tc = dst[v] + 1 + (guard[v] ? 1 : 0);
-                    if (tc < dst[tv]) {
-                        dst[tv] = tc;
-                        que.emplace(tc, tv);
-                    }
-                }
-            }
-        }
-    }
-    return dst;
-}
-
-int vid(const int v, const bool o) {
-    return v * 2 + (o ? 1 : 0);
 }
 
 int taking_over_the_world() {
