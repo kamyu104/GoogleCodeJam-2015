@@ -30,8 +30,6 @@ struct e_t {
   e_t(int t, int c, int r) : to(t), cap(c), rev(r) {}
 };
 
-const int GUARD = 1000;
-
 void add_edge(const int i, const int j, const int c,
               vector<vector<e_t>> *adj) {
     (*adj)[i].emplace_back(j, c, (*adj)[j].size());
@@ -156,6 +154,7 @@ int taking_over_the_world() {
         A[u][v] = A[v][u] = true;
     }
 
+    const int GUARD = 1000;
     vector<bool> guard(N);
     while (true) {
         const int V = N * 2;
