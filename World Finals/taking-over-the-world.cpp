@@ -115,9 +115,9 @@ vector<bool> min_cut(const int V, const int S,
     return vis;
 }
 
-vector<int> dijkstra(const int N,
+vector<int> dijkstra(const vector<bool>& guard,
+                     const int N,
                      const vector<vector<int>>& A,
-                     const vector<bool>& guard,
                      const int s) {
     vector<int> dst(N, INT_MAX);
     multimap<int, int> que;
@@ -157,8 +157,9 @@ int taking_over_the_world() {
         cin >> u >> v;
         A[u][v] = A[v][u] = true;
     }
+
     vector<bool> guard(MAX_N);
-    for (int iter = 0; ; ++iter) {
+    while (true) {
         const int V = N * 2;
         const int S = vid(0, false);
         const int T = vid(N - 1, false);
@@ -169,8 +170,8 @@ int taking_over_the_world() {
                      &adj);
         }
 
-        const vector<int> ds = dijkstra(N, A, guard, 0);
-        const vector<int> dt = dijkstra(N, A, guard, N - 1);
+        const vector<int> ds = dijkstra(guard, N, A, 0);
+        const vector<int> dt = dijkstra(guard, N, A, N - 1);
         for (int u = 0; u < N; ++u) {
             for (int v = 0; v < N; ++v) {
                 if (A[u][v]) {
@@ -200,7 +201,7 @@ int taking_over_the_world() {
             break;
         }
     }
-    return dijkstra(N, A, guard, 0)[N - 1];
+    return dijkstra(guard, N, A, 0)[N - 1];
 }
 
 int main() {
