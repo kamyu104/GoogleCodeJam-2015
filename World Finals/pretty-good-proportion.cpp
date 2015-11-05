@@ -40,20 +40,20 @@ int64_t gcd(int64_t x, int64_t y) {
 
 // No multiplication in comparison of fractions
 // to avoid overflow.
-bool smaller(int64_t x1, int64_t y1,
-             int64_t x2, int64_t y2) {
-    if (x1 / y1 < x2 / y2) {
+bool smaller(int64_t y1, int64_t x1,
+             int64_t y2, int64_t x2) {
+    if (y1 / x1 < y2 / x2) {
         return true;
-    } else if (x1 / y1 > x2 / y2) {
+    } else if (y1 / x1 > y2 / x2) {
         return false;
     } else {
-        x1 %= y1, x2 %= y2;
-        if (x2 == 0) {
+        y1 %= x1, y2 %= x2;
+        if (y2 == 0) {
             return false;
-        } else if (x1 == 0) {
+        } else if (y1 == 0) {
             return true;
         } else {
-            return smaller(y2, x2, y1, x1);
+            return smaller(x2, y2, x1, y1);
         }
     }
 }
