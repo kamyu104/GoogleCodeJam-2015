@@ -130,7 +130,7 @@ def taking_over_the_world():
         if max_flow(V, S, T, adj) <= K:
             mc = min_cut(V, S, adj)
             for v in xrange(N):
-                if mc[vid(v, False)] and  not mc[vid(v, True)]:
+                if mc[vid(v, False)] and not mc[vid(v, True)]:
                     guard[v] = True
                     K -= 1  # At most K loops
         else:
