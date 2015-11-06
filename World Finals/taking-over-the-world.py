@@ -1,12 +1,10 @@
 # Copyright (c) 2015 kamyu. All rights reserved.
 #
-#
 # Google Code Jam 2015 World Finals - Problem D. Taking Over The World
 # https://code.google.com/codejam/contest/5224486/dashboard#s=p3
 #
 # Time:  O(?)
 # Space: O(?)
-#
 #
 
 from collections import deque
