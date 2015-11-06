@@ -21,15 +21,15 @@ def add_edge(i, j, c, adj):
     adj[j].append([i, 0, len(adj[i]) - 1])
 
 
-def dijkstra(guard, N, A, s):
-    dst = [float("inf")] * N
+def dijkstra(guard, A, s):
+    dst = [float("inf")] * len(A)
     dst[s] = 0
     q = []
     heappush(q, (0, s))
     while q:
         c, v = heappop(q);
         if dst[v] == c:
-            for tv in xrange(N):
+            for tv in xrange(len(A[v])):
                 if A[v][tv]:
                     tc = dst[v] + 1 + int(guard[v]);
                     if tc < dst[tv]:
@@ -112,7 +112,7 @@ def taking_over_the_world():
         for v in xrange(N):
             add_edge(vid(v, False), vid(v, True), GUARD if guard[v] else 1, adj)
 
-        ds, dt = dijkstra(guard, N, A, 0), dijkstra(guard, N, A, N - 1);
+        ds, dt = dijkstra(guard, A, 0), dijkstra(guard, A, N - 1);
         for u in xrange(N):
             for v in xrange(N):
                 if A[u][v]:
@@ -133,7 +133,7 @@ def taking_over_the_world():
         else:
             break
 
-    return dijkstra(guard, N, A, 0)[N - 1]
+    return dijkstra(guard, A, 0)[N - 1]
 
 
 for case in xrange(input()):

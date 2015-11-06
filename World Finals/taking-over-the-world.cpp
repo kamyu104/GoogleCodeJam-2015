@@ -41,10 +41,9 @@ void add_edge(const int i, const int j, const int c,
 }
 
 vector<int> dijkstra(const vector<bool>& guard,
-                     const int N,
                      const vector<vector<int>>& A,
                      const int s) {
-    vector<int> dst(N, INT_MAX);
+    vector<int> dst(A.size(), INT_MAX);
     multimap<int, int> que;
     que.emplace(0, s);
     dst[s] = 0;
@@ -54,7 +53,7 @@ vector<int> dijkstra(const vector<bool>& guard,
         const int v = que.begin()->second;
         que.erase(que.begin());
         if (dst[v] == c) {
-            for (int tv = 0; tv < N; ++tv) {
+            for (int tv = 0; tv < A[v].size(); ++tv) {
                 if (A[v][tv]) {
                     const int tc = dst[v] + 1 + (guard[v] ? 1 : 0);
                     if (tc < dst[tv]) {
@@ -167,8 +166,8 @@ int taking_over_the_world() {
                      &adj);
         }
 
-        const vector<int> ds = dijkstra(guard, N, A, 0);
-        const vector<int> dt = dijkstra(guard, N, A, N - 1);
+        const vector<int> ds = dijkstra(guard, A, 0);
+        const vector<int> dt = dijkstra(guard, A, N - 1);
         for (int u = 0; u < N; ++u) {
             for (int v = 0; v < N; ++v) {
                 if (A[u][v]) {
@@ -197,7 +196,7 @@ int taking_over_the_world() {
             break;
         }
     }
-    return dijkstra(guard, N, A, 0)[N - 1];
+    return dijkstra(guard, A, 0)[N - 1];
 }
 
 int main() {
