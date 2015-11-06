@@ -4,8 +4,8 @@
  * Google Code Jam 2015 World Finals - Problem D. Taking Over The World
  * https://code.google.com/codejam/contest/5224486/dashboard#s=p3
  *
- * Time:  O(?)
- * Space: O(?)
+ * Time:  O(K * N * M^2)
+ * Space: O(N^2)
  *
  */
 
@@ -40,6 +40,8 @@ void add_edge(const int i, const int j, const int c,
     (*adj)[j].emplace_back(i, 0, (*adj)[i].size() - 1);
 }
 
+// Time:  O(MlogN)
+// Space: O(N)
 vector<int> dijkstra(const vector<bool>& guard,
                      const vector<vector<int>>& A,
                      const int s) {
@@ -110,6 +112,8 @@ int augment(const int S, const int T,
     return 0;
 }
 
+// Time:  O(N * M^2)
+// Space: O(N)
 int max_flow(const int V, const int S, const int T,
              vector<vector<e_t>> *adj) {
     int f = 0, t;
@@ -189,7 +193,7 @@ int taking_over_the_world() {
             for (int v = 0; v < N; ++v) {
                 if (mc[vid(v, false)] && !mc[vid(v, true)]) {
                     guard[v] = true;
-                    --K;
+                    --K;  // At most K loops
                 }
             }
         } else {
