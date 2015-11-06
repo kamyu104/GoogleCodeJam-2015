@@ -3,8 +3,8 @@
 # Google Code Jam 2015 World Finals - Problem D. Taking Over The World
 # https://code.google.com/codejam/contest/5224486/dashboard#s=p3
 #
-# Time:  O(?)
-# Space: O(?)
+# Time:  O(K * N * M^2)
+# Space: O(N^2)
 #
 
 from collections import deque
@@ -20,7 +20,8 @@ def add_edge(i, j, c, adj):
     adj[i].append([j, c, len(adj[j])])
     adj[j].append([i, 0, len(adj[i]) - 1])
 
-
+# Time:  O(MlogN)
+# Space: O(N)
 def dijkstra(guard, A, s):
     dst = [float("inf")] * len(A)
     dst[s] = 0
@@ -70,6 +71,8 @@ def augment(S, T, v, f, lev, adj, done):
     return 0
 
 
+# Time:  O(N * M^2)
+# Space: O(N)
 def max_flow(V, S, T, adj):
     f, t = 0, 0
     lev = [-1] * V
@@ -129,7 +132,7 @@ def taking_over_the_world():
             for v in xrange(N):
                 if mc[vid(v, False)] and  not mc[vid(v, True)]:
                     guard[v] = True
-                    K -= 1
+                    K -= 1  # At most K loops
         else:
             break
 
