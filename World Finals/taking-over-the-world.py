@@ -110,8 +110,7 @@ def taking_over_the_world():
         V, S, T = N * 2, vid(0, False), vid(N - 1, False)
         adj = [[] for _ in xrange(V)]
         for v in xrange(N):
-            add_edge(vid(v, False), vid(v, True), \
-                     GUARD if guard[v] else 1, adj)
+            add_edge(vid(v, False), vid(v, True), GUARD if guard[v] else 1, adj)
 
         ds, dt = dijkstra(guard, N, A, 0), dijkstra(guard, N, A, N - 1);
         for u in xrange(N):
