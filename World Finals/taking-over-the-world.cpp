@@ -147,9 +147,7 @@ vector<bool> min_cut(const int V, const int S,
 }
 
 int taking_over_the_world() {
-    int N, M, K;
-    cin >> N >> M >> K;
-
+    int N, M, K; cin >> N >> M >> K;
     vector<vector<int>> A(N, vector<int>(N));
     for (int i = 0; i < M; ++i) {
         int u, v;
