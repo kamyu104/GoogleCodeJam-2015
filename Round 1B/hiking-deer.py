@@ -23,7 +23,7 @@ def hiking_deer():
     encounters = current
     # At most 2H times to find min encounters.
     # undertake <= H, overtake <= H,
-    # current = undertak + overtack <= 2H
+    # current = undertake + overtake <= 2H
     while current <= hikers*2:
         t, d, circle_t = heapq.heappop(heap)
         current -= d
