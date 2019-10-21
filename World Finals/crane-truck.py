@@ -107,7 +107,7 @@ def simulate(deltas):
                     curr += rep*delta.move() + CIRCULAR_SIZE
                 else:
                     assert(False)
-                print curr, rep
+                #print curr, rep
                 result += rep*delta.count()
     return result
 
