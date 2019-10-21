@@ -19,26 +19,29 @@ def lcm(a, b):
 
 class Delta(object):
     def __init__(self, instruction):
+        def get_delta():
+            dq = deque([0])
+            for c in instruction:
+                if c == 'u':
+                    dq[self.__end-self.__base] = (dq[self.__end-self.__base]-1)%MOD
+                elif c == 'd':
+                    dq[self.__end-self.__base] = (dq[self.__end-self.__base]+1)%MOD
+                elif c == 'b':
+                    self.__count += 1
+                    if self.__end == self.__base:
+                        dq.appendleft(0)
+                        self.__base -= 1
+                    self.__end -= 1
+                elif c == 'f':
+                    self.__count += 1
+                    if self.__end-self.__base+1 == len(dq):
+                        dq.append(0)
+                    self.__end += 1
+            return dq
+
         self.__instruction = instruction
         self.__count, self.__base, self.__end = 0, 0, 0
-        dq = deque([0])
-        for c in instruction:
-            if c == 'u':
-                dq[self.__end-self.__base] = (dq[self.__end-self.__base]-1)%MOD
-            elif c == 'd':
-                dq[self.__end-self.__base] = (dq[self.__end-self.__base]+1)%MOD
-            elif c == 'b':
-                self.__count += 1
-                if self.__end == self.__base:
-                    dq.appendleft(0)
-                    self.__base -= 1
-                self.__end -= 1
-            elif c == 'f':
-                self.__count += 1
-                if self.__end-self.__base+1 == len(dq):
-                    dq.append(0)
-                self.__end += 1
-        self.__values = list(dq)
+        self.__values = list(get_delta())
 
     def left_len(self):
         return -self.__base
