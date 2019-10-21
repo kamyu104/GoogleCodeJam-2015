@@ -58,6 +58,8 @@ def simulate(deltas):
     curr, non_period_area = left, [0]*(left+1+right)
     for is_loop, delta in deltas:
         while True:
+            if 0 <= curr < len(non_period_area):
+                is_entered_non_period = True
             start = curr+delta.shift
             for i, v in enumerate(islice(delta.values,
                                          max(0, -start),
@@ -69,15 +71,16 @@ def simulate(deltas):
             if not is_loop or \
                (0 <= curr < len(non_period_area) and non_period_area[curr] == 0):
                 break
-            if not (0 <= curr < len(non_period_area)):
+            if is_entered_non_period and not (0 <= curr < len(non_period_area)):
+                is_entered_non_period = False
                 assert(delta.move != 0)
                 if delta.move > 0:
-                    #assert(curr > 0)
+                    assert(curr >= len(non_period_area))
                     target = -(len(delta.values)+delta.shift-1) + CIRCULAR_SIZE
                     rep = (target-curr-1)//delta.move+1
                     curr += rep*delta.move - CIRCULAR_SIZE
                 else:
-                    #assert(curr < 0)
+                    assert(curr < 0)
                     target = len(non_period_area)-delta.shift - CIRCULAR_SIZE
                     rep = -(target-curr-1)//-(delta.move)+1
                     curr += rep*delta.move + CIRCULAR_SIZE
