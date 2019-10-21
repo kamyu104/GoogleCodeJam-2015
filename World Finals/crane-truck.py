@@ -3,7 +3,7 @@
 # Google Code Jam 2015 World Finals - Problem F. Crane Truck
 # https://code.google.com/codejam/contest/5224486/dashboard#s=p5
 #
-# Time:  O(N^2), pass in PyPy2 but Python2
+# Time:  O(N^2), incorrect in PyPy2 and TLE
 # Space: O(N^2)
 #
 
@@ -71,8 +71,8 @@ def simulate(deltas):
             period = lcm(period, len(delta))
             left += period
             right += period
-    zero_position, non_period_area = left, [0]*(left+1+right)
-    result, curr = 0, zero_position
+    curr, non_period_area = left, [0]*(left+1+right)
+    result = 0
     for is_loop, delta in deltas:
         while True:
             for i, v in enumerate(delta.values()):
