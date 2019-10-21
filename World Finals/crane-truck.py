@@ -79,7 +79,7 @@ def simulate(deltas):
             right += period
     zero_position, non_period_area = left, [0]*(left+1+right)
     #print zero_position, len(non_period_area), period
-    result, curr, period = 0, zero_position, 1
+    result, curr = 0, zero_position
     for is_loop, delta in deltas:
         if is_loop:
             period = lcm(period, len(delta))
@@ -92,8 +92,18 @@ def simulate(deltas):
             if not is_loop or non_period_area[curr] == 0:
                 break
             if not (0 <= curr < len(non_period_area)):
-                # TODO, get next curr by period, result += rep*delta.move_count()
-                assert(False)
+                rep = 0
+                if delta.move_len() > 0:
+                    target = CIRCULAR_SIZE-delta.right_len()
+                    rep = (target-curr-1)//delta.move_len()+1
+                    curr += rep*delta.move_len() - CIRCULAR_SIZE
+                elif delta.move_len() < 0:
+                    target = -CIRCULAR_SIZE+len(non_period_area)+delta.left_len()
+                    rep = (curr-target-1)//delta.move_len()+1
+                    curr += rep*delta.move_len() + CIRCULAR_SIZE
+                else:
+                    assert(False)
+                result += rep*delta.move_count()
     return result
 
 def crane_truck():
