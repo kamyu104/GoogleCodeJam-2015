@@ -3,7 +3,7 @@
 # Google Code Jam 2015 World Finals - Problem F. Crane Truck
 # https://code.google.com/codejam/contest/5224486/dashboard#s=p5
 #
-# Time:  O(N^2), pass in C++ but PyPy2 (~11 minutes)
+# Time:  O(N^2), pass in C++ but PyPy2 (~10 minutes)
 # Space: O(N^2)
 #
 
@@ -49,7 +49,7 @@ class Delta(object):
     def __init__(self, instruction):
         def get_delta():
             dq = deque([0])
-            for c in instruction:
+            for c in instruction:  # extend delta window
                 if c == 'u':
                     dq[self.shift-self.left] = (dq[self.shift-self.left]-1)%MOD
                 elif c == 'd':
@@ -68,12 +68,12 @@ class Delta(object):
             return dq
 
         self.count, self.left, self.shift = 0, 0, 0
-        self.values = list(get_delta())
+        self.values = get_delta()
 
 def simulate(deltas):
     result = 0
     period, left, right = 1, 0, 0
-    for is_loop, delta in deltas:
+    for is_loop, delta in deltas:  # extend non-periodic area
         if not is_loop:
             left += -delta.left
             right += len(delta.values)+delta.left-1
@@ -101,7 +101,7 @@ def simulate(deltas):
                (0 <= curr < len(non_periodic_area) and non_periodic_area[curr] == 0):  # stop looping
                 break
             if has_visited_non_periodic_area and \
-               not (0 <= curr < len(non_periodic_area)):  # periodic area
+               not (0 <= curr < len(non_periodic_area)):  # pass through periodic area
                 has_visited_non_periodic_area = False
                 if delta.shift > 0:
                     assert(curr >= len(non_periodic_area))
