@@ -24,23 +24,23 @@ class Delta(object):
             dq = deque([0])
             for c in instruction:
                 if c == 'u':
-                    dq[self.move-self.shift] = (dq[self.move-self.shift]-1)%MOD
+                    dq[self.shift-self.left] = (dq[self.shift-self.left]-1)%MOD
                 elif c == 'd':
-                    dq[self.move-self.shift] = (dq[self.move-self.shift]+1)%MOD
+                    dq[self.shift-self.left] = (dq[self.shift-self.left]+1)%MOD
                 elif c == 'b':
                     self.count += 1
-                    if self.move == self.shift:
+                    if self.shift == self.left:
                         dq.appendleft(0)
-                        self.shift -= 1
-                    self.move -= 1
+                        self.left -= 1
+                    self.shift -= 1
                 elif c == 'f':
                     self.count += 1
-                    if self.move-self.shift+1 == len(dq):
+                    if self.shift-self.left+1 == len(dq):
                         dq.append(0)
-                    self.move += 1
+                    self.shift += 1
             return dq
 
-        self.count, self.shift, self.move = 0, 0, 0
+        self.count, self.left, self.shift = 0, 0, 0
         self.values = list(get_delta())
 
 def simulate(deltas):
@@ -48,8 +48,8 @@ def simulate(deltas):
     period, left, right = 1, 0, 0
     for is_loop, delta in deltas:
         if not is_loop:
-            left += -delta.shift
-            right += len(delta.values)+delta.shift-1
+            left += -delta.left
+            right += len(delta.values)+delta.left-1
         else:
             period = lcm(period, len(delta.values))
             left += period
@@ -60,13 +60,13 @@ def simulate(deltas):
         while True:
             if 0 <= curr < len(non_periodic_area):
                 has_visited_non_periodic_area = True
-            start = curr+delta.shift
+            start = curr+delta.left
             for i, v in enumerate(islice(delta.values,
                                          max(0, -start),
                                          min(len(delta.values), len(non_periodic_area)-start)),
                                   start+max(0, -start)):
                 non_periodic_area[i] = (non_periodic_area[i]+v)%MOD
-            curr += delta.move
+            curr += delta.shift
             result += delta.count
             if not is_loop or \
                (0 <= curr < len(non_periodic_area) and non_periodic_area[curr] == 0):  # stop looping
@@ -74,16 +74,16 @@ def simulate(deltas):
             if has_visited_non_periodic_area and \
                not (0 <= curr < len(non_periodic_area)):  # periodic area
                 has_visited_non_periodic_area = False
-                if delta.move > 0:
+                if delta.shift > 0:
                     assert(curr >= len(non_periodic_area))
-                    target = -(len(delta.values)+delta.shift-1) + CIRCLE_SIZE
-                    rep = (target-curr-1)//delta.move+1
-                    curr += rep*delta.move - CIRCLE_SIZE
+                    target = -(len(delta.values)+delta.left-1) + CIRCLE_SIZE
+                    rep = (target-curr-1)//delta.shift+1
+                    curr += rep*delta.shift - CIRCLE_SIZE
                 else:
                     assert(curr < 0)
-                    target = len(non_periodic_area)-delta.shift - CIRCLE_SIZE
-                    rep = -(target-curr-1)//-(delta.move)+1
-                    curr += rep*delta.move + CIRCLE_SIZE
+                    target = len(non_periodic_area)-delta.left - CIRCLE_SIZE
+                    rep = -(target-curr-1)//-(delta.shift)+1
+                    curr += rep*delta.shift + CIRCLE_SIZE
                 result += rep*delta.count
     return result
 
