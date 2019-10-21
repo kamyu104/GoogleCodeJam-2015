@@ -49,7 +49,8 @@ class Delta(object):
     def __init__(self, instruction):
         def get_delta():
             dq = deque([0])
-            for c in instruction:  # extend delta window
+            # extend delta window
+            for c in instruction:
                 if c == 'u':
                     dq[self.shift-self.left] = (dq[self.shift-self.left]-1)%MOD
                 elif c == 'd':
@@ -65,6 +66,16 @@ class Delta(object):
                     if self.shift-self.left+1 == len(dq):
                         dq.append(0)
                     self.shift += 1
+            # shrink delta window
+            while self.left < min(0, self.shift):
+                if dq[0] != 0:
+                    break
+                self.left += 1
+                dq.popleft()
+            while len(dq)+self.left-1 > max(0, self.shift):
+                if dq[-1] != 0:
+                    break
+                dq.pop()
             return dq
 
         self.count, self.left, self.shift = 0, 0, 0
