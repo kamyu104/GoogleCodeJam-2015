@@ -106,7 +106,7 @@ def simulate(deltas):
                     curr += rep*delta.move() - CIRCULAR_SIZE
                 elif delta.move() < 0:
                     target = -CIRCULAR_SIZE+len(non_period_area)+delta.left_len()
-                    rep = (curr-target-1)//delta.move()+1
+                    rep = -(target-curr-1)//-(delta.move())+1
                     curr += rep*delta.move() + CIRCULAR_SIZE
                 else:
                     assert(False)
