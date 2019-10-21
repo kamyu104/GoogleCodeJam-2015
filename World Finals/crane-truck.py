@@ -20,7 +20,7 @@ def lcm(a, b):
 class Delta(object):
     def __init__(self, instruction):
         self.__instruction = instruction
-        self.__move_count, self.__base, self.__start, self.__end = 0, 0, 0, 0
+        self.__move_count, self.__base, self.__end = 0, 0, 0
         dq = deque([0])
         for c in instruction:
             if c == 'u':
@@ -41,16 +41,16 @@ class Delta(object):
         self.__values = list(dq)
 
     def left_len(self):
-        return self.__start
+        return -self.__base
 
     def right_len(self):
-        return len(self.__values)-self.__start-1
+        return len(self.__values)+self.__base-1
 
     def values(self):
         return self.__values
 
     def move_len(self):
-        return self.__end-self.__start
+        return self.__end
 
     def move_count(self):
         return self.__move_count
