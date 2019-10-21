@@ -54,7 +54,6 @@ def simulate(deltas):
             period = lcm(period, len(delta.values))
             left += period
             right += period
-    # left, right = 1, BOUND, BOUND
     curr, non_period_area = left, [0]*(left+1+right)
     for is_loop, delta in deltas:
         has_visited_non_period_area = False
