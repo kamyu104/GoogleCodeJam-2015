@@ -80,9 +80,9 @@ def simulate(deltas):
         else:
             period = lcm(period, len(delta.values))
             if delta.shift < 0:
-                left += period
+                left += (period-1)//-delta.shift*-delta.shift
             elif delta.shift > 0:
-                right += period
+                right += (period-1)//delta.shift*delta.shift
     curr, non_periodic_area = left, [0]*(left+1+right)
     for is_loop, delta in deltas:
         has_visited_non_periodic_area = False
