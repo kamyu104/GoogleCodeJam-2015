@@ -8,6 +8,7 @@
 #
 
 from collections import deque
+from itertools import islice
 
 def lcm(a, b):
     def gcd(a, b):  # Time: O((logn)^2)
@@ -23,78 +24,64 @@ class Delta(object):
             dq = deque([0])
             for c in instruction:
                 if c == 'u':
-                    dq[self.__end-self.__base] = (dq[self.__end-self.__base]-1)%MOD
+                    dq[self.move-self.shift] = (dq[self.move-self.shift]-1)%MOD
                 elif c == 'd':
-                    dq[self.__end-self.__base] = (dq[self.__end-self.__base]+1)%MOD
+                    dq[self.move-self.shift] = (dq[self.move-self.shift]+1)%MOD
                 elif c == 'b':
-                    self.__count += 1
-                    if self.__end == self.__base:
+                    self.count += 1
+                    if self.move == self.shift:
                         dq.appendleft(0)
-                        self.__base -= 1
-                    self.__end -= 1
+                        self.shift -= 1
+                    self.move -= 1
                 elif c == 'f':
-                    self.__count += 1
-                    if self.__end-self.__base+1 == len(dq):
+                    self.count += 1
+                    if self.move-self.shift+1 == len(dq):
                         dq.append(0)
-                    self.__end += 1
+                    self.move += 1
             return dq
 
-        self.__instruction = instruction
-        self.__count, self.__base, self.__end = 0, 0, 0
-        self.__values = list(get_delta())
-
-    def left_len(self):
-        return -self.__base
-
-    def right_len(self):
-        return len(self.__values)+self.__base-1
-
-    def values(self):
-        return self.__values
-
-    def move(self):
-        return self.__end
-
-    def count(self):
-        return self.__count
-
-    def __len__(self):
-        return len(self.__values)
+        self.count, self.shift, self.move = 0, 0, 0
+        self.values = list(get_delta())
 
 def simulate(deltas):
+    result = 0
     period, left, right = 1, 0, 0
     for is_loop, delta in deltas:
         if not is_loop:
-            left += delta.left_len()
-            right += delta.right_len()
+            left += -delta.shift
+            right += len(delta.values)+delta.shift-1
         else:
-            period = lcm(period, len(delta))
+            period = lcm(period, len(delta.values))
             left += period
             right += period
+    # left, right = 1, BOUND, BOUND
     curr, non_period_area = left, [0]*(left+1+right)
-    result = 0
     for is_loop, delta in deltas:
         while True:
-            for i, v in enumerate(delta.values()):
-                if 0 <= curr-delta.left_len()+i < len(non_period_area):
-                    non_period_area[curr-delta.left_len()+i] = (non_period_area[curr-delta.left_len()+i]+v)%MOD
-            curr += delta.move()
-            result += delta.count()
+            start = curr+delta.shift
+            for i, v in enumerate(islice(delta.values,
+                                         max(0, -start),
+                                         min(len(delta.values), len(non_period_area)-start)),
+                                  start+max(0, -start)):
+                non_period_area[i] = (non_period_area[i]+v)%MOD
+            curr += delta.move
+            result += delta.count
             if not is_loop or \
                (0 <= curr < len(non_period_area) and non_period_area[curr] == 0):
                 break
             if not (0 <= curr < len(non_period_area)):
-                if delta.move() > 0:
-                    target = CIRCULAR_SIZE-delta.right_len()
-                    rep = (target-curr-1)//delta.move()+1
-                    curr += rep*delta.move() - CIRCULAR_SIZE
-                elif delta.move() < 0:
-                    target = -CIRCULAR_SIZE+len(non_period_area)+delta.left_len()
-                    rep = -(target-curr-1)//-(delta.move())+1
-                    curr += rep*delta.move() + CIRCULAR_SIZE
+                assert(delta.move != 0)
+                if delta.move > 0:
+                    #assert(curr > 0)
+                    target = -(len(delta.values)+delta.shift-1) + CIRCULAR_SIZE
+                    rep = (target-curr-1)//delta.move+1
+                    curr += rep*delta.move - CIRCULAR_SIZE
                 else:
-                    assert(False)
-                result += rep*delta.count()
+                    #assert(curr < 0)
+                    target = len(non_period_area)-delta.shift - CIRCULAR_SIZE
+                    rep = -(target-curr-1)//-(delta.move)+1
+                    curr += rep*delta.move + CIRCULAR_SIZE
+                result += rep*delta.count
     return result
 
 def crane_truck():
@@ -113,5 +100,7 @@ def crane_truck():
 
 MOD = 256
 CIRCULAR_SIZE = 2**40
+# N = 2000
+# BOUND = 2*(4*N**2+9*N)+5
 for case in xrange(input()):
     print "Case #%d: %s" % (case+1, crane_truck())
