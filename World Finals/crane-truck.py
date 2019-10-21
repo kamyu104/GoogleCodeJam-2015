@@ -3,7 +3,7 @@
 # Google Code Jam 2015 World Finals - Problem F. Crane Truck
 # https://code.google.com/codejam/contest/5224486/dashboard#s=p5
 #
-# Time:  O(N^2), correct but TLE for PyPy2 (~16 minutes) 
+# Time:  O(N^2), correct but TLE for PyPy2 (~25 minutes) 
 # Space: O(N^2)
 #
 
