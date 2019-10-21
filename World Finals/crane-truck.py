@@ -59,13 +59,14 @@ class Delta(object):
         return len(self.__values)
 
     def __repr__(self):
-        return "{}: [{}], move: {}, left_len: {}, right_len: {}, total: {}".format(
+        return "{}: [{}], move: {}, left_len: {}, right_len: {}, total: {}, move_count: {}".format(
             self.__instruction,
             ", ".join(map(str, self.__values)),
             self.move_len(),
             self.left_len(),
             self.right_len(),
-            len(self))
+            len(self),
+            self.move_count())
 
 def simulate(deltas):
     period, left, right = 1, 0, 0
@@ -89,9 +90,12 @@ def simulate(deltas):
                     non_period_area[curr-delta.left_len()+i] = (non_period_area[curr-delta.left_len()+i]+v)%MOD
             curr += delta.move_len()
             result += delta.move_count()
-            if not is_loop or non_period_area[curr] == 0:
+            if not is_loop or \
+               (0 <= curr < len(non_period_area) and non_period_area[curr] == 0):
+                #print is_loop, curr, len(non_period_area)
                 break
             if not (0 <= curr < len(non_period_area)):
+                #assert(False)
                 rep = 0
                 if delta.move_len() > 0:
                     target = CIRCULAR_SIZE-delta.right_len()
