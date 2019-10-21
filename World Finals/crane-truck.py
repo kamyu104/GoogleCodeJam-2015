@@ -20,7 +20,7 @@ def lcm(a, b):
 class Delta(object):
     def __init__(self, instruction):
         self.__instruction = instruction
-        self.__move_count, self.__base, self.__end = 0, 0, 0
+        self.__count, self.__base, self.__end = 0, 0, 0
         dq = deque([0])
         for c in instruction:
             if c == 'u':
@@ -28,13 +28,13 @@ class Delta(object):
             elif c == 'd':
                 dq[self.__end-self.__base] = (dq[self.__end-self.__base]+1)%MOD
             elif c == 'b':
-                self.__move_count += 1
+                self.__count += 1
                 if self.__end == self.__base:
                     dq.appendleft(0)
                     self.__base -= 1
                 self.__end -= 1
             elif c == 'f':
-                self.__move_count += 1
+                self.__count += 1
                 if self.__end-self.__base+1 == len(dq):
                     dq.append(0)
                 self.__end += 1
@@ -49,24 +49,24 @@ class Delta(object):
     def values(self):
         return self.__values
 
-    def move_len(self):
+    def move(self):
         return self.__end
 
-    def move_count(self):
-        return self.__move_count
+    def count(self):
+        return self.__count
 
     def __len__(self):
         return len(self.__values)
 
     def __repr__(self):
-        return "{}: [{}], move: {}, left_len: {}, right_len: {}, total: {}, move_count: {}".format(
+        return "{}: [{}], move: {}, left_len: {}, right_len: {}, total: {}, count: {}".format(
             self.__instruction,
             ", ".join(map(str, self.__values)),
-            self.move_len(),
+            self.move(),
             self.left_len(),
             self.right_len(),
             len(self),
-            self.move_count())
+            self.count())
 
 def simulate(deltas):
     period, left, right = 1, 0, 0
@@ -87,8 +87,8 @@ def simulate(deltas):
             for i, v in enumerate(delta.values()):
                 if 0 <= curr-delta.left_len()+i < len(non_period_area):
                     non_period_area[curr-delta.left_len()+i] = (non_period_area[curr-delta.left_len()+i]+v)%MOD
-            curr += delta.move_len()
-            result += delta.move_count()
+            curr += delta.move()
+            result += delta.count()
             if not is_loop or \
                (0 <= curr < len(non_period_area) and non_period_area[curr] == 0):
                 #print is_loop, curr, len(non_period_area)
@@ -97,17 +97,18 @@ def simulate(deltas):
             if not (0 <= curr < len(non_period_area)):
                 #assert(False)
                 rep = 0
-                if delta.move_len() > 0:
+                if delta.move() > 0:
                     target = CIRCULAR_SIZE-delta.right_len()
-                    rep = (target-curr-1)//delta.move_len()+1
-                    curr += rep*delta.move_len() - CIRCULAR_SIZE
-                elif delta.move_len() < 0:
+                    rep = (target-curr-1)//delta.move()+1
+                    curr += rep*delta.move() - CIRCULAR_SIZE
+                elif delta.move() < 0:
                     target = -CIRCULAR_SIZE+len(non_period_area)+delta.left_len()
-                    rep = (curr-target-1)//delta.move_len()+1
-                    curr += rep*delta.move_len() + CIRCULAR_SIZE
+                    rep = (curr-target-1)//delta.move()+1
+                    curr += rep*delta.move() + CIRCULAR_SIZE
                 else:
                     assert(False)
-                result += rep*delta.move_count()
+                print curr, rep
+                result += rep*delta.count()
     return result
 
 def crane_truck():
