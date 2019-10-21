@@ -3,7 +3,7 @@
 # Google Code Jam 2015 World Finals - Problem F. Crane Truck
 # https://code.google.com/codejam/contest/5224486/dashboard#s=p5
 #
-# Time:  O(N^2), pass in C++ but PyPy2 (~25 minutes) 
+# Time:  O(N^2), pass in C++ but PyPy2 (~11 minutes)
 # Space: O(N^2)
 #
 
@@ -30,9 +30,9 @@
 #  - A + 256 * (2*B+1)*(A + 2*B+1) + C + 256 * (A + (2*B+1) + C + (2*B+1)*(2*D+1)) + E
 #    => O(256 * N^2)
 # [Space]
-#  - 2 * (A + (2*B+1) + C + (2*B+1)*(2*D+1) + E) + 1 <= 2 * (N + (2*N+1) + N + (2*N+1)^2 + N) + 1
-#    = 2 * (4*N^2 + 9*N) + 5 = 32036005
-#    => O(8 * N^2)
+#  - 1 + (A + (2*B+1) + C + (2*B+1)*(2*D+1) + E) <= 1 + (N + (2*N+1) + N + (2*N+1)^2 + N)
+#    = 4*N^2 + 9*N + 2 = 16018002
+#    => O(4 * N^2)
 
 from collections import deque
 from itertools import islice
@@ -79,8 +79,10 @@ def simulate(deltas):
             right += len(delta.values)+delta.left-1
         else:
             period = lcm(period, len(delta.values))
-            left += period
-            right += period
+            if delta.shift < 0:
+                left += period
+            elif delta.shift > 0:
+                right += period
     curr, non_periodic_area = left, [0]*(left+1+right)
     for is_loop, delta in deltas:
         has_visited_non_periodic_area = False
