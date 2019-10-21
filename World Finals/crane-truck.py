@@ -83,8 +83,6 @@ def simulate(deltas):
     #print zero_position, len(non_period_area), period
     result, curr = 0, zero_position
     for is_loop, delta in deltas:
-        if is_loop:
-            period = lcm(period, len(delta))
         while True:
             for i, v in enumerate(delta.values()):
                 if 0 <= curr-delta.left_len()+i < len(non_period_area):
@@ -94,6 +92,7 @@ def simulate(deltas):
             if not is_loop or \
                (0 <= curr < len(non_period_area) and non_period_area[curr] == 0):
                 #print is_loop, curr, len(non_period_area)
+                #print non_period_area
                 break
             if not (0 <= curr < len(non_period_area)):
                 #assert(False)
