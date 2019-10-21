@@ -57,9 +57,10 @@ def simulate(deltas):
     # left, right = 1, BOUND, BOUND
     curr, non_period_area = left, [0]*(left+1+right)
     for is_loop, delta in deltas:
+        has_visited_non_period_area = False
         while True:
             if 0 <= curr < len(non_period_area):
-                is_entered_non_period = True
+                has_visited_non_period_area = True
             start = curr+delta.shift
             for i, v in enumerate(islice(delta.values,
                                          max(0, -start),
@@ -71,8 +72,8 @@ def simulate(deltas):
             if not is_loop or \
                (0 <= curr < len(non_period_area) and non_period_area[curr] == 0):
                 break
-            if is_entered_non_period and not (0 <= curr < len(non_period_area)):
-                is_entered_non_period = False
+            if has_visited_non_period_area and not (0 <= curr < len(non_period_area)):
+                has_visited_non_period_area = False
                 assert(delta.move != 0)
                 if delta.move > 0:
                     assert(curr >= len(non_period_area))
@@ -103,7 +104,5 @@ def crane_truck():
 
 MOD = 256
 CIRCULAR_SIZE = 2**40
-# N = 2000
-# BOUND = 2*(4*N**2+9*N)+5
 for case in xrange(input()):
     print "Case #%d: %s" % (case+1, crane_truck())
