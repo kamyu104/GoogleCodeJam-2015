@@ -78,6 +78,7 @@ def simulate(deltas):
             period = lcm(period, len(delta))
             left += period
             right += period
+    #left = right = 16018002
     zero_position, non_period_area = left, [0]*(left+1+right)
     #print zero_position, len(non_period_area), period
     result, curr = 0, zero_position
