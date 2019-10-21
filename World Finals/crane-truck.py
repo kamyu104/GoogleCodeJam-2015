@@ -91,7 +91,7 @@ def simulate(deltas):
             result += delta.move_count()
             if not is_loop or non_period_area[curr] == 0:
                 break
-            if not (0 <= curr-delta.left_len()+i < len(non_period_area)):
+            if not (0 <= curr < len(non_period_area)):
                 # TODO, get next curr by period, result += rep*delta.move_count()
                 assert(False)
     return result
