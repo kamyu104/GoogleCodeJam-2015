@@ -3,7 +3,7 @@
 # Google Code Jam 2015 World Finals - Problem F. Crane Truck
 # https://code.google.com/codejam/contest/5224486/dashboard#s=p5
 #
-# Time:  O(N^2)
+# Time:  O(N^2), pass in PyPy2 but Python2
 # Space: O(N^2)
 #
 
@@ -61,16 +61,6 @@ class Delta(object):
     def __len__(self):
         return len(self.__values)
 
-    def __repr__(self):
-        return "{}: [{}], move: {}, left_len: {}, right_len: {}, total: {}, count: {}".format(
-            self.__instruction,
-            ", ".join(map(str, self.__values)),
-            self.move(),
-            self.left_len(),
-            self.right_len(),
-            len(self),
-            self.count())
-
 def simulate(deltas):
     period, left, right = 1, 0, 0
     for is_loop, delta in deltas:
@@ -81,9 +71,7 @@ def simulate(deltas):
             period = lcm(period, len(delta))
             left += period
             right += period
-    #left = right = 16018002
     zero_position, non_period_area = left, [0]*(left+1+right)
-    #print zero_position, len(non_period_area), period
     result, curr = 0, zero_position
     for is_loop, delta in deltas:
         while True:
@@ -94,12 +82,8 @@ def simulate(deltas):
             result += delta.count()
             if not is_loop or \
                (0 <= curr < len(non_period_area) and non_period_area[curr] == 0):
-                #print is_loop, curr, len(non_period_area)
-                #print non_period_area
                 break
             if not (0 <= curr < len(non_period_area)):
-                #assert(False)
-                rep = 0
                 if delta.move() > 0:
                     target = CIRCULAR_SIZE-delta.right_len()
                     rep = (target-curr-1)//delta.move()+1
@@ -110,7 +94,6 @@ def simulate(deltas):
                     curr += rep*delta.move() + CIRCULAR_SIZE
                 else:
                     assert(False)
-                #print curr, rep
                 result += rep*delta.count()
     return result
 
@@ -126,7 +109,6 @@ def crane_truck():
         i, j = j+1, P.find('(', j+1)
     if i != len(P):
         deltas.append((False, Delta(P[i:])))
-    #print deltas
     return simulate(deltas)
 
 MOD = 256
