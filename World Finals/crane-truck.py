@@ -7,31 +7,32 @@
 # Space: O(N^2)
 #
 
-# N = 2000
-# A: [0-2000, 0+2000], [] is the red area modified A
-# B: ****[-2000-4001, 2000+4001]****
+# [Analysis]
+#  - N = 2000
+#  - A: [0-2000, 0+2000], [] is the red area modified A
+#  - B: ****[-2000-4001, 2000+4001]****
 #    => ****(-6001, 6001)****,
 #    * is repeated area modified by B with period pb = O(2B+1) at most 4001,
 #    each circle B updates (-6001, 6001) from new computed start point,
 #    run at most 4001 * 256 full circles to reach at initial point and stop
 #    (increase every point by 256 in full non-periodic area)
-# C: ****[-6001-2000, 6001+2000]****,
+#  - C: ****[-6001-2000, 6001+2000]****,
 #    => ****[-8001, 8001]****, [] is the green area modified by C
-# D: @@@@[-8001-(4001)^2, 8001+(4001)^2]@@@@,
+#  - D: @@@@[-8001-(4001)^2, 8001+(4001)^2]@@@@,
 #    => @@@@[-16016002, 16016002]@@@@
 #    @ is repeated area with period pd = lcm(O(2B+1), O(2D+1)) at most 4001^2,
 #    each circle D updates {-16016002, 16016002} from new computed start point,
 #    run at most 4001^2 * 256 full circles to reach at initial point and stop,
 #    (increase every point by 256 in full non-periodic area)
-# E: @@@@[-16016002-2000, 16016002+2000]@@@@
+#  - E: @@@@[-16016002-2000, 16016002+2000]@@@@
 #    => @@@@[-16018002, 16018002]@@@@, [] is the last area modified by E
 # [Time]
-# - A + 256*(2*B+1)*(A + 2*B+1) + C + 256 * (A + (2*B+1) + C + (2B+1)(2D+1)) + E
-#   => O(256 * N^2)
+#  - A + 256*(2*B+1)*(A + 2*B+1) + C + 256 * (A + (2*B+1) + C + (2B+1)(2D+1)) + E
+#    => O(256 * N^2)
 # [Space]
-# - 2(A + (2*B+1) + C + (2B+1)(2D+1) + E) + 1 <= 2(N + (2N+1) + N + (2N+1)^2 + N) + 1
-#   = 2(4N^2+9N)+5 = 32036005
-#   => O(8 * N^2)
+#  - 2(A + (2*B+1) + C + (2B+1)(2D+1) + E) + 1 <= 2(N + (2N+1) + N + (2N+1)^2 + N) + 1
+#    = 2(4N^2+9N)+5 = 32036005
+#    => O(8 * N^2)
 
 from collections import deque
 from itertools import islice
