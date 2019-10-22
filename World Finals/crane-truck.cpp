@@ -1,4 +1,4 @@
-// Copyright (c) 2019 kamyu. ALL rights reserved.
+// Copyright (c) 2019 kamyu. All rights reserved.
 
 /*
  * Google Code Jam 2015 World Finals - Problem F. Crane Truck
