@@ -55,7 +55,7 @@ using std::pair;
 using std::min;
 using std::max;
 
-const int64_t CIRCLE_SIZE = 1LL << 40;
+const auto CIRCLE_SIZE = 1LL << 40;
 
 uint64_t gcd(uint64_t a, uint64_t b) {  // Time: O((logn)^2)
     while (b != 0) {
@@ -85,7 +85,7 @@ struct Delta {
  private:
     vector<pair<int64_t, uint8_t>> get_delta(const string& instructions) {
         deque<uint8_t> dq = {0};
-        int64_t base = 0LL;
+        auto base = 0LL;
         // extend delta window
         for (const auto& c : instructions) {
             if (c == 'u') {
@@ -101,7 +101,7 @@ struct Delta {
                 --shift;
             } else if (c == 'f') {
                 ++count;
-                if (shift - base + 1 == dq.size()) {
+                if (shift - base + 1 == int64_t(dq.size())) {
                     dq.emplace_back(0);
                 }
                 ++shift;
@@ -137,8 +137,8 @@ struct Delta {
 };
 
 uint64_t simulate(const vector<pair<bool, Delta>>& deltas) {
-    uint64_t result = 0;
-    uint64_t period = 1ULL, left = 0ULL, right = 0ULL;
+    auto result = 0ULL;
+    auto period = 1ULL, left = 0ULL, right = 0ULL;
     for (const auto& kvp : deltas) {  // extend non-periodic area
         const auto& is_loop = kvp.first;
         const auto& delta = kvp.second;
@@ -157,35 +157,34 @@ uint64_t simulate(const vector<pair<bool, Delta>>& deltas) {
     int64_t curr = left;
     vector<uint8_t> non_periodic_area(left + 1 + right);
     for (const auto& kvp : deltas) {
-        const bool is_loop = kvp.first;
+        const auto& is_loop = kvp.first;
         const auto& delta = kvp.second;
-        bool has_visited_non_periodic_area = false;
+        auto has_visited_non_periodic_area = false;
         while (true) {
             if (!has_visited_non_periodic_area &&
-                0 <= curr && curr < non_periodic_area.size()) {
+                0 <= curr && curr < int64_t(non_periodic_area.size())) {
                 has_visited_non_periodic_area = true;
             }
-            const auto start = curr + delta.left;
             for (const auto& kvp : delta.values) {
                 if (0 <= curr + kvp.first &&
-                    curr + kvp.first < non_periodic_area.size()) {
+                    curr + kvp.first < int64_t(non_periodic_area.size())) {
                     non_periodic_area[curr + kvp.first] += kvp.second;
                 }
             }
             curr += delta.shift;
             result += delta.count;
             if (!is_loop ||
-                (0 <= curr && curr < non_periodic_area.size() &&
+                (0 <= curr && curr < int64_t(non_periodic_area.size()) &&
                  non_periodic_area[curr] == 0)) {  // stop looping
                 break;
             }
             if (has_visited_non_periodic_area &&
-                !(0 <= curr && curr < non_periodic_area.size())) {
+                !(0 <= curr && curr < int64_t(non_periodic_area.size()))) {
                 // pass through periodic area
                 has_visited_non_periodic_area = false;
                 int64_t rep = 0LL;
                 if (delta.shift > 0) {
-                    assert(curr >= non_periodic_area.size());
+                    assert(curr >= int64_t(non_periodic_area.size()));
                     const auto target = -delta.right + CIRCLE_SIZE;
                     rep = (target - curr - 1) / delta.shift + 1;
                     curr += rep * delta.shift - CIRCLE_SIZE;
