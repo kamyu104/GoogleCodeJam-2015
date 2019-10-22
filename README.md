@@ -66,4 +66,4 @@ You can relive the magic of the 2015 Code Jam World Finals by watching the [Live
 |C| [Pretty Good Proportion](https://code.google.com/codejam/contest/5224486/dashboard#s=p2)| [C++](./World%20Finals/pretty-good-proportion.cpp) [Python](./World%20Finals/pretty-good-proportion.py) | _O(NlogN)_ | _O(N)_ | Easy | |Sort|
 |D| [Taking Over The World](https://code.google.com/codejam/contest/5224486/dashboard#s=p3)| [C++](./World%20Finals/taking-over-the-world.cpp) [Python](./World%20Finals/taking-over-the-world.py) | _O(K * N * M^2)_ |  _O(N^2)_ | Hard | | Max Flow |
 |E| [Merlin QA](https://code.google.com/codejam/contest/5224486/dashboard#s=p4)| [Python](./World%20Finals/merlin-qa.py) | _O(M! * (N * M))_ | _O(N * M)_ | Medium | | |
-|F| [Crane Truck](https://code.google.com/codejam/contest/5224486/dashboard#s=p5)| [PyPy](./World%20Finals/crane-truck.py) | _O(N^2)_ | _O(N^2)_ | Very Hard | ❤️ | Simulation |
+|F| [Crane Truck](https://code.google.com/codejam/contest/5224486/dashboard#s=p5)| [C++](./World%20Finals/crane-truck.cpp) [PyPy](./World%20Finals/crane-truck.py) | _O(N^2)_ | _O(N^2)_ | Very Hard | ❤️ | Simulation |
