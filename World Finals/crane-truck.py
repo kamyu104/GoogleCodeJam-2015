@@ -121,7 +121,7 @@ def simulate(deltas):
                     curr += rep*delta.shift - CIRCLE_SIZE
                 else:
                     assert(curr < 0)
-                    target = len(non_periodic_area)-delta.left - CIRCLE_SIZE
+                    target = len(non_periodic_area)-1-delta.left - CIRCLE_SIZE
                     rep = (curr-target-1)//-(delta.shift)+1
                     curr += rep*delta.shift + CIRCLE_SIZE
                 result += rep*delta.count
