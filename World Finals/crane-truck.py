@@ -3,7 +3,7 @@
 # Google Code Jam 2015 World Finals - Problem F. Crane Truck
 # https://code.google.com/codejam/contest/5224486/dashboard#s=p5
 #
-# Time:  O(N^2), pass in C++ but PyPy2 (~10 minutes)
+# Time:  O(N^2), pass in C++ but PyPy2 (~15 minutes)
 # Space: O(N^2)
 #
 
