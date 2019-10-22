@@ -85,10 +85,10 @@ def simulate(deltas):
     result = 0
     period, left, right = 1, 0, 0
     for is_loop, delta in deltas:  # extend non-periodic area
-        if not is_loop:
+        if not is_loop or not delta.shift:
             left += -delta.left
             right += len(delta.values)+delta.left-1
-        elif delta.shift != 0:
+        else:
             period = lcm(period, len(delta.values)//abs(delta.shift)*abs(delta.shift))
             if delta.shift < 0:
                 left += period
