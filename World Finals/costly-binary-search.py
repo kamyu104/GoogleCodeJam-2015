@@ -3,10 +3,8 @@
 # Google Code Jam 2015 World Finals - Problem A. Costly Binary Search
 # https://code.google.com/codejam/contest/5224486/dashboard#s=p0
 #
-# Time:  O(NlogN)
+# Time:  O(NlogN), pass in PyPy2 within 5 minutes (TLE for Python2), and C++ within 2 minutes
 # Space: O(N)
-#
-# TLE in large input (Although it fails in Python, it could pass in C++ within 2 minutes)
 #
 
 # 1 <= N <= 10^6
