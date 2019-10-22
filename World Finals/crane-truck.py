@@ -48,8 +48,8 @@ class Delta(object):
     def __init__(self, instructions):
         def find_delta():
             dq = deque([0])
-            # extend delta window
             base = 0
+            # extend delta window
             for c in instructions:
                 if c == 'u':
                     dq[self.shift-base] = (dq[self.shift-base]-1)%MOD
