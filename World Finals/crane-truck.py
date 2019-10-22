@@ -79,7 +79,7 @@ class Delta(object):
                     break
                 dq.pop()
                 self.right -= 1
-            return [(i, v) for i, v in enumerate(dq) if v != 0]  # save sparse delta window
+            return [(i, v) for i, v in enumerate(dq, -self.left) if v != 0]  # save sparse delta window
 
         self.count, self.shift, self.left, self.right = 0, 0, 0, 0
         self.values = find_delta()
@@ -103,10 +103,9 @@ def simulate(deltas):
         while True:
             if not has_visited_non_periodic_area and 0 <= curr < len(non_periodic_area):
                 has_visited_non_periodic_area = True
-            start = curr-delta.left
             for i, v in delta.values:
-                if 0 <= start+i < len(non_periodic_area):
-                    non_periodic_area[start+i] = (non_periodic_area[start+i]+v)%MOD
+                if 0 <= curr+i < len(non_periodic_area):
+                    non_periodic_area[curr+i] = (non_periodic_area[curr+i]+v)%MOD
             curr += delta.shift
             result += delta.count
             if not is_loop or \
