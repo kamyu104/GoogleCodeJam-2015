@@ -107,9 +107,9 @@ struct Delta {
                 ++shift;
             }
         }
-        // shrink delta window
         left = -base;
         right = dq.size() - left - 1;
+        // shrink delta window
         while (left > 0) {
             if (dq[0] != 0) {
                 break;
