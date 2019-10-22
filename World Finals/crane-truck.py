@@ -88,12 +88,12 @@ def simulate(deltas):
         if not is_loop:
             left += -delta.left
             right += len(delta.values)+delta.left-1
-        else:
-            period = lcm(period, len(delta.values))
+        elif delta.shift != 0:
+            period = lcm(period, len(delta.values)//abs(delta.shift)*abs(delta.shift))
             if delta.shift < 0:
-                left += (period-1)//-delta.shift*-delta.shift
+                left += period
             elif delta.shift > 0:
-                right += (period-1)//delta.shift*delta.shift
+                right += period
     curr, non_periodic_area = left, [0]*(left+1+right)
     for is_loop, delta in deltas:
         has_visited_non_periodic_area = False
@@ -122,7 +122,7 @@ def simulate(deltas):
                 else:
                     assert(curr < 0)
                     target = len(non_periodic_area)-delta.left - CIRCLE_SIZE
-                    rep = -(target-curr-1)//-(delta.shift)+1
+                    rep = (curr-target-1)//-(delta.shift)+1
                     curr += rep*delta.shift + CIRCLE_SIZE
                 result += rep*delta.count
     return result
