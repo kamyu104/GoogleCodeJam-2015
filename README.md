@@ -61,7 +61,7 @@ You can relive the magic of the 2015 Code Jam World Finals by watching the [Live
 
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
-|A| [Costly Binary Search](https://code.google.com/codejam/contest/5224486/dashboard#s=p0)| [C++](./World%20Finals/costly-binary-search.cpp) [PyPy](./World%20Finals/costly-binary-search.py) | _O(NlogN)_ | _O(N)_ | Medium | | DP
+|A| [Costly Binary Search](https://code.google.com/codejam/contest/5224486/dashboard#s=p0)| [C++](./World%20Finals/costly-binary-search.cpp) [PyPy](./World%20Finals/costly-binary-search.py) | _O(NlogN)_ | _O(N)_ | Medium | | DP |
 |B| [Campinatorics](https://code.google.com/codejam/contest/5224486/dashboard#s=p1)| [Python](./World%20Finals/campinatorics.py) | _O(N)_ | _O(N)_ | Medium | | DP, Euler's Theorem |
 |C| [Pretty Good Proportion](https://code.google.com/codejam/contest/5224486/dashboard#s=p2)| [C++](./World%20Finals/pretty-good-proportion.cpp) [Python](./World%20Finals/pretty-good-proportion.py) | _O(NlogN)_ | _O(N)_ | Easy | |Sort|
 |D| [Taking Over The World](https://code.google.com/codejam/contest/5224486/dashboard#s=p3)| [C++](./World%20Finals/taking-over-the-world.cpp) [Python](./World%20Finals/taking-over-the-world.py) | _O(K * N * M^2)_ |  _O(N^2)_ | Hard | | Max Flow |
