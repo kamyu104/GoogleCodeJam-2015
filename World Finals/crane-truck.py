@@ -66,9 +66,9 @@ class Delta(object):
                     if self.shift-base+1 == len(dq):
                         dq.append(0)
                     self.shift += 1
-            # shrink delta window
             self.left = -base
             self.right = len(dq) - self.left - 1
+            # shrink delta window
             while self.left > 0:
                 if dq[0] != 0:
                     break
