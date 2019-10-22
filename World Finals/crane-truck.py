@@ -27,12 +27,12 @@
 #  - E: @@@@[-16016002-2000, 16016002+2000]@@@@
 #    => @@@@[-16018002, 16018002]@@@@, [] is the last area modified by E
 # [Time]
-#  - A + 256 * (2*B+1)*(A + 2*B+1) + C + 256 * (A + (2*B+1) + C + (2*B+1)*(2*D+1)) + E
+#  - A + 256 * B*(1 + A + B) + C + 256 * (1 + A + B + C + B*D) + E
 #    => O(256 * N^2)
 # [Space]
-#  - 1 + (A + (2*B+1) + C + (2*B+1)*(2*D+1) + E) <= 1 + (N + (2*N+1) + N + (2*N+1)^2 + N)
-#    = 4*N^2 + 9*N + 2 = 16018002
-#    => O(4 * N^2)
+#  - 1 + A + B + C + B*D + E <= 1 + (N + N + N + N^2 + N)
+#    = N^2 + 4*N + 1= 4008001
+#    => O(N^2)
 
 from collections import deque
 from itertools import islice
