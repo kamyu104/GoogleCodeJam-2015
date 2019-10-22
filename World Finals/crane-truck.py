@@ -98,7 +98,7 @@ def simulate(deltas):
     for is_loop, delta in deltas:
         has_visited_non_periodic_area = False
         while True:
-            if 0 <= curr < len(non_periodic_area):
+            if not has_visited_non_periodic_area and 0 <= curr < len(non_periodic_area):
                 has_visited_non_periodic_area = True
             start = curr+delta.left
             for i, v in enumerate(islice(delta.values,
