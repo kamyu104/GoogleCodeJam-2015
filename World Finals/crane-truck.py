@@ -3,7 +3,7 @@
 # Google Code Jam 2015 World Finals - Problem F. Crane Truck
 # https://code.google.com/codejam/contest/5224486/dashboard#s=p5
 #
-# Time:  O(N^2)
+# Time:  O(N^2), pass in PyPy2 but Python2
 # Space: O(N^2)
 #
 
