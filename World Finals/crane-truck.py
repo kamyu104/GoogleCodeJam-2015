@@ -3,7 +3,7 @@
 # Google Code Jam 2015 World Finals - Problem F. Crane Truck
 # https://code.google.com/codejam/contest/5224486/dashboard#s=p5
 #
-# Time:  O(N^2), correct but TLE for PyPy2 (~15 minutes)
+# Time:  O(N^2)
 # Space: O(N^2)
 #
 
@@ -35,7 +35,6 @@
 #    => O(N^2)
 
 from collections import deque
-from itertools import islice
 
 def lcm(a, b):
     def gcd(a, b):  # Time: O((logn)^2)
@@ -50,38 +49,29 @@ class Delta(object):
         def get_delta():
             dq = deque([0])
             # extend delta window
+            base = 0
             for c in instructions:
                 if c == 'u':
-                    dq[self.shift-self.left] = (dq[self.shift-self.left]-1)%MOD
+                    dq[self.shift-base] = (dq[self.shift-base]-1)%MOD
                 elif c == 'd':
-                    dq[self.shift-self.left] = (dq[self.shift-self.left]+1)%MOD
+                    dq[self.shift-base] = (dq[self.shift-base]+1)%MOD
                 elif c == 'b':
                     self.count += 1
-                    if self.shift == self.left:
+                    if self.shift == base:
                         dq.appendleft(0)
-                        self.left -= 1
+                        base -= 1
                     self.shift -= 1
                 elif c == 'f':
                     self.count += 1
-                    if self.shift-self.left+1 == len(dq):
+                    if self.shift-base+1 == len(dq):
                         dq.append(0)
                     self.shift += 1
-	        # shrink delta window
-            self.left = -self.left
+            # shrink delta window
+            self.left = -base
             self.right = len(dq)-self.left-1
-            while self.left:
-                if dq[0] != 0:
-                    break
-                self.left -= 1
-                dq.popleft()
-            while self.right:
-                if dq[-1] != 0:
-                    break
-                self.right -= 1
-                dq.pop()
-            return dq
+            return [(i, v) for i, v in enumerate(dq) if v != 0]
 
-        self.count, self.left, self.shift = 0, 0, 0
+        self.count, self.shift, self.left, self.right = 0, 0, 0, 0
         self.values = get_delta()
 
 def simulate(deltas):
@@ -104,11 +94,9 @@ def simulate(deltas):
             if not has_visited_non_periodic_area and 0 <= curr < len(non_periodic_area):
                 has_visited_non_periodic_area = True
             start = curr-delta.left
-            for i, v in enumerate(islice(delta.values,
-                                         max(0, -start),
-                                         min(len(delta.values), len(non_periodic_area)-start)),
-                                  start+max(0, -start)):
-                non_periodic_area[i] = (non_periodic_area[i]+v)%MOD
+            for i, v in delta.values:
+                if 0 <= start+i < len(non_periodic_area):
+                    non_periodic_area[start+i] = (non_periodic_area[start+i]+v)%MOD
             curr += delta.shift
             result += delta.count
             if not is_loop or \
