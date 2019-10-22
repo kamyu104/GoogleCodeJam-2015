@@ -46,7 +46,7 @@ def lcm(a, b):
 
 class Delta(object):
     def __init__(self, instructions):
-        def get_delta():
+        def find_delta():
             dq = deque([0])
             # extend delta window
             base = 0
@@ -82,7 +82,7 @@ class Delta(object):
             return [(i, v) for i, v in enumerate(dq) if v != 0]  # save sparse delta window
 
         self.count, self.shift, self.left, self.right = 0, 0, 0, 0
-        self.values = get_delta()
+        self.values = find_delta()
 
 def simulate(deltas):
     result = 0
