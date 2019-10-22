@@ -80,16 +80,18 @@ class Delta(object):
 
         self.count, self.left, self.shift = 0, 0, 0
         self.values = get_delta()
+        self.left = -self.left
+        self.right = len(self.values)-self.left-1
 
 def simulate(deltas):
     result = 0
     period, left, right = 1, 0, 0
     for is_loop, delta in deltas:  # extend non-periodic area
         if not is_loop or not delta.shift:
-            left += -delta.left
-            right += len(delta.values)+delta.left-1
+            left += delta.left
+            right += delta.right
         else:
-            period = lcm(period, len(delta.values)//abs(delta.shift)*abs(delta.shift))
+            period = lcm(period, abs(delta.shift))
             if delta.shift < 0:
                 left += period
             else:
@@ -100,7 +102,7 @@ def simulate(deltas):
         while True:
             if not has_visited_non_periodic_area and 0 <= curr < len(non_periodic_area):
                 has_visited_non_periodic_area = True
-            start = curr+delta.left
+            start = curr-delta.left
             for i, v in enumerate(islice(delta.values,
                                          max(0, -start),
                                          min(len(delta.values), len(non_periodic_area)-start)),
@@ -116,12 +118,12 @@ def simulate(deltas):
                 has_visited_non_periodic_area = False
                 if delta.shift > 0:
                     assert(curr >= len(non_periodic_area))
-                    target = -(len(delta.values)+delta.left-1) + CIRCLE_SIZE
+                    target = -delta.right + CIRCLE_SIZE
                     rep = (target-curr-1)//delta.shift+1
                     curr += rep*delta.shift - CIRCLE_SIZE
                 else:
                     assert(curr < 0)
-                    target = len(non_periodic_area)-1-delta.left - CIRCLE_SIZE
+                    target = (len(non_periodic_area)-1) + delta.left - CIRCLE_SIZE
                     rep = (curr-target-1)//-(delta.shift)+1
                     curr += rep*delta.shift + CIRCLE_SIZE
                 result += rep*delta.count
