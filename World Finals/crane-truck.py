@@ -66,10 +66,9 @@ class Delta(object):
                     if self.shift-base+1 == len(dq):
                         dq.append(0)
                     self.shift += 1
-            # shrink delta window
             self.left = -base
             self.right = len(dq)-self.left-1
-            return [(i, v) for i, v in enumerate(dq) if v != 0]
+            return [(i, v) for i, v in enumerate(dq) if v != 0]  # sparsely save delta window
 
         self.count, self.shift, self.left, self.right = 0, 0, 0, 0
         self.values = get_delta()
