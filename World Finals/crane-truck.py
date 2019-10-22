@@ -46,11 +46,11 @@ def lcm(a, b):
     return a//gcd(a, b)*b
 
 class Delta(object):
-    def __init__(self, instruction):
+    def __init__(self, instructions):
         def get_delta():
             dq = deque([0])
             # extend delta window
-            for c in instruction:
+            for c in instructions:
                 if c == 'u':
                     dq[self.shift-self.left] = (dq[self.shift-self.left]-1)%MOD
                 elif c == 'd':
