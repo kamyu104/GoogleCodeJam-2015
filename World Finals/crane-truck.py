@@ -66,22 +66,23 @@ class Delta(object):
                     if self.shift-self.left+1 == len(dq):
                         dq.append(0)
                     self.shift += 1
-            # shrink delta window
-            while self.left < min(0, self.shift):
+	        # shrink delta window
+            self.left = -self.left
+            self.right = len(dq)-self.left-1
+            while self.left:
                 if dq[0] != 0:
                     break
-                self.left += 1
+                self.left -= 1
                 dq.popleft()
-            while len(dq)+self.left-1 > max(0, self.shift):
+            while self.right:
                 if dq[-1] != 0:
                     break
+                self.right -= 1
                 dq.pop()
             return dq
 
         self.count, self.left, self.shift = 0, 0, 0
         self.values = get_delta()
-        self.left = -self.left
-        self.right = len(self.values)-self.left-1
 
 def simulate(deltas):
     result = 0
