@@ -79,7 +79,7 @@ class Delta(object):
                     break
                 dq.pop()
                 self.right -= 1
-            return [(i, v) for i, v in enumerate(dq) if v != 0]  # sparsely save delta window
+            return [(i, v) for i, v in enumerate(dq) if v != 0]  # save sparse delta window
 
         self.count, self.shift, self.left, self.right = 0, 0, 0, 0
         self.values = get_delta()
