@@ -142,15 +142,14 @@ uint64_t simulate(const vector<pair<bool, Delta>>& deltas) {
     for (const auto& kvp : deltas) {  // extend non-periodic area
         const auto& is_loop = kvp.first;
         const auto& delta = kvp.second;
-        if (!is_loop || !delta.shift) {
-            left += delta.left;
-            right += delta.right;
-        } else {
+        left += delta.left;
+        right += delta.right;
+        if (is_loop && delta.shift) {
             period = lcm(period, abs(delta.shift));
             if (delta.shift < 0) {
-                left += period;
+                left += period - ((delta.left + 1) % -delta.shift);
             } else {
-                right += period;
+                right += period - ((1 + delta.right) % delta.shift);
             }
         }
     }
