@@ -7,33 +7,6 @@
 # Space: O(N^2)
 #
 
-# [Analysis]
-#  - N = 2000
-#  - A: [0-2000, 0+2000], [] is the red area modified A
-#  - B: ****[-2000-4001, 2000+4001]****
-#    => ****(-6001, 6001)****,
-#    * is repeated area modified by B with period pb = O(2B+1) at most 4001,
-#    each circle B updates (-6001, 6001) from new computed start point,
-#    run at most 4001 * 256 full circles to reach at initial point and stop
-#    (increase every point by 256 in full non-periodic area)
-#  - C: ****[-6001-2000, 6001+2000]****,
-#    => ****[-8001, 8001]****, [] is the green area modified by C
-#  - D: @@@@[-8001-(4001)^2, 8001+(4001)^2]@@@@,
-#    => @@@@[-16016002, 16016002]@@@@
-#    @ is repeated area with period pd = lcm(O(2B+1), O(2D+1)) at most 4001^2,
-#    each circle D updates {-16016002, 16016002} from new computed start point,
-#    run at most 4001^2 * 256 full circles to reach at initial point and stop,
-#    (increase every point by 256 in full non-periodic area)
-#  - E: @@@@[-16016002-2000, 16016002+2000]@@@@
-#    => @@@@[-16018002, 16018002]@@@@, [] is the last area modified by E
-# [Time]
-#  - 1 + A + 256 * (1 + A + B) + C + 256 * (1 + A + B + C + B*D) + E
-#    => O(256 * N^2)
-# [Space]
-#  - 1 + A + B + C + B*D + E <= 1 + (N + N + N + N^2 + N)
-#    = N^2 + 4*N + 1= 4008001
-#    => O(N^2)
-
 from collections import deque
 
 def lcm(a, b):
@@ -93,9 +66,13 @@ def simulate(deltas):
         if is_loop and delta.shift:
             period = lcm(period, abs(delta.shift))
             if delta.shift < 0:
-                left += period - (delta.left+1)%-delta.shift
+                left += period
+                if 1+delta.left > -delta.shift:
+                    left -= (1+delta.left)%-delta.shift
             else:
-                right += period - (1+delta.right)%delta.shift
+                right += period
+                if 1+right > delta.shift:
+                    right -= (1+delta.right)%delta.shift
     curr, non_periodic_area = left, [0]*(left+1+right)
     for is_loop, delta in deltas:
         has_visited_non_periodic_area = False
