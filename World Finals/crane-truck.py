@@ -72,7 +72,7 @@ def simulate(deltas):
                 left -= (1+delta.left)%-delta.shift
         else:
             right += period
-            if 1+right > delta.shift:
+            if 1+delta.right > delta.shift:
                 right -= (1+delta.right)%delta.shift
     curr, non_periodic_area = left, [0]*(left+1+right)
     for is_loop, delta in deltas:
