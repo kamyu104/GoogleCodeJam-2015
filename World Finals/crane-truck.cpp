@@ -134,12 +134,12 @@ uint64_t simulate(const vector<pair<bool, Delta>>& deltas) {
         }
     }
     int64_t curr = left;
-    vector<uint8_t> non_periodic_area(left + 1 + right);
+    vector<uint8_t> non_periodic_area(left + 1 + right);  // Space: O(N^2)
     for (const auto& kvp : deltas) {
         const auto& is_loop = kvp.first;
         const auto& delta = kvp.second;
         auto has_visited_non_periodic_area = false;
-        while (true) {
+        while (true) {  // Time: O(256 * N^2)
             if (!has_visited_non_periodic_area &&
                 0 <= curr && curr < int64_t(non_periodic_area.size())) {
                 has_visited_non_periodic_area = true;
