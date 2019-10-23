@@ -117,18 +117,19 @@ uint64_t simulate(const vector<pair<bool, Delta>>& deltas) {
         const auto& delta = kvp.second;
         left += delta.left;
         right += delta.right;
-        if (is_loop && delta.shift) {
-            period = lcm(period, abs(delta.shift));
-            if (delta.shift < 0) {
-                left += period;
-                if (1 + delta.left > -delta.shift) {
-                    left -= (1 + delta.left) % -delta.shift;
-                }
-            } else {
-                right += period;
-                if (1 + delta.right > delta.shift) {
-                    right -= (1 + delta.right) % delta.shift;
-                }
+        if (!(is_loop && delta.shift)) {
+            continue;
+        }
+        period = lcm(period, abs(delta.shift));
+        if (delta.shift < 0) {
+            left += period;
+            if (1 + delta.left > -delta.shift) {
+                left -= (1 + delta.left) % -delta.shift;
+            }
+        } else {
+            right += period;
+            if (1 + delta.right > delta.shift) {
+                right -= (1 + delta.right) % delta.shift;
             }
         }
     }
