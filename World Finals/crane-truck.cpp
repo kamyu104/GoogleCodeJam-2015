@@ -4,7 +4,7 @@
  * Google Code Jam 2015 World Finals - Problem F. Crane Truck
  * https://code.google.com/codejam/contest/5224486/dashboard#s=p5
  *
- * Time:  O(N^2), N is the length of the program
+ * Time:  O(N^2)
  * Space: O(N^2)
  *
  */
@@ -115,31 +115,31 @@ uint64_t simulate(const vector<pair<bool, Delta>>& deltas) {
     for (const auto& kvp : deltas) {  // extend non-periodic area
         const auto& is_loop = kvp.first;
         const auto& delta = kvp.second;
-        left += delta.left;
-        right += delta.right;
         if (!(is_loop && delta.shift)) {
-            continue;
-        }
-        period = lcm(period, abs(delta.shift));
-        if (delta.shift < 0) {
-            left += period;
-            if (1 + delta.left > -delta.shift) {
-                left -= (1 + delta.left) % -delta.shift;
-            }
+            left += delta.left;
+            right += delta.right;
         } else {
-            right += period;
-            if (1 + delta.right > delta.shift) {
-                right -= (1 + delta.right) % delta.shift;
+            period = lcm(period, abs(delta.shift));
+            if (delta.shift < 0) {
+                if (1 + delta.left > -delta.shift) {
+                    left += delta.left - (1 + delta.left) % -delta.shift;
+                }
+                left += period;
+            } else {
+                if (1 + delta.right > delta.shift) {
+                    right += delta.right - (1 + delta.right) % delta.shift;
+                }
+                right += period;
             }
         }
     }
     int64_t curr = left;
-    vector<uint8_t> non_periodic_area(left + 1 + right);  // Space: O(N^2)
+    vector<uint8_t> non_periodic_area(left + 1 + right);
     for (const auto& kvp : deltas) {
         const auto& is_loop = kvp.first;
         const auto& delta = kvp.second;
         auto has_visited_non_periodic_area = false;
-        while (true) {  // Time: O(256 * N^2)
+        while (true) {
             if (!has_visited_non_periodic_area &&
                 0 <= curr && curr < int64_t(non_periodic_area.size())) {
                 has_visited_non_periodic_area = true;

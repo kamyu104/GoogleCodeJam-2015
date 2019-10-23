@@ -61,19 +61,19 @@ def simulate(deltas):
     result = 0
     period, left, right = 1, 0, 0
     for is_loop, delta in deltas:  # extend non-periodic area
-        left += delta.left
-        right += delta.right
         if not (is_loop and delta.shift):
-            continue
-        period = lcm(period, abs(delta.shift))
-        if delta.shift < 0:
-            left += period
-            if 1+delta.left > -delta.shift:
-                left -= (1+delta.left)%-delta.shift
+            left += delta.left
+            right += delta.right
         else:
-            right += period
-            if 1+delta.right > delta.shift:
-                right -= (1+delta.right)%delta.shift
+            period = lcm(period, abs(delta.shift))
+            if delta.shift < 0:
+                if 1+delta.left > -delta.shift:
+                    left += delta.left-(1+delta.left)%-delta.shift
+                left += period
+            else:
+                if 1+delta.right > delta.shift:
+                    right += delta.right-(1+delta.right)%delta.shift
+                right += period
     curr, non_periodic_area = left, [0]*(left+1+right)  # Space: O(N^2)
     for is_loop, delta in deltas:
         has_visited_non_periodic_area = False
