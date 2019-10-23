@@ -4,7 +4,7 @@
  * Google Code Jam 2015 World Finals - Problem F. Crane Truck
  * https://code.google.com/codejam/contest/5224486/dashboard#s=p5
  *
- * Time:  O(N^2)
+ * Time:  O(N^2), N is the length of the program
  * Space: O(N^2)
  *
  */
