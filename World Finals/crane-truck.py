@@ -74,10 +74,10 @@ def simulate(deltas):
             right += period
             if 1+delta.right > delta.shift:
                 right -= (1+delta.right)%delta.shift
-    curr, non_periodic_area = left, [0]*(left+1+right)
+    curr, non_periodic_area = left, [0]*(left+1+right)  # Space: O(N^2)
     for is_loop, delta in deltas:
         has_visited_non_periodic_area = False
-        while True:
+        while True:  # Time: O(256 * N^2)
             if not has_visited_non_periodic_area and 0 <= curr < len(non_periodic_area):
                 has_visited_non_periodic_area = True
             for i, v in delta.values:
