@@ -202,7 +202,7 @@ uint64_t simulate(const vector<pair<bool, Delta>>& deltas) {
     return result;
 }
 
-int64_t crane_truck() {
+uint64_t crane_truck() {
     string P;
     cin >> P;
 
