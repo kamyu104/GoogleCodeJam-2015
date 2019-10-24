@@ -49,7 +49,7 @@ struct Delta {
      : values(get_delta(instructions)) {
     }
 
-    uint64_t count = 0LL;
+    uint64_t count = 0ULL;
     int64_t shift = 0LL;
     int64_t left = 0LL;
     int64_t right = 0LL;
