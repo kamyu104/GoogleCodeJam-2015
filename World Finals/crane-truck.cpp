@@ -122,12 +122,12 @@ uint64_t simulate(const vector<pair<bool, Delta>>& deltas) {
             period = lcm(period, abs(delta.shift));
             if (delta.shift < 0) {
                 if (1 + delta.left > -delta.shift) {
-                    left += delta.left - (1 + delta.left) % -delta.shift;
+                    left += (1 + delta.left) / -delta.shift * -delta.shift;
                 }
                 left += period;
             } else {
                 if (1 + delta.right > delta.shift) {
-                    right += delta.right - (1 + delta.right) % delta.shift;
+                    right += (1 + delta.right) / delta.shift * delta.shift;
                 }
                 right += period;
             }
